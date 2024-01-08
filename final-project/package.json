@@ -1,7 +1,7 @@
 {
   "name": "final-project",
   "version": "0.1.0",
-  "homepage": "https://github.com/SD-1023/frontend-final-1",
+  "homepage": "http://sd-1023.github.io/frontend-final-1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
