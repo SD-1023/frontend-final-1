@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) =>
         mx: 'auto',
         position: 'relative',
         overflow: 'hidden',
-        borderRadius: '16px',
+        borderRadius: '16px !important',
         [theme.breakpoints.down('sm')]: {
             height :100,
             width:100,
@@ -47,7 +47,7 @@ export const Brands =({brands})=>{
                                         left: 0,
                                         right: 0,
                                         bottom: 0,
-                                        backgroundImage: `url(${brand.logo})`,
+                                        backgroundImage: `url(${brand.img})`,
                                         alt: `url(${brand.name})`,
                                         backgroundSize: 'cover',
                                         backgroundPosition: 'center',

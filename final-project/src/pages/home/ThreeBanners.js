@@ -127,7 +127,7 @@ export const ThreeBanners = () => {
     const classes =useStyles();
     return (
         <>
-         <Grid container spacing={2} mt={1} mb={4}>
+         <Grid container spacing={2} mt={1} mb={4} p={2}>
             <Grid item xs={12}>
             <Card className={classes.styledBigCard}>
                 <Box
