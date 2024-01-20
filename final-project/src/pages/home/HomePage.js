@@ -169,7 +169,7 @@ export const HomePage = () => {
 
 
 
-            <Brands brands={brands}>
+            <Brands brands={shopBrands ||[]}>
             </Brands>
 
             <ThreeBanners >

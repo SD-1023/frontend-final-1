@@ -47,7 +47,7 @@ export const Brands =({brands})=>{
                                         left: 0,
                                         right: 0,
                                         bottom: 0,
-                                        backgroundImage: `url(${brand.img})`,
+                                        backgroundImage: `url(${brand.logo})`,
                                         alt: `url(${brand.name})`,
                                         backgroundSize: 'cover',
                                         backgroundPosition: 'center',
