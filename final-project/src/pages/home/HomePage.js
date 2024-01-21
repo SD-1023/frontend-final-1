@@ -24,6 +24,8 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { ThreeBanners } from "./ThreeBanners";
 import { Brands } from "./Brands";
 import { CollectionSection } from "./CollectionSection";
+import { HeroImage } from "./HeroImage";
+import { TopCategories } from "./TopCategories";
 
 let products = [{
     "id": "1",
@@ -112,11 +114,12 @@ let brands = [{
 
 export const HomePage = () => {
     const theme = useTheme();
-
+    const [handpickedCollection, setHandpickedCollection] = useState(null);
     const [shopBrands, setShopBrands] = useState(null);
+    const [topCategories, setTopCategories] = useState(null);
     useEffect(() => {
-        
-        fetch("https://coral-jfwb.onrender.com/brand")
+
+        fetch("http://158.176.7.102:3000/brand")
             .then((response) => response.json())
             .then((data) => {
                 setShopBrands(data);
@@ -125,14 +128,33 @@ export const HomePage = () => {
             .catch((error) => console.log(error));
     }, []);
 
+    useEffect(() => {
+
+        fetch("http://158.176.7.102:3000/category/handpicked")
+            .then((response) => response.json())
+            .then((data) => {
+                setHandpickedCollection(data);
+                console.log(data);
+            })
+            .catch((error) => console.log(error));
+    }, []);
+    useEffect(() => {
+
+        fetch("http://158.176.7.102:3000/category/top")
+            .then((response) => response.json())
+            .then((data) => {
+                setTopCategories(data);
+                console.log(data);
+            })
+            .catch((error) => console.log(error));
+    }, []);
+
 
     return (
         <ThemeProvider theme={theme}>
-            <Box p={1} component='img'
-                src={shoulderGirl}
-                alt='Shoulder Girl'
-                sx={{ display: 'flex', justifyContent: 'center', width: '100%', borderRadius: 10, marginTop: 2, height: 333 }}>
-            </Box>
+            <HeroImage></HeroImage>
+            <TopCategories topCategories={topCategories || []}></TopCategories>
+       
             <Box p={2} component='div'
                 sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row', marginTop: 3 }}>
                 <Typography variant="h2" sx={{ fontSize: 24, fontWeight: 600 }}>New Arrivals</Typography>
@@ -165,11 +187,11 @@ export const HomePage = () => {
                 ))}
 
             </Grid>
-           <CollectionSection collections = {collections}/>
+            <CollectionSection collections={handpickedCollection || []} />
 
 
 
-            <Brands brands={shopBrands ||[]}>
+            <Brands brands={shopBrands || []}>
             </Brands>
 
             <ThreeBanners >
