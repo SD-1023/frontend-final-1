@@ -14,8 +14,8 @@ export const TopCategories = ({ topCategories }) => {
         <Grid p={2} container spacing={2} >
             {topCategories.map((topCategory) => (
                 <Grid item xs={3} key={topCategory.id}>
-                    <Card sx={{ boxShadow: 0 }}>
-                        <CardMedia component='img' src={`url(http://158.176.7.102:3000/${topCategory.icon})`} alt={topCategory.name} sx={{ borderRadius: 2 }} />
+                    <Card sx={{ boxShadow: 0 , height: 58, width:58}}>
+                        <CardMedia component='img' src={`http://158.176.7.102:3000${topCategory.icon}`} alt={topCategory.name} sx={{ borderRadius: 2 }} />
                         <CardContent>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
                                 <Typography variant="h5" sx={{ fontSize: 16 }}>{topCategory.name}</Typography>
