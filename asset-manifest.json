@@ -1,15 +1,28 @@
 {
   "files": {
-    "main.css": "/frontend-final-1/static/css/main.840cdc24.css",
-    "main.js": "/frontend-final-1/static/js/main.011564ed.js",
-    "static/js/787.5ec7c162.chunk.js": "/frontend-final-1/static/js/787.5ec7c162.chunk.js",
+    "main.css": "/frontend-final-1/static/css/main.5cf5255b.css",
+    "main.js": "/frontend-final-1/static/js/main.665e7e90.js",
+    "static/js/787.c4df67fb.chunk.js": "/frontend-final-1/static/js/787.c4df67fb.chunk.js",
+    "static/media/shoulderGirl.png": "/frontend-final-1/static/media/shoulderGirl.df29a22a516826812e52.png",
+    "static/media/lifestyle.png": "/frontend-final-1/static/media/lifestyle.06166b4e523e27902e4f.png",
+    "static/media/skincare.png": "/frontend-final-1/static/media/skincare.809f3744522d3d191263.png",
+    "static/media/watch.png": "/frontend-final-1/static/media/watch.c5251622fa0557570201.png",
+    "static/media/pinkbag.png": "/frontend-final-1/static/media/pinkbag.9898589f7d31eb0fc9a3.png",
+    "static/media/brownbag.png": "/frontend-final-1/static/media/brownbag.e31ef299a1d9d39f5ac9.png",
+    "static/media/BLACKBAG.png": "/frontend-final-1/static/media/BLACKBAG.dfec964525f35bf76a73.png",
+    "static/media/facepacks.png": "/frontend-final-1/static/media/facepacks.42f6e2261b0538c6cefb.png",
+    "static/media/perfume.png": "/frontend-final-1/static/media/perfume.4c0c307c609c34d3d27e.png",
+    "static/media/sunglass.png": "/frontend-final-1/static/media/sunglass.2770727cee3bc5c2c892.png",
+    "static/media/bluearrow.svg": "/frontend-final-1/static/media/bluearrow.fed1aea83ee61e822cf7f9dfab0298eb.svg",
+    "static/media/group125.svg": "/frontend-final-1/static/media/group125.e236c28bd85ee97a3e49c87b3cd41e80.svg",
     "index.html": "/frontend-final-1/index.html",
-    "main.840cdc24.css.map": "/frontend-final-1/static/css/main.840cdc24.css.map",
-    "main.011564ed.js.map": "/frontend-final-1/static/js/main.011564ed.js.map",
-    "787.5ec7c162.chunk.js.map": "/frontend-final-1/static/js/787.5ec7c162.chunk.js.map"
+    "static/media/arrow.svg": "/frontend-final-1/static/media/arrow.29a30ce029f92eea823df378f0d78cb5.svg",
+    "main.5cf5255b.css.map": "/frontend-final-1/static/css/main.5cf5255b.css.map",
+    "main.665e7e90.js.map": "/frontend-final-1/static/js/main.665e7e90.js.map",
+    "787.c4df67fb.chunk.js.map": "/frontend-final-1/static/js/787.c4df67fb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.840cdc24.css",
-    "static/js/main.011564ed.js"
+    "static/css/main.5cf5255b.css",
+    "static/js/main.665e7e90.js"
   ]
 }
