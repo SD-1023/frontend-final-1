@@ -11,11 +11,8 @@ export const Layout = ({ children }) => {
 
     const [isFooterShown, setIsFooterShown] = useState(false);
     const pathname = window.location.pathname;
-    // const { data: categories } = useFetchData('https://coral-jfwb.onrender.com/category');
-    const categories = [{ name: 'dfgdggdfh', id: '1' }, { name: 'gsdfhdhg dgdfgdfgfh ggsgs', id: '1' }, { name: 'gsdfh gfsgfs dhgdfh', id: '1' },
-    { name: 'gsdfhdhgdfh', id: '1' }, { name: 'gsdfhdhgdfh', id: '1' }, { name: 'gsdfhdhgdfh', id: '1' },
-    { name: 'gsdfhdhgdfh', id: '1' }, { name: 'gsdfhdhgdfh', id: '1' }, { name: 'gsdfhdhgdfh', id: '1' },
-    { name: 'gsdfhdhgdfh', id: '1' }, { name: 'gsdfhdhgdfh', id: '1' },];
+    const { data: categories } = useFetchData('http://158.176.7.102:3000/category');
+    
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 800) {
