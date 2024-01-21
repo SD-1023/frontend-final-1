@@ -1,4 +1,5 @@
 import { Box, Card, CardContent, CardMedia, Container, Grid, Icon, Typography, useTheme } from "@mui/material";
+import CardCover from '@mui/joy/CardCover';
 import shoulderGirl from '../../images/shoulderGirl.png';
 import blackBag from '../../images/BLACKBAG.png';
 import brownBag from '../../images/brownbag.png';
@@ -23,6 +24,9 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { ThreeBanners } from "./ThreeBanners";
 import { Brands } from "./Brands";
 import { CollectionSection } from "./CollectionSection";
+import { HeroImage } from "./HeroImage";
+import { TopCategories } from "./TopCategories";
+import { NewArrivals } from "./NewArrivals";
 
 let products = [{
     "id": "1",
@@ -111,11 +115,14 @@ let brands = [{
 
 export const HomePage = () => {
     const theme = useTheme();
-
+    const [handpickedCollection, setHandpickedCollection] = useState(null);
     const [shopBrands, setShopBrands] = useState(null);
+    const [topCategories, setTopCategories] = useState(null);
+    const [newArrivals,setNewArrival]= useState([]);
+   
     useEffect(() => {
 
-        fetch("https://coral-jfwb.onrender.com/brand")
+        fetch("http://158.176.7.102:3000/brand")
             .then((response) => response.json())
             .then((data) => {
                 setShopBrands(data);
@@ -123,53 +130,62 @@ export const HomePage = () => {
             })
             .catch((error) => console.log(error));
     }, []);
+    useEffect(() => {
 
+        fetch("http://158.176.7.102:3000/products/new-arrivals")
+            .then((response) => response.json())
+            .then((data) => {
+                setNewArrival(data.slice(0,20));
+                console.log(data);
+            })
+            .catch((error) => console.log(error));
+    }, []);
+
+    useEffect(() => {
+
+        fetch("http://158.176.7.102:3000/category/handpicked")
+            .then((response) => response.json())
+            .then((data) => {
+                setHandpickedCollection(data);
+                console.log(data);
+            })
+            .catch((error) => console.log(error));
+    }, []);
+    useEffect(() => {
+
+        fetch("http://158.176.7.102:3000/category/top")
+            .then((response) => response.json())
+            .then((data) => {
+                setTopCategories(data);
+                console.log(data);
+            })
+            .catch((error) => console.log(error));
+    }, []);
+  
+                
+    //   console.log(newArrivals[0].ProductImages[0].image_url)          
 
     return (
         <ThemeProvider theme={theme}>
-            <Box p={1} component='img'
-                src={shoulderGirl}
-                alt='Shoulder Girl'
-                sx={{ display: 'flex', justifyContent: 'center', width: '100%', borderRadius: 10, marginTop: 2, height: 333 }}>
-            </Box>
-            <Box p={2} component='div'
-                sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row', marginTop: 3 }}>
-                <Typography variant="h2" sx={{ fontSize: 24, fontWeight: 600 }}>New Arrivals</Typography>
-                <Link variant="label" href="#" underline="none" color='#1B4B66'>
-                    <span style={{ display: "flex", alignItems: "center" }}>
-                        View All
-                        <ArrowForwardIosIcon />
-                    </span>
-                </Link>
+            <HeroImage></HeroImage>
+
+            <TopCategories topCategories={topCategories || []}></TopCategories>
+            <NewArrivals newArrival={newArrivals ||[]}></NewArrivals>
+         
+            <CollectionSection collections={handpickedCollection || []} />
 
 
-            </Box>
 
-            <Grid p={2} container spacing={4} mt={1}>
-                {products.map((product) => (
-                    <Grid item xs={3}>
-                        <Card key={product.id} sx={{ boxShadow: 0 }} >
-                            <CardMedia component='img' src={product.img} alt={product.img} sx={{ borderRadius: 2 }} />
-                            <CardContent >
-                                <Box sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
-                                    <Typography variant="h5" sx={{ fontSize: 16 }}>{product.title}</Typography>
-                                    <FavoriteBorderIcon></FavoriteBorderIcon>
-                                </Box>
-                                <Typography variant="p" sx={{ fontWeight: 400, fontSize: 14, color: '#626262' }}>Blossom Pouch</Typography>
-                                <Typography sx={{ fontSize: 16, fontWeight: 500 }}>{product.price}</Typography>
-                            </CardContent>
-
-                        </Card>
-                    </Grid>
-                ))}
-
-            </Grid>
-            <CollectionSection collections={collections} />
-            <hr />
-            <Brands brands={brands}>
+            <Brands brands={shopBrands || []}>
             </Brands>
+
             <ThreeBanners >
             </ThreeBanners>
+
+
+
+
+
         </ThemeProvider>
 
 
