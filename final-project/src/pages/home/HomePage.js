@@ -118,8 +118,8 @@ export const HomePage = () => {
     const [handpickedCollection, setHandpickedCollection] = useState(null);
     const [shopBrands, setShopBrands] = useState(null);
     const [topCategories, setTopCategories] = useState(null);
-    const [newArrivals,setNewArrival]= useState([]);
-   
+    const [newArrivals, setNewArrival] = useState([]);
+
     useEffect(() => {
 
         fetch("http://158.176.7.102:3000/brand")
@@ -135,7 +135,7 @@ export const HomePage = () => {
         fetch("http://158.176.7.102:3000/products/new-arrivals")
             .then((response) => response.json())
             .then((data) => {
-                setNewArrival(data.slice(0,20));
+                setNewArrival(data.slice(0, 20));
                 console.log(data);
             })
             .catch((error) => console.log(error));
@@ -161,8 +161,8 @@ export const HomePage = () => {
             })
             .catch((error) => console.log(error));
     }, []);
-  
-                
+
+
     //   console.log(newArrivals[0].ProductImages[0].image_url)          
 
     return (
@@ -170,8 +170,8 @@ export const HomePage = () => {
             <HeroImage></HeroImage>
 
             <TopCategories topCategories={topCategories || []}></TopCategories>
-            <NewArrivals newArrival={newArrivals ||[]}></NewArrivals>
-         
+            <NewArrivals newArrival={newArrivals || []}></NewArrivals>
+
             <CollectionSection collections={handpickedCollection || []} />
 
 
