@@ -7,8 +7,8 @@ const useStyles = makeStyles((theme) =>
     createStyles({
         styledTitle: {
             fontSize: '24px !important', fontWeight: '600 !important',
-            [theme.breakpoints.down('sm')]: {
-                fontSize: '14px !important',
+            [theme.breakpoints.down('md')]: {
+                fontSize: '12px !important',
 
             },
         },
