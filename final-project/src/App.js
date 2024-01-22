@@ -6,6 +6,7 @@ function App() {
   return (
     <BrowserRouter basename='/frontend-final-1'>
       <Layout>
+        
         <Routes>
           <Route path='/' element={<HomePage />} />
         </Routes>
