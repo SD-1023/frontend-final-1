@@ -15,12 +15,12 @@ const useStyles = makeStyles((theme) =>
             position: 'relative',
             display: 'block', width: '100%', borderRadius: '24px !important', marginTop: 2, height: 400,
 
-            [theme.breakpoints.down('md')]: {
+            [theme.breakpoints?.down('md')]: {
 
                 height: 200,
 
             },
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
 
                 height: 120,
 
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) =>
             backdropFilter: 'blur(0.5px)',
             cursor: 'pointer',
             display: 'flex', flexDirection: 'column', justifyContent: "space-evenly !important",
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
 
                 height: 100,
                 right: 11,
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) =>
             alignItems: 'center',
             justifyContent: 'space-evenly !important',
             backgroundColor: '#1B4B66 !important',
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
 
                 display: 'none !important',
 

@@ -1,18 +1,30 @@
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { useFetchData } from '../hooks/useFetchData';
+import { SearchPanel } from './SearchPanel';
+import { SearchContext } from '../contexts/SearchContext';
+import { MobileSearchInput } from './MobileSearchInput';
 
+const debounceInput = (func) => {
+
+    let timeoutId;
+    return function () {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(func, 300);
+    };
+}
 
 export const Layout = ({ children }) => {
+
+    const { isSearchPanelShown } = useContext(SearchContext);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
     const [isTablet, setIsTablet] = useState(window.innerWidth < 1240 && window.innerWidth >= 800);
-
     const [isFooterShown, setIsFooterShown] = useState(false);
     const pathname = window.location.pathname;
     const { data: categories } = useFetchData('http://158.176.7.102:3000/category');
-    
+
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 800) {
@@ -33,10 +45,12 @@ export const Layout = ({ children }) => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    console.log('categories', categories);
     return <>
         <Header isMobile={isMobile} categories={categories || []} pathname={pathname} isTablet={isTablet} />
         {children}
+        {isMobile && isSearchPanelShown && <MobileSearchInput />}
+        {isSearchPanelShown && <SearchPanel isMobile={isMobile} />}
+
         <Footer isMobile={isMobile} setIsFooterShown={setIsFooterShown} isFooterShown={isFooterShown} categories={categories ? categories.slice(0, 7) : []} />
     </>;
 }

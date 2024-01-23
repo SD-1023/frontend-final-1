@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) =>
             alignItems: 'flex-end',
             boxShadow: 'none !important',
 
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 height: 100,
 
             },
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) =>
             borderRadius: '8px !important',
             position: 'relative',
             overflow: 'hidden',
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 height: 132,
             },
 
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) =>
             display: 'flex',
             flexDirection: 'column',
             position: 'absolute', top: 109, left: 0, right: 0, zIndex: 2,
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 top: 10,
 
             },
@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) =>
         },
         styledBigCardFirstTitle: {
             fontSize: '36px !important', fontWeight: '400 !important',
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 fontSize: '10px  !important'
 
             },
@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) =>
         },
         styledBigCardSecondTitle: {
             whiteSpace: 'pre-line', fontSize: '52px !important', fontWeight: '700 !important',
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 fontSize: '16px  !important'
 
             },
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) =>
             whiteSpace: 'pre-line',
             fontSize: '40px !important',
             fontWeight: '700 !important',
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 fontSize: '14px  !important'
 
             },
@@ -112,7 +112,7 @@ const useStyles = makeStyles((theme) =>
         },
         styledSmallCardIcon: {
             width: 51, height: 51,
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 height: 24,
                 width: 24
             },

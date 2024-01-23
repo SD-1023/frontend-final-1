@@ -17,9 +17,9 @@ import prada from '../../images/prada.png';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Link from '@mui/material/Link';
-import { ThemeProvider, styled } from '@mui/material/styles';
+// import { ThemeProvider, styled } from '@mui/material/styles';
 import { useState, useEffect } from "react";
-
+import { ThemeProvider } from "@mui/styles";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { ThreeBanners } from "./ThreeBanners";
 import { Brands } from "./Brands";

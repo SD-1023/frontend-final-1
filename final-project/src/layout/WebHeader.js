@@ -1,10 +1,28 @@
 import { Box, Input, InputAdornment, Link } from '@mui/material';
 import { NavLink as RouterLink } from 'react-router-dom';
 import { Logo } from './Logo';
+import { useContext, useRef } from 'react';
+import { SearchPanel } from './SearchPanel';
+import { SearchContext } from '../contexts/SearchContext';
+import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+const debounceInput = (func) => {
+
+    let timeoutId;
+    return function () {
+        // console.log('f')
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(func, 300);
+    };
+}
 
 export const WebHeader = ({ categories, isTablet }) => {
 
+    const navigate = useNavigate();
+    const { setSearchValue, openSearchPanel, closeSearchPanel } = useContext(SearchContext);
 
+    // console.log(searchValue);
     const FlexStyle = {
         display: 'flex',
         justifyContent: 'space-between',
@@ -45,15 +63,35 @@ export const WebHeader = ({ categories, isTablet }) => {
         fontSize: { xs: '14px', md: '16px' }, width: isTablet ? '70%' : '362px'
     };
 
+    const onSearch = (v) => {
+        console.log(v);
+    };
+
+    const onSearchChange = (e) => {
+
+        debounceInput(() => onSearch(e.target.value));
+        // console.log('f');
+    }
+
+    const onPressEnter = (e) => {
+        if (e.keyCode == 13) {
+            navigate('/search');
+
+        }
+    }
+
     return <Box component={'header'} sx={{ ...HeaderStyle }} >
         <Box component={'nav'} sx={FlexStyle}>
-
             <Logo isTablet={isTablet} />
             {categories.map((cat) => <Link key={cat.id} component={RouterLink} sx={LinkStyle} underline='none'> {cat.name} </Link>)}
         </Box>
         <Box sx={{ ...FlexStyle, gap: '15px' }}>
 
             <Input sx={SearchStyle}
+                onFocus={openSearchPanel}
+                onBlur={closeSearchPanel}
+                onKeyDown={onPressEnter}
+                onChange={(e) => setSearchValue(e.target.value)}
                 disableUnderline={true}
                 placeholder={'Search for products or brands.....'}
                 startAdornment={
