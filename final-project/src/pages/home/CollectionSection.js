@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) =>
             position: 'relative',
             overflow: 'hidden',
             borderRadius: '16px !important',
-            [theme.breakpoints?.down('sm')]: {
+            [theme.breakpoints.down('sm')]: {
                 width: 181,
                 height: 180,
                 borderRadius: '8px',
@@ -20,10 +20,10 @@ const useStyles = makeStyles((theme) =>
             },
         },
         collectionCardContent: {
-            position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 2, p: 3,
+            position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 1, p: 3,
             background: 'linear-gradient(180deg, rgba(196, 196, 196, 0.00) 0%, rgba(3, 24, 26, 0.46) 100%)',
 
-            [theme.breakpoints?.down('sm')]: {
+            [theme.breakpoints.down('sm')]: {
                 background: 'linear-gradient(180deg, rgba(196, 196, 196, 0.00) 0%, rgba(3, 24, 26, 0.23) 100%)',
 
 
@@ -34,8 +34,14 @@ const useStyles = makeStyles((theme) =>
             fontWeight: '600 !important',
 
 
-            [theme.breakpoints?.down('sm')]: {
-                fontSize: '14px !important',
+            [theme.breakpoints.down('md')]: {
+                fontSize: '16px !important',
+                fontWeight: 500,
+               
+
+            },
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '12px !important',
                 fontWeight: 500,
                 color: '#171520'
 

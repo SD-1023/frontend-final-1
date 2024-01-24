@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) =>
             top: '50%',
             left: '75%',
             transform: 'translate(-50%, -50%)',
-            zIndex: 2,
+            zIndex: 1,
             textAlign: 'right',
         },
         styledBigCard: {
@@ -67,8 +67,8 @@ const useStyles = makeStyles((theme) =>
 
             display: 'flex',
             flexDirection: 'column',
-            position: 'absolute', top: 109, left: 0, right: 0, zIndex: 2,
-            [theme.breakpoints?.down('sm')]: {
+            position: 'absolute', top: 109, left: 0, right: 0, zIndex: 1,
+            [theme.breakpoints.down('sm')]: {
                 top: 10,
 
             },

@@ -10,8 +10,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 const useStyles = makeStyles((theme) =>
     createStyles({
         imageSlider: {
-            width: '100%', // Ensure the image takes the full width of the container
-            // Maintain the aspect ratio of the image
+            width: '100%', 
             position: 'relative',
             display: 'block', width: '100%', borderRadius: '24px !important', marginTop: 2, height: 400,
 

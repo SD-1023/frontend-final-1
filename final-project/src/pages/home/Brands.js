@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardMedia, Container, Grid, Icon, Typography, useTheme } from "@mui/material";
+import { Box, Card,  CardMedia,  Grid,  Typography } from "@mui/material";
 import { makeStyles, createStyles } from '@mui/styles';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
@@ -7,8 +7,8 @@ const useStyles = makeStyles((theme) =>
     createStyles({
         styledTitle: {
             fontSize: '24px !important', fontWeight: '600 !important',
-            [theme.breakpoints?.down('sm')]: {
-                fontSize: '14px!important',
+            [theme.breakpoints.down('md')]: {
+                fontSize: '12px !important',
 
             },
         },
