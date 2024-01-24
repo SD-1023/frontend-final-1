@@ -1,10 +1,9 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
+import { IconButton, InputAdornment } from '@mui/material';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -14,7 +13,9 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import Snackbar from '@mui/material/Snackbar';
+import SnackbarContent from '@mui/material/SnackbarContent';
+import CloseIcon from '@mui/icons-material/Close';
 
 function Copyright(props) {
 
@@ -34,55 +35,80 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export const  SignIn=()=> {
+export const SignIn = () => {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
+  const [email, setEmail] = useState({ value: '', error: '' });
+  const [password, setPassword] = useState({ value: '', error: '' });
   const navigate = useNavigate();
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (email.error || password.error) {
+
+      setSnackbarMessage('Please fill in all required fields correctly.');
+      setSnackbarOpen(true);
+      return;
+    }
     const data = new FormData(event.currentTarget);
 
-  
 
-  fetch("https://stoplight.io/mocks/final-project-coral/coral/305018974/users/signin", {
-    method: "POST",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      email,
-      password
+
+    fetch("http://158.176.7.102:3000/users/signin", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: email.value,
+        password: password.value
+      })
     })
-  })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw Error(res.statusText);
-      }
-    })
-    .then(json => {
-      localStorage.setItem('token', JSON.stringify(json));
-      console.log(json);
-      navigate('/');
-      
-    })
-    .catch(error => console.error(error));
-    
-console.log(email, password)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw Error(res.statusText);
+        }
+      })
+      .then(json => {
+        localStorage.setItem('token', JSON.stringify(json));
+        setSnackbarMessage('Successful login');
+        setSnackbarOpen(true);
+
+        navigate('/');
+
+      })
+      .catch(error => console.error(error));
+    setSnackbarMessage('User not found or wrong password ');
+    setSnackbarOpen(true);
+    return;
+
+
   };
 
 
 
   const handleUsernameChange = (event) => {
-    setEmail(event.target.value);
+    const value = event.target.value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!value || !emailRegex.test(value)) {
+      setEmail({ value, error: 'Please enter a valid email address' });
+    } else {
+      setEmail({ value, error: '' });
+    }
   }
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-
+    const value = event.target.value;
+    setPassword({ value, error: value ? '' : 'Password is required' });
   }
 
   return (
@@ -114,7 +140,10 @@ console.log(email, password)
               autoComplete="email"
               autoFocus
               onChange={handleUsernameChange}
+              error={!!email.error}
+              helperText={email.error}
             />
+            
             <TextField
               margin="normal"
               required
@@ -125,11 +154,10 @@ console.log(email, password)
               id="password"
               autoComplete="current-password"
               onChange={handlePasswordChange}
+              error={!!password.error}
+              helperText={password.error}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             <Button
               type="submit"
               fullWidth
@@ -145,7 +173,7 @@ console.log(email, password)
                 </Link>
               </Grid>
               <Grid item>
-                <Link href='./signup'  to= './signup' variant="body2">
+                <Link href='./signup' to='./signup' variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -154,6 +182,20 @@ console.log(email, password)
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000} // Adjust the duration as needed
+        onClose={handleSnackbarClose}
+      >
+        <SnackbarContent
+          message={snackbarMessage}
+          action={(
+            <IconButton size="small" color="inherit" onClick={handleSnackbarClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          )}
+        />
+      </Snackbar>
     </ThemeProvider>
   );
 }
