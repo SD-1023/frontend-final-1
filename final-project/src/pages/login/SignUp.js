@@ -15,7 +15,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IconButton, InputAdornment} from '@mui/material';
+import { IconButton, InputAdornment } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 function Copyright(props) {
@@ -43,20 +43,20 @@ export const SignUp = () => {
     const [username, setUserName] = useState({ value: null, error: '' });
     const [birth_date, setBirthDate] = useState({ value: null, error: '' });
     const [mobile, setMobile] = useState({ value: null, error: '' });
-    const [eye,setEye]=useState(false);
+    const [eye, setEye] = useState(false);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
 
-const handleSnackbarClose = () => {
-    setSnackbarOpen(false);
-};
-    const handleEye=()=>{
+    const handleSnackbarClose = () => {
+        setSnackbarOpen(false);
+    };
+    const handleEye = () => {
         setEye(!eye)
     }
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
-        
+
         if (id === "first_name") {
             setFirstName({ value, error: value ? '' : 'First Name is required' });
         }
@@ -73,11 +73,11 @@ const handleSnackbarClose = () => {
         }
         if (id === "password") {
             if (id === "password") {
-             
+
                 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        
-                setPassword({ value, error: '' }); 
-              
+
+                setPassword({ value, error: '' });
+
                 if (!value || !passwordRegex.test(value)) {
                     setPassword({ value, error: 'Password should consist of at least 8 characters including uppercase, lowercase, numbers, and special characters' });
                 } else {
@@ -100,8 +100,8 @@ const handleSnackbarClose = () => {
 
     const navigate = useNavigate();
     const handleSubmit = (event) => {
-        event.preventDefault(); 
-        let obj =JSON.stringify({
+        event.preventDefault();
+        let obj = JSON.stringify({
             email: email.value,
             mobile: mobile.value,
             password: password.value,
@@ -125,8 +125,8 @@ const handleSnackbarClose = () => {
             setSnackbarOpen(true);
             return;
         }
-      
-       
+
+
         // const data = new FormData(event.currentTarget);
 
         fetch("http://158.176.7.102:3000/users/signup", {
@@ -135,15 +135,19 @@ const handleSnackbarClose = () => {
                 Accept: "application/json",
                 "Content-Type": "application/json"
             },
-            body:obj
+            body: obj
         })
             .then(res => {
-                console.log("Response status:", res.status);
+
                 return res.json();
             })
             .then(json => {
-                console.log(json);
-                console.log("Server response:", json);
+
+                if (json.error) {
+                    throw new Error(json.error);
+                }
+                // console.log('json', json);
+                // console.log("Server response:", json);
                 setSnackbarMessage('Signup successfully!');
                 setSnackbarOpen(true);
 
@@ -151,7 +155,9 @@ const handleSnackbarClose = () => {
                 navigate('/');
             })
             .catch(error => {
-                console.error("Error:", error);
+                setSnackbarMessage(error+"");
+                setSnackbarOpen(true);
+                // console.error("", error);
             });
 
 
@@ -207,21 +213,21 @@ const handleSnackbarClose = () => {
                                 />
                             </Grid>
                             <Grid item xs={12}>
-                                    <TextField
-                                        required
-                                        fullWidth
-                                        name="username"
-                                        label="username"
-                                        type="username"
-                                        id="username"
-                                        autoComplete="user-name"
-                                        onChange={(e) => handleInputChange(e)}
-                                        
-                                        error={!!username.error}
-                                      
-                                        helperText={username.error}
-                                    />
-                                </Grid>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    name="username"
+                                    label="username"
+                                    type="username"
+                                    id="username"
+                                    autoComplete="user-name"
+                                    onChange={(e) => handleInputChange(e)}
+
+                                    error={!!username.error}
+
+                                    helperText={username.error}
+                                />
+                            </Grid>
                             <Grid item xs={12}>
                                 <TextField
                                     required
@@ -241,19 +247,19 @@ const handleSnackbarClose = () => {
                                     fullWidth
                                     name="password"
                                     label="Enter Password"
-                                    type={eye ? 'text':'password'}
+                                    type={eye ? 'text' : 'password'}
                                     id="password"
                                     // helperText='Password should consists of uppercase & lowercase letters, numbers, and special characters(@#$%!...etc)'
                                     InputProps={{
-                                        endAdornment:(
-                                          <InputAdornment position='end'>
-                                            <IconButton onClick={handleEye}>
-                                                {eye ? <VisibilityIcon/>: <VisibilityOffIcon/>}
-                                            </IconButton>
-                                          </InputAdornment>
+                                        endAdornment: (
+                                            <InputAdornment position='end'>
+                                                <IconButton onClick={handleEye}>
+                                                    {eye ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                                                </IconButton>
+                                            </InputAdornment>
                                         )
                                     }}
-                                    onChange = {(e) => handleInputChange(e)}
+                                    onChange={(e) => handleInputChange(e)}
                                     error={!!password.error}
                                     helperText={password.error}
                                 />
@@ -287,7 +293,7 @@ const handleSnackbarClose = () => {
                                 />
 
                             </Grid>
-             
+
                         </Grid>
                         <Button
                             type="submit"
@@ -309,19 +315,19 @@ const handleSnackbarClose = () => {
                 <Copyright sx={{ mt: 5 }} />
             </Container>
             <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={3000} // Adjust the duration as needed
-        onClose={handleSnackbarClose}
-    >
-        <SnackbarContent
-            message={snackbarMessage}
-            action={(
-                <IconButton size="small" color="inherit" onClick={handleSnackbarClose}>
-                    <CloseIcon fontSize="small" />
-                </IconButton>
-            )}
-        />
-    </Snackbar>
-</ThemeProvider>
+                open={snackbarOpen}
+                autoHideDuration={3000} // Adjust the duration as needed
+                onClose={handleSnackbarClose}
+            >
+                <SnackbarContent
+                    message={snackbarMessage}
+                    action={(
+                        <IconButton size="small" color="inherit" onClick={handleSnackbarClose}>
+                            <CloseIcon fontSize="small" />
+                        </IconButton>
+                    )}
+                />
+            </Snackbar>
+        </ThemeProvider>
     );
 }

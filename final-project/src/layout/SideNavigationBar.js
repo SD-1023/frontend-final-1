@@ -7,7 +7,7 @@ export const SideNavigationBar = ({ setIsOverlayShown, categories }) => {
 
     return <Box sx={{
         width: '40%', height: '100%', position: 'fixed', top: 0, left: 0,
-        backgroundColor: '#1B4B66', zIndex: 2
+        backgroundColor: '#1B4B66', zIndex: 21
     }}>
 
         <Box sx={{
