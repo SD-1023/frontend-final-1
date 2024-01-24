@@ -7,15 +7,6 @@ import { SearchPanel } from './SearchPanel';
 import { SearchContext } from '../contexts/SearchContext';
 import { MobileSearchInput } from './MobileSearchInput';
 
-const debounceInput = (func) => {
-
-    let timeoutId;
-    return function () {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(func, 300);
-    };
-}
-
 export const Layout = ({ children }) => {
 
     const { isSearchPanelShown } = useContext(SearchContext);
