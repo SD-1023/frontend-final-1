@@ -131,6 +131,8 @@ export const SignUp = () => {
 
         fetch("http://158.176.7.102:3000/users/signup", {
             method: "POST",
+            mode: 'no-cors',
+
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"
@@ -155,7 +157,7 @@ export const SignUp = () => {
                 navigate('/');
             })
             .catch(error => {
-                setSnackbarMessage(error+"");
+                setSnackbarMessage(error + "");
                 setSnackbarOpen(true);
                 // console.error("", error);
             });
