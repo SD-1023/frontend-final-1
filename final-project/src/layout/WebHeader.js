@@ -2,9 +2,7 @@ import { Box, Input, InputAdornment, Link } from '@mui/material';
 import { NavLink as RouterLink } from 'react-router-dom';
 import { Logo } from './Logo';
 import { useContext, useRef } from 'react';
-import { SearchPanel } from './SearchPanel';
 import { SearchContext } from '../contexts/SearchContext';
-import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const debounceInput = (func) => {
@@ -20,8 +18,8 @@ const debounceInput = (func) => {
 export const WebHeader = ({ categories, isTablet }) => {
 
     const navigate = useNavigate();
-    const { setSearchValue, openSearchPanel, closeSearchPanel } = useContext(SearchContext);
-
+    const { searchValue, setSearchValue, openSearchPanel, closeSearchPanel } = useContext(SearchContext);
+    const searchRef = useRef();
     // console.log(searchValue);
     const FlexStyle = {
         display: 'flex',
@@ -68,14 +66,13 @@ export const WebHeader = ({ categories, isTablet }) => {
     };
 
     const onSearchChange = (e) => {
-
-        debounceInput(() => onSearch(e.target.value));
-        // console.log('f');
+        setSearchValue(searchRef.current.value);
     }
 
     const onPressEnter = (e) => {
         if (e.keyCode == 13) {
-            navigate('/search');
+            closeSearchPanel();
+            return navigate('/search');
 
         }
     }
@@ -88,10 +85,12 @@ export const WebHeader = ({ categories, isTablet }) => {
         <Box sx={{ ...FlexStyle, gap: '15px' }}>
 
             <Input sx={SearchStyle}
+                inputRef={searchRef}
+                // value={searchValue}
                 onFocus={openSearchPanel}
                 onBlur={closeSearchPanel}
                 onKeyDown={onPressEnter}
-                onChange={(e) => setSearchValue(e.target.value)}
+                onChange={debounceInput(onSearchChange)}
                 disableUnderline={true}
                 placeholder={'Search for products or brands.....'}
                 startAdornment={

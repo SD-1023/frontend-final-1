@@ -1,54 +1,77 @@
 import usePagination from '@mui/material/usePagination';
 import { styled } from '@mui/material/styles';
+import { Box, Button, Typography } from '@mui/material';
+import { useState } from 'react';
 
 const List = styled('ul')({
     listStyle: 'none',
-    padding: 0,
+    // padding: '5px',
     margin: 0,
     display: 'flex',
+    alignItems: 'center',
+    backgroundColor: '#F1F1F1',
+    borderRadius: '12px',
+    width: 'max-content'
 });
 
 export const Pagination = ({ }) => {
 
-    const { items } = usePagination({
+    const [numbers, setNumbers] = useState(0)
+    const { items, ...pagination } = usePagination({
         count: 10,
     });
+    const handleNextClick = () => {
+        pagination.onChange(null, pagination.page + 1);
+    };
 
-    return (
-        <nav>
-            <List>
-                {items.map(({ page, type, selected, ...item }, index) => {
-                    console.log(page, type, selected, items)
-                    let children = null;
+    return (<Box sx={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
 
-                    if (type === 'start-ellipsis' || type === 'end-ellipsis') {
-                        children = '…';
-                    } else if (type === 'page') {
-                        children = (
-                            <button
-                                type="button"
-                                style={{
-                                    fontWeight: selected ? 'bold' : undefined,
-                                }}
-                                {...item}
-                            >
-                                {page}
-                            </button>
-                        );
-                    } else {
-                        children = (
-                            <button type="button" {...item}>
-                                {type}
-                            </button>
-                        );
-                    }
-                    if (type === 'previous') {
-                        return;
-                    }
+        <List>
+            {items.map(({ page, type, selected, ...item }, index) => {
+                let children = null;
 
-                    return <li key={index}>{children}</li>;
-                })}
-            </List>
-        </nav>
+                if (type === 'start-ellipsis' || type === 'end-ellipsis') {
+                    children = '…';
+                } else if (type === 'page') {
+                    children = (
+                        <Button
+                            type="button"
+                            sx={{
+                                width: { xs: '30px', sm: '54px' },
+                                minWidth: '0',
+                                borderRadius: '12px',
+                                fontWeight: selected ? '500' : undefined,
+                                fontSize: { xs: '10px', sm: '12px' },
+                                paddingInline: { xs: '0px', sm: '18px' },
+                                paddingBlock: { xs: '3px', sm: '6px' },
+                                backgroundColor: selected ? '#1B4B66' : '#F1F1F1',
+                                color: selected ? 'white' : '#626262'
+                            }}
+                            {...item}
+                        >
+                            {page}
+                        </Button>
+                    );
+                } else {
+                    return;
+                }
+
+                return <Typography component={'li'} sx={{ padding: 0, margin: 0 }} key={index}>
+                    {children}
+                </Typography>;
+            })}
+        </List>
+        <Button onClick={handleNextClick} sx={{
+            color: '#626262',
+            fontSize: { xs: '10px', sm: '12px' },
+            paddingBlock: { xs: '3px', sm: '6px' },
+            paddingInline: { xs: '0px', sm: '18px' },
+            backgroundColor: '#F1F1F1',
+            marginLeft: '10px',
+            borderRadius: '12px'
+        }} {...items.find(item => item.type === 'next')}>
+            Next
+        </Button>
+    </Box>
     );
 }

@@ -1,13 +1,23 @@
 import { Box, Input, InputAdornment } from "@mui/material"
 import { SearchContext } from "../contexts/SearchContext";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 
+const debounceInput = (func) => {
+
+    let timeoutId;
+    return function () {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(func, 300);
+    };
+}
+
 export const MobileSearchInput = () => {
 
-    const { closeSearchPanel } = useContext(SearchContext);
+    const { searchValue, setSearchValue, closeSearchPanel } = useContext(SearchContext);
     const navigate = useNavigate();
+    const searchRef = useRef();
 
 
     const SearchStyle = {
@@ -20,9 +30,12 @@ export const MobileSearchInput = () => {
     const onPressEnter = (e) => {
         if (e.keyCode == 13) {
             closeSearchPanel();
-            navigate('/search');
+            return navigate('/search');
 
         }
+    }
+    const onSearchChange = (e) => {
+        setSearchValue(searchRef.current.value);
     }
 
     return <Box sx={{
@@ -42,9 +55,10 @@ export const MobileSearchInput = () => {
         </svg>
 
         <Input sx={SearchStyle}
-            
+            // value={searchValue}
+            inputRef={searchRef}
             onKeyDown={onPressEnter}
-            // onChange={(e) => setSearchValue(e.target.value)}
+            onChange={debounceInput(onSearchChange)}
             disableUnderline={true}
             placeholder={'Search for products or brands.....'}
             endAdornment={
