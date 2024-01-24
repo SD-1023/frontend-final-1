@@ -95,7 +95,6 @@ const handleSnackbarClose = () => {
             setMobile({ value, error: value ? '' : 'Mobile is required' });
         }
 
-
     }
 
 
