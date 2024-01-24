@@ -28,10 +28,14 @@ export const MobileSearchInput = () => {
 
 
     const onPressEnter = (e) => {
+        if(!searchValue){
+            return;
+        }
         if (e.keyCode == 13) {
             closeSearchPanel();
-            return navigate('/search');
-
+            return navigate('/search', {
+                state: searchValue
+            });
         }
     }
     const onSearchChange = (e) => {
@@ -55,7 +59,7 @@ export const MobileSearchInput = () => {
         </svg>
 
         <Input sx={SearchStyle}
-            // value={searchValue}
+            defaultValue={searchValue}
             inputRef={searchRef}
             onKeyDown={onPressEnter}
             onChange={debounceInput(onSearchChange)}

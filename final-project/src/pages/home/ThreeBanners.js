@@ -7,6 +7,8 @@ import brightArrow from '../../images/group125.svg';
 import blueArrwo from '../../images/bluearrow.svg';
 import arrow from '../../images/arrow.svg';
 import { makeStyles, createStyles } from '@mui/styles';
+import { useContext } from "react";
+import { HomePageContext } from "../../contexts/HomePageContext";
 
 
 
@@ -124,9 +126,12 @@ const useStyles = makeStyles((theme) =>
 
 
 export const ThreeBanners = () => {
+
+    const { trendyRef } = useContext(HomePageContext);
+
     const classes = useStyles();
     return (
-        <Box p={2}>
+        <Box p={2} id={'trendy'} ref={trendyRef}>
             <Typography variant="h2" sx={{display:{xs:'block',sm:'block',md:'none'},fontSize:14 , fontWeight:600}}>Makeup & Skincare</Typography>
             <Grid container spacing={2} mt={1} mb={4} >
                 <Grid item xs={12}>

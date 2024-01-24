@@ -8,6 +8,10 @@ export const useFetchData = (url) => {
 
     useEffect(() => {
 
+        if(!url){
+            console.log('f');
+            return;
+        }
         const fetchTopics = async () => {
             try {
 

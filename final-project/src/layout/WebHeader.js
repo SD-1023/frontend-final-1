@@ -61,18 +61,21 @@ export const WebHeader = ({ categories, isTablet }) => {
         fontSize: { xs: '14px', md: '16px' }, width: isTablet ? '70%' : '362px'
     };
 
-    const onSearch = (v) => {
-        console.log(v);
-    };
-
     const onSearchChange = (e) => {
+        openSearchPanel();
         setSearchValue(searchRef.current.value);
     }
 
     const onPressEnter = (e) => {
+        if (!searchValue) {
+            return;
+        }
         if (e.keyCode == 13) {
             closeSearchPanel();
-            return navigate('/search');
+
+            return navigate('/search', {
+                state: searchValue
+            });
 
         }
     }
@@ -86,8 +89,8 @@ export const WebHeader = ({ categories, isTablet }) => {
 
             <Input sx={SearchStyle}
                 inputRef={searchRef}
-                // value={searchValue}
-                onFocus={openSearchPanel}
+                defaultValue={searchValue}
+                // onFocus={openSearchPanel}
                 onBlur={closeSearchPanel}
                 onKeyDown={onPressEnter}
                 onChange={debounceInput(onSearchChange)}

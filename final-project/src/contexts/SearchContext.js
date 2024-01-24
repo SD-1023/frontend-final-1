@@ -3,21 +3,12 @@ import { useFetchData } from "../hooks/useFetchData";
 
 export const SearchContext = createContext();
 
-const debounceInput = (func) => {
-    let timeoutId;
-    return function () {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(func, 300);
-    };
-}
-const debouncedDoSomething = debounceInput(() => console.log('f'));
-
-
 export const SearchProvider = ({ children }) => {
 
-    // const { data, error, loading } = useFetchData('');
 
-    const [searchedResults, setSearchResults] = useState(null);
+    // const [searchedResults, setSearchResults] = useState(null);
+    const [URL, setURL] = useState('');
+    const { data: searchedResults, error, loading } = useFetchData(URL);
     const [searchValue, setSearchValue] = useState('');
     const [isSearchPanelShown, setIsSearchPanelShown] = useState(false);
 
@@ -30,13 +21,20 @@ export const SearchProvider = ({ children }) => {
         document.body.style.overflow = 'hidden';
     }
 
+
     useEffect(() => {
-        
-        console.log(searchValue);
+        if (!searchValue) {
+            closeSearchPanel();
+            return;
+        }
+        setURL('http://158.176.7.102:3000/search/suggestions?keyword=' + searchValue);
     }, [searchValue]);
 
 
-    return <SearchContext.Provider value={{ searchValue, setSearchValue, isSearchPanelShown, closeSearchPanel, openSearchPanel }}>
+    return <SearchContext.Provider value={{
+        searchValue, setSearchValue, isSearchPanelShown,
+        closeSearchPanel, openSearchPanel, searchedResults: searchValue ? searchedResults : []
+    }}>
 
         {children}
     </SearchContext.Provider>
