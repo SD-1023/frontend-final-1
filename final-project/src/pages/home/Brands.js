@@ -3,6 +3,8 @@ import { makeStyles, createStyles } from '@mui/styles';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import Link from '@mui/material/Link';
+import { useContext } from "react";
+import { HomePageContext } from "../../contexts/HomePageContext";
 const useStyles = makeStyles((theme) =>
     createStyles({
         styledTitle: {
@@ -33,13 +35,14 @@ const useStyles = makeStyles((theme) =>
 
 export const Brands = ({ brands }) => {
 
+    const { brandsRef } = useContext(HomePageContext);
     const classes = useStyles();
     brands = brands.slice(0, 6);
-    console.log("Brands data:", brands);
+    // console.log("Brands data:", brands);
 
     return (
         <>
-            <Box p={2} sx={{}}>
+            <Box p={2} sx={{}} ref={brandsRef}>
                 <Box component='div'
                     sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}><Typography variant="h2" className={classes.styledTitle}>Shop by Brands</Typography>
                     <Link variant="label" href="#" underline="none" color='#1B4B66' sx={{ fontSize: { xs: 12, sm: 12, md: 16 }, display: { xs: 'block', sm: 'block', md: 'none' } }}>

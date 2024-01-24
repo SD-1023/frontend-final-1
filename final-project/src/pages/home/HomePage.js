@@ -126,7 +126,7 @@ export const HomePage = () => {
             .then((response) => response.json())
             .then((data) => {
                 setShopBrands(data);
-                console.log(data);
+                // console.log(data);
             })
             .catch((error) => console.log(error));
     }, []);
@@ -137,7 +137,7 @@ export const HomePage = () => {
             .then((data) => {
 
                 setNewArrival(data.data.slice(0, 20));
-                console.log(data);
+                // console.log(data);
             })
             .catch((error) => console.log(error));
     }, []);
@@ -148,7 +148,7 @@ export const HomePage = () => {
             .then((response) => response.json())
             .then((data) => {
                 setHandpickedCollection(data);
-                console.log(data);
+                // console.log(data);
             })
             .catch((error) => console.log(error));
     }, []);
@@ -158,14 +158,14 @@ export const HomePage = () => {
             .then((response) => response.json())
             .then((data) => {
                 setTopCategories(data);
-                console.log(data);
+                // console.log(data);
             })
             .catch((error) => console.log(error));
     }, []);
 
 
     //   console.log(newArrivals[0].ProductImages[0].image_url)          
-    console.log(newArrivals);
+    // console.log(newArrivals);
 
     return (
         <ThemeProvider theme={theme}>
@@ -177,16 +177,10 @@ export const HomePage = () => {
             <CollectionSection collections={handpickedCollection || []} />
 
 
-
             <Brands brands={shopBrands || []}>
             </Brands>
-
             <ThreeBanners >
             </ThreeBanners>
-
-
-
-
 
         </ThemeProvider>
 

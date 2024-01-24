@@ -14,15 +14,18 @@ const List = styled('ul')({
     width: 'max-content'
 });
 
-export const Pagination = ({ }) => {
+export const Pagination = ({ length, setCurrentPage }) => {
 
-    const [numbers, setNumbers] = useState(0)
     const { items, ...pagination } = usePagination({
-        count: 10,
+        count: Math.ceil(length / 9),
     });
     const handleNextClick = () => {
         pagination.onChange(null, pagination.page + 1);
     };
+
+    const changePage = () => {
+        console.log('page')
+    }
 
     return (<Box sx={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
 
@@ -35,7 +38,6 @@ export const Pagination = ({ }) => {
                 } else if (type === 'page') {
                     children = (
                         <Button
-                            type="button"
                             sx={{
                                 width: { xs: '30px', sm: '54px' },
                                 minWidth: '0',
@@ -56,7 +58,7 @@ export const Pagination = ({ }) => {
                     return;
                 }
 
-                return <Typography component={'li'} sx={{ padding: 0, margin: 0 }} key={index}>
+                return <Typography component={'li'} sx={{ padding: 0, margin: 0 }} key={index} onClick={() => setCurrentPage(page - 1)}>
                     {children}
                 </Typography>;
             })}

@@ -2,9 +2,12 @@ import { Box, Typography, Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import DownIcon from '@mui/icons-material/KeyboardArrowDown';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { useContext } from "react";
+import { HomePageContext } from "../contexts/HomePageContext";
 
 export const Footer = ({ isMobile, isFooterShown, setIsFooterShown, categories }) => {
 
+    const { trendyRef, brandsRef, featuredRef } = useContext(HomePageContext);
 
     const FlexStyle = {
         display: 'flex',
@@ -17,8 +20,6 @@ export const Footer = ({ isMobile, isFooterShown, setIsFooterShown, categories }
         width: '100%', bottom: 0, left: 0,
         ...FlexStyle, flexDirection: { xs: 'column', sm: 'row' }
     };
-
-
 
     return <>
 
@@ -42,49 +43,61 @@ export const Footer = ({ isMobile, isFooterShown, setIsFooterShown, categories }
 
         {(!isMobile || isFooterShown) && <Box component={'footer'} sx={{ marginBottom: isFooterShown ? '82px' : 0, ...FooterStyle }}>
 
-            <Box sx={{ ...FlexStyle, flexDirection: 'column', margin: { xs: '25px', sm: '45px' }, gap: '7px' }}>
-                <Typography sx={{ color: 'white', paddingBottom: '5px' }}>
-                    Shop by Category
-                </Typography>
+            <Box sx={{ ...FlexStyle, flexDirection: { xs: 'column', sm: 'row' } }}>
+                <Box sx={{ ...FlexStyle, flexDirection: 'column', margin: { xs: '25px', sm: '45px' }, gap: '7px' }}>
+                    <Typography sx={{ color: 'white', paddingBottom: '5px' }}>
+                        Shop by Category
+                    </Typography>
 
-                {categories.map((cat) => (
-                    <Link key={cat.id} component={RouterLink} to={cat.name} underline="none" sx={{
+                    {categories.map((cat) => (
+                        <Link key={cat.id} component={RouterLink} to={cat.name} underline="none" sx={{
+                            "&:hover": {
+                                color: 'white',
+                            }, paddingBottom: '3px',
+                            color: 'var(--light-text)'
+                        }}>{cat.name}</Link>
+                    ))}
+
+                </Box>
+                <Box sx={{ ...FlexStyle, flexDirection: 'column', margin: { xs: '25px', sm: '45px' }, gap: '7px' }}>
+                    <Typography sx={{ color: 'white', paddingBottom: '5px' }}>
+                        Shop by Products
+                    </Typography>
+
+                    <Link component={RouterLink} to={'/'} underline="none" onClick={() => featuredRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                    })} sx={{
                         "&:hover": {
                             color: 'white',
                         }, paddingBottom: '3px',
                         color: 'var(--light-text)'
-                    }}>{cat.name}</Link>
-                ))}
+                    }}> Featured</Link>
 
+
+                    <Link component={RouterLink} to={'/'} onClick={() => brandsRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                    })} underline="none" sx={{
+                        "&:hover": {
+                            color: 'white',
+                        }, paddingBottom: '3px',
+                        color: 'var(--light-text)'
+                    }}> Brands</Link>
+
+                    <Link component={RouterLink} to={'/'} underline="none" onClick={() => trendyRef.current.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                    })} sx={{
+                        "&:hover": {
+                            color: 'white',
+                        }, paddingBottom: '3px',
+                        color: 'var(--light-text)'
+                    }}> Trendy</Link>
+
+                </Box>
             </Box>
-            <Box sx={{ ...FlexStyle, flexDirection: 'column', margin: { xs: '25px', sm: '45px' }, gap: '7px' }}>
-                <Typography sx={{ color: 'white', paddingBottom: '5px' }}>
-                    Shop by Products
-                </Typography>
 
-                <Link component={RouterLink} to={''} underline="none" sx={{
-                    "&:hover": {
-                        color: 'white',
-                    }, paddingBottom: '3px',
-                    color: 'var(--light-text)'
-                }}> Featured</Link>
-
-
-                <Link component={RouterLink} to={''} underline="none" sx={{
-                    "&:hover": {
-                        color: 'white',
-                    }, paddingBottom: '3px',
-                    color: 'var(--light-text)'
-                }}> Brands</Link>
-
-                <Link component={RouterLink} to={''} underline="none" sx={{
-                    "&:hover": {
-                        color: 'white',
-                    }, paddingBottom: '3px',
-                    color: 'var(--light-text)'
-                }}> Trendy</Link>
-
-            </Box>
             <Typography component='hr' sx={{ display: { sx: 'block', sm: 'none' }, width: 1, height: '1px', border: 0, backgroundColor: 'var(--light-text)' }} />
             <Box sx={{
                 ...FlexStyle, margin: { xs: '25px', sm: '45px' }, marginTop: '49px',
@@ -125,6 +138,6 @@ export const Footer = ({ isMobile, isFooterShown, setIsFooterShown, categories }
                     &copy; 2021 | Cora Leviene All Rights Reserved
                 </Box>
             </Box>
-        </Box>}
+        </Box >}
     </>;
 }

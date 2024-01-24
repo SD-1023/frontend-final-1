@@ -2,6 +2,8 @@
 import { Box, Card, CardContent, CardMedia, Container, Grid, Icon, Typography, useTheme } from "@mui/material";
 
 import { makeStyles, createStyles } from '@mui/styles';
+import { HomePageContext } from "../../contexts/HomePageContext";
+import { useContext } from "react";
 const useStyles = makeStyles((theme) =>
     createStyles({
         collectionCard: {
@@ -53,9 +55,11 @@ const useStyles = makeStyles((theme) =>
 
 export const CollectionSection = ({ collections }) => {
     const classes = useStyles();
+    const { featuredRef } = useContext(HomePageContext);
+
 
     return (
-        <Box p={2} sx={{ backgroundColor: '#1B4B66' }}>  <Typography variant="h2" sx={{ fontSize: {xs:14,sm:14,md:24}, color: '#fff', fontWeight: 600 }}>Handpicked Collections</Typography>
+        <Box ref={featuredRef} p={2} sx={{ backgroundColor: '#1B4B66' }}>  <Typography variant="h2" sx={{ fontSize: {xs:14,sm:14,md:24}, color: '#fff', fontWeight: 600 }}>Handpicked Collections</Typography>
             <Grid container spacing={4} mt={0} ml={{ xs: '-39px', sm: '-34px', md: '-35px', lg: '-30px', }} >
                 {collections.map((collection) => (
                     <Grid item xs={6} md={3} >
