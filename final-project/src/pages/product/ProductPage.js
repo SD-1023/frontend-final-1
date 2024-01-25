@@ -94,7 +94,7 @@ export const ProductPage = () => {
           key="2"
           color="inherit"
           href="./category"
-          onClick={(event) => handleClick(event, "/hello")}
+          onClick={(event) => handleClick(event, "/search")}
         >
           Category
 

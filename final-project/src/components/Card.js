@@ -1,4 +1,5 @@
 import { Box, CardContent, CardMedia, Rating, Typography, Card } from "@mui/material";
+import { Link } from "react-router-dom";
 
 
 export const CustomCard = ({ product }) => {
@@ -9,7 +10,9 @@ export const CustomCard = ({ product }) => {
 
         console.log(product.id)
     }
-    return <Card sx={{ minWidth: '150px', boxShadow: '0', cursor: 'pointer'}} onClick={onCardPressed}>
+    return (
+    <Card sx={{ minWidth: '150px', boxShadow: '0', cursor: 'pointer'}} onClick={onCardPressed} >
+        <Link to={`../product/${product.id}`} style={{ textDecoration: 'none',color:"black"}}>
         <CardMedia component="img" alt="green iguana" height="140"
             image={'http://158.176.7.102:3000/' + product.ProductImages[0]['image_url']} />
         <CardContent>
@@ -48,5 +51,6 @@ export const CustomCard = ({ product }) => {
 
             </Typography>
         </CardContent>
-    </Card>;
+        </Link>
+    </Card>);
 };
