@@ -126,7 +126,7 @@ export const HomePage = () => {
             .then((response) => response.json())
             .then((data) => {
                 setShopBrands(data);
-                // console.log(data);
+
             })
             .catch((error) => console.log(error));
     }, []);
@@ -136,9 +136,8 @@ export const HomePage = () => {
             .then((response) => response.json())
             .then((data) => {
 
-                setNewArrival(data.data.slice(0, 20));
-                // console.log(data);
-            })
+                setNewArrival(data.slice(0,20));
+                          })
             .catch((error) => console.log(error));
     }, []);
 
@@ -148,7 +147,7 @@ export const HomePage = () => {
             .then((response) => response.json())
             .then((data) => {
                 setHandpickedCollection(data);
-                // console.log(data);
+
             })
             .catch((error) => console.log(error));
     }, []);
@@ -158,7 +157,7 @@ export const HomePage = () => {
             .then((response) => response.json())
             .then((data) => {
                 setTopCategories(data);
-                // console.log(data);
+
             })
             .catch((error) => console.log(error));
     }, []);

@@ -11,6 +11,7 @@ import { HomePageProvider } from "./contexts/HomePageContext";
 function App() {
   return (
     <BrowserRouter basename='/frontend-final-1'>
+
       <SearchProvider>
         <HomePageProvider>
           <Layout>
@@ -19,7 +20,7 @@ function App() {
               <Route path='/search' element={<CategoriesPage />} />
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
-              <Route path='/product' element={<ProductPage />} />
+               <Route path='/product/:id' element={<ProductPage />} />
             </Routes>
           </Layout>
         </HomePageProvider>

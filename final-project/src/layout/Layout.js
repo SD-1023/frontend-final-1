@@ -36,6 +36,8 @@ export const Layout = ({ children }) => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+
+
     return <>
         <Header isMobile={isMobile} categories={categories || []} pathname={pathname} isTablet={isTablet} />
         {children}
