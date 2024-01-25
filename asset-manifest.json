@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/frontend-final-1/static/css/main.0e6c1bc5.css",
-    "main.js": "/frontend-final-1/static/js/main.58217715.js",
+    "main.js": "/frontend-final-1/static/js/main.9fef59d9.js",
     "static/js/787.c4df67fb.chunk.js": "/frontend-final-1/static/js/787.c4df67fb.chunk.js",
     "static/media/shoulderGirl.png": "/frontend-final-1/static/media/shoulderGirl.df29a22a516826812e52.png",
     "static/media/lifestyle.png": "/frontend-final-1/static/media/lifestyle.06166b4e523e27902e4f.png",
@@ -13,16 +13,20 @@
     "static/media/facepacks.png": "/frontend-final-1/static/media/facepacks.42f6e2261b0538c6cefb.png",
     "static/media/perfume.png": "/frontend-final-1/static/media/perfume.4c0c307c609c34d3d27e.png",
     "static/media/sunglass.png": "/frontend-final-1/static/media/sunglass.2770727cee3bc5c2c892.png",
-    "static/media/bluearrow.svg": "/frontend-final-1/static/media/bluearrow.32ea5e7920862895f911f4866911ad70.svg",
-    "static/media/group125.svg": "/frontend-final-1/static/media/group125.bc7d164d2f41cd6b752eb7f3bf24bc32.svg",
+    "static/media/StarEmpty.svg": "/frontend-final-1/static/media/StarEmpty.428b622ed45e0431a19431f1e7bb2623.svg",
+    "static/media/Star.svg": "/frontend-final-1/static/media/Star.ec1586cf15324183d292d0dbc53c4fff.svg",
+    "static/media/bluearrow.svg": "/frontend-final-1/static/media/bluearrow.fed1aea83ee61e822cf7f9dfab0298eb.svg",
+    "static/media/group125.svg": "/frontend-final-1/static/media/group125.e236c28bd85ee97a3e49c87b3cd41e80.svg",
     "index.html": "/frontend-final-1/index.html",
-    "static/media/arrow.svg": "/frontend-final-1/static/media/arrow.28141d1c3f5f3b0ff922be5f56904b40.svg",
+    "static/media/arrow.svg": "/frontend-final-1/static/media/arrow.29a30ce029f92eea823df378f0d78cb5.svg",
+    "static/media/chevron-right.svg": "/frontend-final-1/static/media/chevron-right.d2529d60d165cc52b075d44a03d30c69.svg",
+    "static/media/chevron-left.svg": "/frontend-final-1/static/media/chevron-left.939bc73b87302139a525a8e899479645.svg",
     "main.0e6c1bc5.css.map": "/frontend-final-1/static/css/main.0e6c1bc5.css.map",
-    "main.58217715.js.map": "/frontend-final-1/static/js/main.58217715.js.map",
+    "main.9fef59d9.js.map": "/frontend-final-1/static/js/main.9fef59d9.js.map",
     "787.c4df67fb.chunk.js.map": "/frontend-final-1/static/js/787.c4df67fb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0e6c1bc5.css",
-    "static/js/main.58217715.js"
+    "static/js/main.9fef59d9.js"
   ]
 }
