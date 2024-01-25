@@ -8,7 +8,7 @@ export const BottomMobileNavigation = ({ pathname }) => {
 
     return <Box sx={{
         width: '100%', position: 'fixed', bottom: 0, left: 0, backgroundColor: 'var(--bright)',
-        display: 'flex', justifyContent: 'space-around', alignItems: 'center', paddingBlock: '20px', zIndex: 2
+        display: 'flex', justifyContent: 'space-around', alignItems: 'center', paddingBlock: '20px', zIndex: 21
     }}>
 
         <HomeNavigationItem pathname={pathname}/>

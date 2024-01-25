@@ -1,3 +1,4 @@
+
 import { Box, Rating,CardMedia, Grid, Icon, Button, Tabs } from "@mui/material";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
@@ -60,10 +61,12 @@ export const ProductPage = () => {
  
   console.log(details.reviews)
 
+
   const navigate = useNavigate();
 
   function handleClick(event, path) {
     event.preventDefault();
+
     console.info("You clicked a breadcrumb.");
     navigate(path);
   }
@@ -85,6 +88,7 @@ export const ProductPage = () => {
           Home
         </Link>
         ,
+
         <Link
           underline="hover"
           key="2"
@@ -93,6 +97,7 @@ export const ProductPage = () => {
           onClick={(event) => handleClick(event, "/hello")}
         >
           Category
+
         </Link>
         ,
         <Typography key="3" color="text.primary">
@@ -185,3 +190,4 @@ export const ProductPage = () => {
     </Box>
   );
 };
+

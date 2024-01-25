@@ -17,9 +17,9 @@ import prada from '../../images/prada.png';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Link from '@mui/material/Link';
-import { ThemeProvider, styled } from '@mui/material/styles';
+// import { ThemeProvider, styled } from '@mui/material/styles';
 import { useState, useEffect } from "react";
-
+import { ThemeProvider } from "@mui/styles";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { ThreeBanners } from "./ThreeBanners";
 import { Brands } from "./Brands";
@@ -118,15 +118,15 @@ export const HomePage = () => {
     const [handpickedCollection, setHandpickedCollection] = useState(null);
     const [shopBrands, setShopBrands] = useState(null);
     const [topCategories, setTopCategories] = useState(null);
-    const [newArrivals,setNewArrival]= useState([]);
-   
+    const [newArrivals, setNewArrival] = useState([]);
+
     useEffect(() => {
 
         fetch("http://158.176.7.102:3000/brand")
             .then((response) => response.json())
             .then((data) => {
                 setShopBrands(data);
-               
+
             })
             .catch((error) => console.log(error));
     }, []);
@@ -135,9 +135,9 @@ export const HomePage = () => {
         fetch("http://158.176.7.102:3000/products/new-arrivals")
             .then((response) => response.json())
             .then((data) => {
+
                 setNewArrival(data.slice(0,20));
-              
-            })
+                          })
             .catch((error) => console.log(error));
     }, []);
 
@@ -147,7 +147,6 @@ export const HomePage = () => {
             .then((response) => response.json())
             .then((data) => {
                 setHandpickedCollection(data);
-               
 
             })
             .catch((error) => console.log(error));
@@ -158,34 +157,29 @@ export const HomePage = () => {
             .then((response) => response.json())
             .then((data) => {
                 setTopCategories(data);
-              
+
             })
             .catch((error) => console.log(error));
     }, []);
-  
-                
+
+
     //   console.log(newArrivals[0].ProductImages[0].image_url)          
+    // console.log(newArrivals);
 
     return (
         <ThemeProvider theme={theme}>
             <HeroImage></HeroImage>
 
             <TopCategories topCategories={topCategories || []}></TopCategories>
-            <NewArrivals newArrival={newArrivals ||[]}></NewArrivals>
-         
-            <CollectionSection collections={handpickedCollection || []} />
+            <NewArrivals newArrival={newArrivals || []}></NewArrivals>
 
+            <CollectionSection collections={handpickedCollection || []} />
 
 
             <Brands brands={shopBrands || []}>
             </Brands>
-
             <ThreeBanners >
             </ThreeBanners>
-
-
-
-
 
         </ThemeProvider>
 

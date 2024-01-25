@@ -7,6 +7,8 @@ import brightArrow from '../../images/group125.svg';
 import blueArrwo from '../../images/bluearrow.svg';
 import arrow from '../../images/arrow.svg';
 import { makeStyles, createStyles } from '@mui/styles';
+import { useContext } from "react";
+import { HomePageContext } from "../../contexts/HomePageContext";
 
 
 
@@ -23,7 +25,7 @@ const useStyles = makeStyles((theme) =>
             alignItems: 'flex-end',
             boxShadow: 'none !important',
 
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 height: 100,
 
             },
@@ -45,7 +47,7 @@ const useStyles = makeStyles((theme) =>
             borderRadius: '8px !important',
             position: 'relative',
             overflow: 'hidden',
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 height: 132,
             },
 
@@ -77,7 +79,7 @@ const useStyles = makeStyles((theme) =>
         },
         styledBigCardFirstTitle: {
             fontSize: '36px !important', fontWeight: '400 !important',
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 fontSize: '10px  !important'
 
             },
@@ -85,7 +87,7 @@ const useStyles = makeStyles((theme) =>
         },
         styledBigCardSecondTitle: {
             whiteSpace: 'pre-line', fontSize: '52px !important', fontWeight: '700 !important',
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 fontSize: '16px  !important'
 
             },
@@ -95,7 +97,7 @@ const useStyles = makeStyles((theme) =>
             whiteSpace: 'pre-line',
             fontSize: '40px !important',
             fontWeight: '700 !important',
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 fontSize: '14px  !important'
 
             },
@@ -112,7 +114,7 @@ const useStyles = makeStyles((theme) =>
         },
         styledSmallCardIcon: {
             width: 51, height: 51,
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints?.down('sm')]: {
                 height: 24,
                 width: 24
             },
@@ -124,9 +126,12 @@ const useStyles = makeStyles((theme) =>
 
 
 export const ThreeBanners = () => {
+
+    const { trendyRef } = useContext(HomePageContext);
+
     const classes = useStyles();
     return (
-        <Box p={2}>
+        <Box p={2} id={'trendy'} ref={trendyRef}>
             <Typography variant="h2" sx={{display:{xs:'block',sm:'block',md:'none'},fontSize:14 , fontWeight:600}}>Makeup & Skincare</Typography>
             <Grid container spacing={2} mt={1} mb={4} >
                 <Grid item xs={12}>

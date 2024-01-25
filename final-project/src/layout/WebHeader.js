@@ -1,10 +1,26 @@
 import { Box, Input, InputAdornment, Link } from '@mui/material';
 import { NavLink as RouterLink } from 'react-router-dom';
 import { Logo } from './Logo';
+import { useContext, useRef } from 'react';
+import { SearchContext } from '../contexts/SearchContext';
+import { useNavigate } from "react-router-dom";
+
+const debounceInput = (func) => {
+
+    let timeoutId;
+    return function () {
+        // console.log('f')
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(func, 300);
+    };
+}
 
 export const WebHeader = ({ categories, isTablet }) => {
 
-
+    const navigate = useNavigate();
+    const { searchValue, setSearchValue, openSearchPanel, closeSearchPanel } = useContext(SearchContext);
+    const searchRef = useRef();
+    // console.log(searchValue);
     const FlexStyle = {
         display: 'flex',
         justifyContent: 'space-between',
@@ -45,15 +61,39 @@ export const WebHeader = ({ categories, isTablet }) => {
         fontSize: { xs: '14px', md: '16px' }, width: isTablet ? '70%' : '362px'
     };
 
+    const onSearchChange = (e) => {
+        openSearchPanel();
+        setSearchValue(searchRef.current.value);
+    }
+
+    const onPressEnter = (e) => {
+        if (!searchValue) {
+            return;
+        }
+        if (e.keyCode == 13) {
+            closeSearchPanel();
+
+            return navigate('/search', {
+                state: searchValue
+            });
+
+        }
+    }
+
     return <Box component={'header'} sx={{ ...HeaderStyle }} >
         <Box component={'nav'} sx={FlexStyle}>
-
             <Logo isTablet={isTablet} />
             {categories.map((cat) => <Link key={cat.id} component={RouterLink} sx={LinkStyle} underline='none'> {cat.name} </Link>)}
         </Box>
         <Box sx={{ ...FlexStyle, gap: '15px' }}>
 
             <Input sx={SearchStyle}
+                inputRef={searchRef}
+                defaultValue={searchValue}
+                // onFocus={openSearchPanel}
+                onBlur={closeSearchPanel}
+                onKeyDown={onPressEnter}
+                onChange={debounceInput(onSearchChange)}
                 disableUnderline={true}
                 placeholder={'Search for products or brands.....'}
                 startAdornment={
