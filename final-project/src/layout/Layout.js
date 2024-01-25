@@ -14,7 +14,7 @@ export const Layout = ({ children }) => {
     const [isTablet, setIsTablet] = useState(window.innerWidth < 1240 && window.innerWidth >= 800);
     const [isFooterShown, setIsFooterShown] = useState(false);
     const pathname = window.location.pathname;
-    const { data: categories } = useFetchData('http//158.176.7.102:3000/category');
+    const { data: categories } = useFetchData('http://158.176.7.102:3000/category');
 
     useEffect(() => {
         const handleResize = () => {
