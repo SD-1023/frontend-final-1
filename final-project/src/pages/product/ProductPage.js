@@ -40,14 +40,7 @@ export const ProductPage = () => {
         </Typography>,
       </Breadcrumbs>
 
-
-
-
-
     </Box>
-
-
-
   );
 
 }
