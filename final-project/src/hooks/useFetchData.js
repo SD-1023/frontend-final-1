@@ -16,8 +16,7 @@ export const useFetchData = (url) => {
             try {
 
                 setLoading(true);
-                const res = await fetch(url, {mode: 'no-cors'}
-                );
+                const res = await fetch(url);
                 const d = await res.json(); 
                 setData(d);
                 setError(null);
