@@ -38,7 +38,7 @@ export const Brands = ({ brands }) => {
     const { brandsRef } = useContext(HomePageContext);
     const classes = useStyles();
     brands = brands.slice(0, 6);
-    // console.log("Brands data:", brands);
+
 
     return (
         <>
