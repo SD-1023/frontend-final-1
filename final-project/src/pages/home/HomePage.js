@@ -122,7 +122,7 @@ export const HomePage = () => {
 
     useEffect(() => {
 
-        fetch("http://158.176.7.102:3000/brand", {mode: 'no-cors'})
+        fetch("http://158.176.7.102:3000/brand")
             .then((response) => response.json())
             .then((data) => {
                 setShopBrands(data);
@@ -132,7 +132,7 @@ export const HomePage = () => {
     }, []);
     useEffect(() => {
 
-        fetch("http://158.176.7.102:3000/products/new-arrivals", {mode: 'no-cors'})
+        fetch("http://158.176.7.102:3000/products/new-arrivals")
             .then((response) => response.json())
             .then((data) => {
 
@@ -144,7 +144,7 @@ export const HomePage = () => {
 
     useEffect(() => {
 
-        fetch("http://158.176.7.102:3000/category/handpicked", {mode: 'no-cors'})
+        fetch("http://158.176.7.102:3000/category/handpicked")
             .then((response) => response.json())
             .then((data) => {
                 setHandpickedCollection(data);
@@ -154,7 +154,7 @@ export const HomePage = () => {
     }, []);
     useEffect(() => {
 
-        fetch("http://158.176.7.102:3000/category/top", {mode: 'no-cors'})
+        fetch("http://158.176.7.102:3000/category/top")
             .then((response) => response.json())
             .then((data) => {
                 setTopCategories(data);
