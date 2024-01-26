@@ -1,16 +1,29 @@
 import { Box, Typography } from "@mui/material";
 import { useContext, useState } from "react";
 import { SearchContext } from "../contexts/SearchContext";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export const SearchPanel = ({ isMobile }) => {
 
-    const { searchedResults } = useContext(SearchContext);
+    const { searchedResults, closeSearchPanel } = useContext(SearchContext);
+    const navigate = useNavigate();
 
     const renderedResults = searchedResults?.slice(0, 5) || [];
 
+
+
     document.body.style.overflow = 'hidden';
 
+    const onSuggestionPressed = (v) => {
+
+        navigate('/search', {
+            state: v
+        });
+        closeSearchPanel();
+
+
+    }
     return <Box sx={{
         width: isMobile ? '100%' : '400px', backgroundColor: 'white', zIndex: 21, minHeight: isMobile ? '100%' : '50%',
         position: 'fixed', right: 0, top: '70px', marginRight: isMobile ? 0 : '7%', padding: '16px',
@@ -71,9 +84,11 @@ export const SearchPanel = ({ isMobile }) => {
             </Box>
         }
 
-        {renderedResults?.map((res, i) => <Typography key={i} sx={{
-            padding: '10px', '&:hover': { backgroundColor: '#b5b7b9', cursor: 'pointer' }
-        }}>
+        {renderedResults?.map((res, i) => <Typography onClick={() => onSuggestionPressed(res)}
+            key={i} sx={{
+                padding: '10px', cursor: 'pointer', '&:hover': { backgroundColor: '#b5b7b9' },
+                // textDecoration: 'none', color: "black", display: 'block'
+            }}>
             {res}
         </Typography>
         )}
