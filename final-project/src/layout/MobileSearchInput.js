@@ -28,11 +28,14 @@ export const MobileSearchInput = () => {
 
 
     const onPressEnter = (e) => {
-        if(!searchValue){
+        if (!searchValue) {
             return;
         }
         if (e.keyCode == 13) {
             closeSearchPanel();
+
+            setSearchValue('');
+            searchRef.current.value = '';
             return navigate('/search', {
                 state: searchValue
             });

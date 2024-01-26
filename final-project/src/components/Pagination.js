@@ -1,11 +1,9 @@
 import usePagination from '@mui/material/usePagination';
 import { styled } from '@mui/material/styles';
 import { Box, Button, Typography } from '@mui/material';
-import { useState } from 'react';
 
 const List = styled('ul')({
     listStyle: 'none',
-    // padding: '5px',
     margin: 0,
     display: 'flex',
     alignItems: 'center',
@@ -14,18 +12,12 @@ const List = styled('ul')({
     width: 'max-content'
 });
 
-export const Pagination = ({ length, setCurrentPage }) => {
+export const Pagination = ({ length, currentPage, setCurrentPage }) => {
 
-    const { items, ...pagination } = usePagination({
-        count: Math.ceil(length / 9),
+    const { items } = usePagination({
+        count: length,
+        page: currentPage
     });
-    const handleNextClick = () => {
-        pagination.onChange(null, pagination.page + 1);
-    };
-
-    const changePage = () => {
-        console.log('page')
-    }
 
     return (<Box sx={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
 
@@ -58,12 +50,12 @@ export const Pagination = ({ length, setCurrentPage }) => {
                     return;
                 }
 
-                return <Typography component={'li'} sx={{ padding: 0, margin: 0 }} key={index} onClick={() => setCurrentPage(page - 1)}>
+                return <Typography component={'li'} sx={{ padding: 0, margin: 0 }} key={index} onClick={() => setCurrentPage(page)}>
                     {children}
                 </Typography>;
             })}
         </List>
-        <Button onClick={handleNextClick} sx={{
+        <Button sx={{
             color: '#626262',
             fontSize: { xs: '10px', sm: '12px' },
             paddingBlock: { xs: '3px', sm: '6px' },
@@ -71,9 +63,9 @@ export const Pagination = ({ length, setCurrentPage }) => {
             backgroundColor: '#F1F1F1',
             marginLeft: '10px',
             borderRadius: '12px'
-        }} {...items.find(item => item.type === 'next')}>
+        }} {...items.find(item => item.type === 'next')} onClick={() => setCurrentPage(page => page + 1)}>
             Next
         </Button>
-    </Box>
+    </Box >
     );
 }
