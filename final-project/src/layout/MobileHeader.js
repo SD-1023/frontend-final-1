@@ -4,9 +4,9 @@ import { useState } from "react";
 import { SideNavigationBar } from "./SideNavigationBar";
 import { Overlay } from "./Overlay";
 
-export const MobileHeader = ({ pathname, categories }) => {
+export const MobileHeader = ({ categories }) => {
 
-    pathname = pathname.split('/frontend-final-1')[1];
+
 
     const [isOverlayShown, setIsOverlayShown] = useState(false);
 
@@ -15,6 +15,6 @@ export const MobileHeader = ({ pathname, categories }) => {
         <UpperMobileHeader setIsOverlayShown={setIsOverlayShown} />
         {isOverlayShown && <SideNavigationBar setIsOverlayShown={setIsOverlayShown} categories={categories} />}
         {isOverlayShown && <Overlay setIsOverlayShown={setIsOverlayShown} />}
-        <BottomMobileNavigation pathname={pathname} />
+        <BottomMobileNavigation />
     </>
 }
