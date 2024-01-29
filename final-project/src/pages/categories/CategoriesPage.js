@@ -9,24 +9,31 @@ import { useFetchData } from '../../hooks/useFetchData';
 export const CategoriesPage = ({ }) => {
 
     const { state } = useLocation();
-    const { data, loading, error } = useFetchData('http://158.176.7.102:3000/search?keyword=' + state);
-    const length = data?.length || 0;
-    const [currentPage, setCurrentPage] = useState(0);
-    console.log(data)
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const { data, loading, error } = useFetchData(`http://158.176.7.102:3000/search?keyword=${state}&page=${currentPage}`);
+
+    useEffect(() => {
+
+        setCurrentPage(1);
+    }, [state]);
+
+    const totalPages = data?.totalPages || 0;
+
 
     return (
         <Box sx={{ flexGrow: 1, margin: '20px' }}>
             <Grid container spacing={{ xs: 2, md: 3, lg: 6, xl: 12 }} columns={{ xs: 2, sm: 8, md: 12, lg: 16}}>
             {loading && <Typography sx={{margin: 'auto'}}>Loading...</Typography>}
             {error && !loading && <Typography sx={{margin: 'auto'}}>Something went wrong. Please try again</Typography>}
-                {(!data || !data.length) && !loading && !error && <Typography sx={{margin: 'auto'}}>No result found</Typography>}
-                {data?.slice(currentPage * 9, (currentPage*9) + 9).map((product) => (
+                {(!data || !data.data.length) && !loading && !error && <Typography sx={{margin: 'auto'}}>No result found</Typography>}
+                {data?.data.map((product) => (
                     <Grid item xs={2} sm={4} md={4}  key={product.id}>
-                        <CustomCard product={product} />
+                        <CustomCard product={product} state={state} />
                     </Grid>
                 ))}
             </Grid>
-            <Pagination length={length} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            <Pagination length={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </Box>
     );
 }

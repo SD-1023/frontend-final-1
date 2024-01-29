@@ -40,6 +40,7 @@ import { NewArrivals } from "./NewArrivals";
 
 
 export const HomePage = () => {
+
   const theme = useTheme();
   const [handpickedCollection, setHandpickedCollection] = useState(null);
   const [shopBrands, setShopBrands] = useState(null);
@@ -94,3 +95,5 @@ console.log(newArrivals.data)
     </ThemeProvider>
   );
 };
+
+       

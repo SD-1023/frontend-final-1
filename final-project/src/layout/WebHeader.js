@@ -20,7 +20,7 @@ export const WebHeader = ({ categories, isTablet }) => {
     const navigate = useNavigate();
     const { searchValue, setSearchValue, openSearchPanel, closeSearchPanel } = useContext(SearchContext);
     const searchRef = useRef();
-    // console.log(searchValue);
+    console.log(searchValue);
     const FlexStyle = {
         display: 'flex',
         justifyContent: 'space-between',
@@ -72,7 +72,8 @@ export const WebHeader = ({ categories, isTablet }) => {
         }
         if (e.keyCode == 13) {
             closeSearchPanel();
-
+            setSearchValue('');
+            searchRef.current.value = '';
             return navigate('/search', {
                 state: searchValue
             });
@@ -91,7 +92,7 @@ export const WebHeader = ({ categories, isTablet }) => {
                 inputRef={searchRef}
                 defaultValue={searchValue}
                 // onFocus={openSearchPanel}
-                onBlur={closeSearchPanel}
+                // onBlur={closeSearchPanel}
                 onKeyDown={onPressEnter}
                 onChange={debounceInput(onSearchChange)}
                 disableUnderline={true}
