@@ -4,6 +4,7 @@ import { Box, Card, CardContent, CardMedia, Container, Grid, Icon, Typography, u
 import { makeStyles, createStyles } from '@mui/styles';
 import { HomePageContext } from "../../contexts/HomePageContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 const useStyles = makeStyles((theme) =>
     createStyles({
         collectionCard: {
@@ -57,6 +58,14 @@ export const CollectionSection = ({ collections }) => {
     const classes = useStyles();
     const { featuredRef } = useContext(HomePageContext);
 
+    const navigate = useNavigate(); 
+
+    const handleCardClick = (collectionId) => {
+
+      navigate(`/search/${collectionId}`);
+    };
+   
+
 
     return (
         <Box ref={featuredRef} p={2} sx={{ backgroundColor: '#1B4B66' }}>  <Typography variant="h2" sx={{ fontSize: {xs:14,sm:14,md:24}, color: '#fff', fontWeight: 600 }}>Handpicked Collections</Typography>
@@ -65,6 +74,7 @@ export const CollectionSection = ({ collections }) => {
                     <Grid item xs={6} md={3} >
                         <Card key={collection.id}
                             className={classes.collectionCard}
+                            onClick={() => handleCardClick(collection.id)}
                         >
                             <Box
                                 sx={{
