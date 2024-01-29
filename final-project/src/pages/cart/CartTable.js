@@ -1,0 +1,78 @@
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { CardMedia, Card, Box, Typography, Button } from '@mui/material';
+import brownBag from '../../images/brownbag.png';
+
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
+const rows = [
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+];
+
+export function CartTable() {
+  return (
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="caption table">
+        <caption>A basic table example with a caption</caption>
+        <TableHead>
+          <TableRow>
+            <TableCell>Product Name</TableCell>
+            <TableCell align="right">Price</TableCell>
+            <TableCell align="right">Qty</TableCell>
+            <TableCell align="right">Subtotal</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row">
+                <Card sx={{ display: 'flex', boxShadow: 'none' }}>
+                  <CardMedia image={brownBag} sx={{ height: 80, minWidth: 75 }} />
+                  <Box sx={{ display: 'flex', flexDirection: 'column', marginLeft: 2 }}>
+                    <Typography sx={{ fontSize: 16, fontWeight: 500 }}>
+                      {row.name}
+                    </Typography>
+                    <Typography sx={{ fontSize: 16, fontWeight: 500, color: '#626262' }}>
+                      {row.name}
+                    </Typography>
+                    <Typography sx={{ fontSize: 16, fontWeight: 500, color: '#626262' }}>
+                      {row.name}
+                    </Typography>
+                  </Box>
+                </Card>
+              </TableCell>
+              <TableCell align="right">    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end',gap:3 }}>
+                  {row.carbs}
+                  <Button size="small">Edit</Button>
+                </Box></TableCell>
+              <TableCell align="right">
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end',gap:3}}>
+                  {row.carbs}
+                  <Button size="small" color="error">
+                    Remove
+                  </Button>
+                </Box>
+              </TableCell>
+              <TableCell align="right">
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end',gap:3}}>
+                  {row.protein}
+                  
+                </Box>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}
