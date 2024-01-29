@@ -12,6 +12,7 @@ export const CategoriesPage = ({ }) => {
     const { data, loading, error } = useFetchData('http://158.176.7.102:3000/search?keyword=' + state);
     const length = data?.length || 0;
     const [currentPage, setCurrentPage] = useState(0);
+    console.log(data)
 
     return (
         <Box sx={{ flexGrow: 1, margin: '20px' }}>

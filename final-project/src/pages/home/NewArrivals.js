@@ -5,7 +5,9 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Link from '@mui/material/Link';
 
 export const NewArrivals = ({ newArrival }) => {
-    newArrival = newArrival.slice(0, 4);
+    const arrivalsSliced =newArrival.slice(0,6) ;
+
+
     return (
         <Box>  <Box p={2} component='div'
             sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}>
@@ -21,7 +23,7 @@ export const NewArrivals = ({ newArrival }) => {
         </Box>
 
             <Grid p={2} container spacing={4} sx={{ flexWrap: 'nowrap', width: '100%', overflowX: 'auto' }}>
-                {newArrival.map((product) => (
+                {arrivalsSliced.map((product) => (
 
                     <Grid item xs={4} sm={4} md={3} lg={3} key={product.id}>
                         <Card key={product.id} sx={{ boxShadow: 0 }} >
