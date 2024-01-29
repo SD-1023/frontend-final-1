@@ -5,7 +5,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Link from '@mui/material/Link';
 
 export const NewArrivals = ({ newArrival }) => {
-    const arrivalsSliced =newArrival.slice(0,6) ;
+    const arrivalsSliced = newArrival ? newArrival.slice(0, 6) : [];
 
 
     return (
