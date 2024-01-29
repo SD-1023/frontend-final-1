@@ -44,7 +44,7 @@ export const CartPage = () => {
 
       <Typography variant="h2" sx={{color:'#1B4B66', fontSize:34, fontWeight:600}}>My Cart</Typography>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={6}>
         <Grid item xs={7}>
 
            <CartTable/>
@@ -52,6 +52,7 @@ export const CartPage = () => {
         </Grid>
         <Grid item  xs={5}>
             <OrderSummary/>
+            
         </Grid>
       </Grid>
     </Box>

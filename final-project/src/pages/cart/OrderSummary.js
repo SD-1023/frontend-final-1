@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material"
+import { Box, Button, Typography } from "@mui/material"
 
 
 export const OrderSummary=()=>{
@@ -35,6 +35,11 @@ export const OrderSummary=()=>{
 
     
 
+        </Box>
+        <Box display='flex' mt={4} justifyContent='space-between'>
+            <Button variant ='contained' size='meduim'   sx={{background:'#1B4B66',fontSize:14, paddingBlock:1, paddingInline:4}}>Place Order</Button>
+
+            <Button  variant="outlined"  size='medium' sx={{color:'#1B4B66',fontSize:14,paddingBlock:1, paddingInline:4}}>Continue Shopping </Button>
         </Box>
 
         </Box>

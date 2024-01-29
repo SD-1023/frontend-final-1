@@ -29,7 +29,7 @@ const NumberInput = React.forwardRef(function CustomNumberInput(props, ref) {
 });
 
 export default function QuantityInput() {
-  return <NumberInput aria-label="Quantity Input" min={1} max={99} />;
+  return <NumberInput aria-label="Quantity Input" min={1} max={99}  />;
 }
 
 const blue = {
@@ -114,8 +114,8 @@ const StyledButton = styled('button')(
   border-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[200]};
   background: ${theme.palette.mode === 'dark' ? grey[900] : grey[50]};
   color: ${theme.palette.mode === 'dark' ? grey[200] : grey[900]};
-  width: 32px;
-  height: 32px;
+  width: 15px;
+  height: 25px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;

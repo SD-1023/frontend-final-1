@@ -23,7 +23,7 @@ export function CartTable() {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
-        <caption>A basic table example with a caption</caption>
+     
         <TableHead>
           <TableRow>
             <TableCell>Product Name</TableCell>
@@ -53,7 +53,7 @@ export function CartTable() {
               </TableCell>
               <TableCell align="right">    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end',gap:3 }}>
                   {row.carbs}
-                  <Button size="small">Edit</Button>
+                  <Button size="small">Move to wishlist</Button>
                 </Box></TableCell>
               <TableCell align="right">
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end',gap:3}}>
@@ -66,7 +66,8 @@ export function CartTable() {
               <TableCell align="right">
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end',gap:3}}>
                   {row.protein}
-                  
+             
+                  <Button  sx={{color:'white'}}> empty </Button>
                 </Box>
               </TableCell>
             </TableRow>
