@@ -13,7 +13,7 @@ export const MobileHeader = ({ categories }) => {
     return <>
 
         <UpperMobileHeader setIsOverlayShown={setIsOverlayShown} />
-        {isOverlayShown && <SideNavigationBar setIsOverlayShown={setIsOverlayShown} categories={categories} />}
+        {isOverlayShown && <SideNavigationBar setIsOverlayShown={setIsOverlayShown} categories={categories}  />}
         {isOverlayShown && <Overlay setIsOverlayShown={setIsOverlayShown} />}
         <BottomMobileNavigation />
     </>
