@@ -22,7 +22,7 @@ const rows = [
 export function CartTable() {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="caption table">
+      <Table sx={{ minWidth: 450 }} aria-label="caption table">
      
         <TableHead>
           <TableRow>
@@ -32,10 +32,11 @@ export function CartTable() {
             <TableCell align="right">Subtotal</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+       
           {rows.map((row) => (
+             <TableBody>
             <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" sx={{border:'none'}}>
                 <Card sx={{ display: 'flex', boxShadow: 'none' }}>
                   <CardMedia image={brownBag} sx={{ height: 80, minWidth: 75 }} />
                   <Box sx={{ display: 'flex', flexDirection: 'column', marginLeft: 2 }}>
@@ -51,28 +52,50 @@ export function CartTable() {
                   </Box>
                 </Card>
               </TableCell>
-              <TableCell align="right">    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end',gap:3 }}>
+              <TableCell align="right" sx={{border:'none', }}>    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end',gap:3 }}>
                   {row.carbs}
-                  <Button size="small">Move to wishlist</Button>
+        
                 </Box></TableCell>
-              <TableCell align="right">
-                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end',gap:3}}>
+              <TableCell align="right" sx={{border:'none',}}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
                   {row.carbs}
-                  <Button size="small" color="error">
-                    Remove
-                  </Button>
+               
                 </Box>
               </TableCell>
-              <TableCell align="right">
-                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end',gap:3}}>
+              <TableCell align="right" sx={{border:'none', }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
                   {row.protein}
-             
-                  <Button  sx={{color:'white'}}> empty </Button>
+              
+                
                 </Box>
               </TableCell>
+          
             </TableRow>
+            <TableRow>
+                <TableCell colSpan={4} align="right" sx={{ border: "none", verticalAlign:'top' }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "flex-end",
+                      justifyContent:'flex-end',
+                      gap: 3,
+                    }}
+                  >
+                    <Button size="small" color="error">
+                      Move to wishlist 
+                    </Button>
+                    <Button size="small" color="error">
+                      Remove
+                    </Button>
+                  </Box>
+                </TableCell>
+              </TableRow>
+        
+            </TableBody>
           ))}
-        </TableBody>
+     
+       
       </Table>
     </TableContainer>
   );

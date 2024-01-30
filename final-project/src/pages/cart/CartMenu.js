@@ -59,11 +59,11 @@ export const CartMenu = () => {
             
           </div>
           {cartItems.map((item, index) => (
-            <div key={index} style={{ marginBottom: '16px', display: 'flex', alignItems: 'center',gap:2,justifyContent:'space-between' }}>
+            <Box key={index} style={{ paddingBlock:'16px',marginBottom: '16px', display: 'flex', alignItems: 'center',gap:2,justifyContent:'space-between',borderBottom:'2px solid rgba(0, 0, 0, 0.12)' }}>
               <img
                 src={brownBag}
                 alt={item.name}
-                style={{ width: '50px', height: '50px', marginRight: '16px' }}
+                style={{ width: '75px', height: '80px' }}
               />
               <div>
                 <Typography variant="subtitle1">{item.name}</Typography>
@@ -72,7 +72,7 @@ export const CartMenu = () => {
 
               
               </div>
-              <Box>
+              <Box display='flex' flexDirection='column' alignItems='flex-end'>
               <IconButton edge="end" color="inherit" onClick={handleClose}>
               <CloseIcon />
             </IconButton>
@@ -80,7 +80,7 @@ export const CartMenu = () => {
                 <Typography>34.00$</Typography>
               </Box>
            
-            </div>
+            </Box>
           ))}
           <Box mt={2}gap={1} display='flex' flexDirection='column'>
           <Box sx={{display:'flex', justifyContent:'space-between'}} >
