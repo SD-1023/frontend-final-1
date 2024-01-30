@@ -52,7 +52,7 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
                 token = JSON.parse(token);
 
                 const res = await fetch(`http://158.176.7.102:3000/orders/reorder/${orderNumber}`, {
-                    method: 'PUT',
+                    method: 'POST',
                     headers: {
                         Accept: "application/json",
                         "Content-Type": "application/json",
