@@ -61,7 +61,6 @@ export const ProductPage = () => {
       .catch((error) => console.log(error));
   }, [id]);
 
-  // console.log(details.reviews)
 
 
   const navigate = useNavigate();
@@ -76,7 +75,7 @@ export const ProductPage = () => {
   }
 
   if (!details || !details.images || details.images.length === 0) {
-    // Render loading state or handle the absence of details
+
     return <div>Loading...</div>;
   }
   return (
