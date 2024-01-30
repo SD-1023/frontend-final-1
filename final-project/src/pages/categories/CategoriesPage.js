@@ -11,6 +11,7 @@ export const CategoriesPage = ({ }) => {
     const { state } = useLocation();
 
     const [currentPage, setCurrentPage] = useState(1);
+    
     const { data, loading, error } = useFetchData(`http://158.176.7.102:3000/search?keyword=${state}&page=${currentPage}`);
 
     useEffect(() => {

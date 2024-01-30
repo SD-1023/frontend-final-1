@@ -62,10 +62,6 @@ export const ProductPage = () => {
       .catch((error) => console.log(error));
   }, [id]);
 
-
-  const navigate = useNavigate();
-
-
   function handleClick(event, path, state) {
     event.preventDefault();
 

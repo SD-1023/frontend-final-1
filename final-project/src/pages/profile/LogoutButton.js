@@ -1,11 +1,16 @@
 import { Box, Typography } from "@mui/material"
 
 
-export const LogoutButton = ({ isMobile }) => {
+export const LogoutButton = ({ isMobile, setUrl }) => {
 
 
 
-    return <Box sx={{
+    const logout = () => {
+        setUrl('http://158.176.7.102:3000/users/signout');
+    }
+
+
+    return <Box onClick={logout} sx={{
         display: { xs: 'flex', sm: isMobile ? 'none' : 'flex' }, justifyContent: 'center', alignItems: 'center', // color: '#1B4B66',
         border: '2px #1B4B66 solid', gap: '8px', borderRadius: '8px', paddingBlock: '5px', paddingInline: '15px',
         '&:hover': { backgroundColor: '#a9c9db', color: 'white', cursor: 'pointer' }

@@ -12,16 +12,16 @@ const CustomSVG = () => {
 
 export const ProfileNavigationItem = ({ title, currentItem, setCurrentItem }) => {
 
-    const condition = currentItem === title;
+    const condition = title.toLowerCase().includes(currentItem.toLowerCase()) && currentItem;
 
     return <Box sx={{
         display: 'flex', justifyContent: 'space-between',
         alignItems: 'center', cursor: 'pointer', '&:hover': 'gray', '&:hover': { backgroundColor: '#F1F1F1'},
         paddingBlock: { xs: '15px', sm: condition ? '0' : '15px' }, paddingLeft: { sm: condition ? '0' : '15px' },
     }}
-        onClick={() => setCurrentItem(title)}>
+        onClick={() => !condition && setCurrentItem(title)}>
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
-            {condition && <CustomSVG />}
+            {(condition) && <CustomSVG />}
             <Typography sx={{ color: { xs: 'black', sm: condition ? "#1B4B66" : 'black' }, fontWeight: 500, fontSize: {xs: '16px', sm: '14px', md: '16px'} }}>
                 {title}
             </Typography>

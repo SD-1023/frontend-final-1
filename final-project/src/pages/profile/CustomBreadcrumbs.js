@@ -2,16 +2,27 @@ import { Breadcrumbs, Link } from "@mui/material"
 
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 
-export const CustomBreadcrumbs = () => {
+export const CustomBreadcrumbs = ({ items, setCurrentItem }) => {
 
-    return <Breadcrumbs sx={{display: {xs: 'none', sm: 'block'}}} separator="›" aria-label="breadcrumb">
-        <Link component={RouterLink} underline="hover" key="1" color="#1B4B66" to={'/'} sx={{ fontSize: '16px' }}>
-            Home
-        </Link>
-        ,
-        <Link component={RouterLink} underline="hover" key="2" color="#626262" to={'/profile'} sx={{ fontSize: '16px' }}>
-            User Profile
-        </Link>
+    const navigate = useNavigate();
+
+    const onClickHandler = (item) => {
+        if (item.path) {
+            navigate(item.path);
+        } else {
+            setCurrentItem(item.navTitle);
+        }
+    }
+
+    return <Breadcrumbs sx={{ display: { xs: 'none', sm: 'block' } }} separator="›" aria-label="breadcrumb">
+
+        {items.map((item, i) => (
+            <Link component={RouterLink} underline="hover" key={i} onClick={() => onClickHandler(item)}
+                sx={{ color: item.color ? item.color : '#626262', fontSize: '16px' }}>
+                {item.title}
+            </Link>
+        ))}
+
     </Breadcrumbs>
 
 }
