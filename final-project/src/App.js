@@ -7,7 +7,9 @@ import { ProductPage } from "./pages/product/ProductPage";
 import { SignIn } from "./pages/login/SignIn";
 import { SignUp } from "./pages/login/SignUp";
 import { HomePageProvider } from "./contexts/HomePageContext";
+import { ProfilePage } from "./pages/profile/ProfilePage";
 import { CartPage } from "./pages/cart/CartPage";
+
 
 function App() {
   return (
@@ -21,8 +23,12 @@ function App() {
               <Route path='/search' element={<CategoriesPage />} />
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
+
+              <Route path='/profile' element={<ProfilePage />} />
+
                <Route path='/product/:id' element={<ProductPage />} />
                <Route path = '/cart' element={<CartPage/>}/>
+
             </Routes>
           </Layout>
         </HomePageProvider>

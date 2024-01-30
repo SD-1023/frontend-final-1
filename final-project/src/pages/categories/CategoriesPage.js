@@ -23,11 +23,11 @@ export const CategoriesPage = ({ }) => {
 
     return (
         <Box sx={{ flexGrow: 1, margin: '20px' }}>
-            <Grid container spacing={{ xs: 2, md: 3, lg: 6, xl: 12 }} columns={{ xs: 2, sm: 8, md: 12, lg: 16}}>
+            <Grid container spacing={{ xs: 2, md: 3, lg: 4 }} columns={{ xs: 2, sm: 8, md: 12, lg: 16}}>
             {loading && <Typography sx={{margin: 'auto'}}>Loading...</Typography>}
             {error && !loading && <Typography sx={{margin: 'auto'}}>Something went wrong. Please try again</Typography>}
                 {(!data || !data.data.length) && !loading && !error && <Typography sx={{margin: 'auto'}}>No result found</Typography>}
-                {data?.data.map((product) => (
+                {!loading && !error &&data?.data.map((product) => (
                     <Grid item xs={2} sm={4} md={4}  key={product.id}>
                         <CustomCard product={product} state={state} />
                     </Grid>
