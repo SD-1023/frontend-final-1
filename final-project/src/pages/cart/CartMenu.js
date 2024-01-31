@@ -4,7 +4,7 @@ import Popover from '@mui/material/Popover';
 import Backdrop from '@mui/material/Backdrop';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
-import { Paper, Typography, Button, Input, InputAdornment, Box ,Link,Icon} from '@mui/material';
+import { Paper, Typography, Button, Input, InputAdornment, Box, Link, Icon } from '@mui/material';
 import brownBag from '../../images/brownbag.png';
 import QuantityInput from '../product/QuantityInput';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -32,7 +32,7 @@ export const CartMenu = () => {
 
   return (
     <div>
-     <Icon
+      <Icon
         size="large"
         aria-label="shopping cart"
         onClick={handleOpen}
@@ -55,11 +55,11 @@ export const CartMenu = () => {
       >
         <Paper sx={{ p: 2, width: 300, height: 600 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Button startIcon={<KeyboardBackspaceIcon/>} sx={{width :328,color:'#1B4B66',gap:2,justifyContent:'flex-start'}}>Back</Button>
-            
+            <Button startIcon={<KeyboardBackspaceIcon />} sx={{ width: 328, color: '#1B4B66', gap: 2, justifyContent: 'flex-start' }}>Back</Button>
+
           </div>
           {cartItems.map((item, index) => (
-            <Box key={index} style={{ paddingBlock:'16px',marginBottom: '16px', display: 'flex', alignItems: 'center',gap:2,justifyContent:'space-between',borderBottom:'2px solid rgba(0, 0, 0, 0.12)' }}>
+            <Box key={index} style={{ paddingBlock: '16px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: 2, justifyContent: 'space-between', borderBottom: '2px solid rgba(0, 0, 0, 0.12)' }}>
               <img
                 src={brownBag}
                 alt={item.name}
@@ -70,41 +70,41 @@ export const CartMenu = () => {
                 <Typography variant="body2">{item.category}</Typography>
                 <QuantityInput size='small'></QuantityInput>
 
-              
+
               </div>
               <Box display='flex' flexDirection='column' alignItems='flex-end'>
-              <IconButton edge="end" color="inherit" onClick={handleClose}>
-              <CloseIcon />
-            </IconButton>
+                <IconButton edge="end" color="inherit" onClick={handleClose}>
+                  <CloseIcon />
+                </IconButton>
 
                 <Typography>34.00$</Typography>
               </Box>
-           
+
             </Box>
           ))}
-          <Box mt={2}gap={1} display='flex' flexDirection='column'>
-          <Box sx={{display:'flex', justifyContent:'space-between'}} >
-            <Typography variatn ='p' sx={{fontSize:14}}>Sub Total:</Typography>
-            <Typography>12321</Typography>
+          <Box mt={2} gap={1} display='flex' flexDirection='column'>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }} >
+              <Typography variatn='p' sx={{ fontSize: 14 }}>Sub Total:</Typography>
+              <Typography>12321</Typography>
 
-        </Box>
-        <Box sx={{display:'flex', justifyContent:'space-between'}} >
-            <Typography variatn ='p' sx={{fontSize:14}}>Tax:</Typography>
-            <Typography>12321</Typography>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }} >
+              <Typography variatn='p' sx={{ fontSize: 14 }}>Tax:</Typography>
+              <Typography>12321</Typography>
 
-        </Box>
-        <Box sx={{display:'flex', justifyContent:'space-between'}} >
-            <Typography variatn ='p' sx={{fontSize:16 , fontWeight:500}}>Total:</Typography>
-            <Typography>12321</Typography>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }} >
+              <Typography variatn='p' sx={{ fontSize: 16, fontWeight: 500 }}>Total:</Typography>
+              <Typography>12321</Typography>
 
-        </Box>
-          <Button variant ='contained' size='meduim'   sx={{background:'#1B4B66',fontSize:14, paddingBlock:1, paddingInline:4}}>Place Order</Button>
+            </Box>
+            <Button variant='contained' size='meduim' sx={{ background: '#1B4B66', fontSize: 14, paddingBlock: 1, paddingInline: 4 }}>Place Order</Button>
 
           </Box>
           <Box mt={2}>
             {/* Add a Link to continue shopping */}
             <Link to="/shop" style={{ textDecoration: 'none' }} onClick={handleClose}>
-              <Typography variant="body2" color="#1B4B66" sx={{ cursor: 'pointer', textAlign: 'center',textDecoration: 'underline' }}>Continue Shopping</Typography>
+              <Typography variant="body2" color="#1B4B66" sx={{ cursor: 'pointer', textAlign: 'center', textDecoration: 'underline' }}>Continue Shopping</Typography>
             </Link>
           </Box>
         </Paper>

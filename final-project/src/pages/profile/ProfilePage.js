@@ -34,7 +34,6 @@ export const ProfilePage = () => {
 
     const navigate = useNavigate();
 
-    console.log(requestOptions);
     useEffect(() => {
         const temp = breadcrumbsItems.slice(0, 2);
 

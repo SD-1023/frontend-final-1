@@ -28,11 +28,9 @@ function App() {
               <Route path='/products/:id' element={<CategoriesPage />} />
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
-
               <Route path='/profile' element={<ProfilePage />} />
-
-               <Route path='/product/:id' element={<ProductPage />} />
-               <Route path = '/cart' element={<CartPage/>}/>
+              <Route path='/product/:id' element={<ProductPage />} />
+              <Route path='/cart' element={<CartPage />} />
 
                <Route path ='/checkout' element={<CheckoutPage/>}/>
                <Route path ='/confirmed' element={<ConfirmedOrder/>}/>
