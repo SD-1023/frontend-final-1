@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Popover from '@mui/material/Popover';
 import Backdrop from '@mui/material/Backdrop';
@@ -9,11 +9,33 @@ import brownBag from '../../images/brownbag.png';
 import QuantityInput from '../product/QuantityInput';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { ReactComponent as CartIconSvg } from '../../images/cartIcon.svg';
+import { useFetchData } from '../../hooks/useFetchData';
+import { useNavigate } from 'react-router-dom';
 export const CartMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const navigate = useNavigate();
+
   const [open, setOpen] = React.useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [url, setUrl] = useState('');
+  const [reqOpts, setReqOpts] = useState();
+  const { data, loading, error } = useFetchData(url, reqOpts);
+
+  console.log(data);
 
   const handleOpen = (event) => {
+    try {
+      let token = localStorage.getItem('token');
+      if (!token) {
+        return navigate('/signin');
+      }
+      token = JSON.parse(token);
+      setUrl('http://158.176.7.102:3000/shopping-cart');
+      setReqOpts({ headers: { Authorization: token['session_key'] } })
+
+    } catch (e) {
+      console.log(e);
+    }
     setAnchorEl(event.currentTarget);
     setOpen(true);
   };
@@ -41,6 +63,7 @@ export const CartMenu = () => {
         <CartIconSvg />
       </Icon>
       <Popover
+      sx={{height: 600}}
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
@@ -53,22 +76,22 @@ export const CartMenu = () => {
           horizontal: 'center',
         }}
       >
-        <Paper sx={{ p: 2, width: 300, height: 600 }}>
+        <Paper sx={{ p: 2, width: 300}}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Button startIcon={<KeyboardBackspaceIcon />} sx={{ width: 328, color: '#1B4B66', gap: 2, justifyContent: 'flex-start' }}>Back</Button>
+            <Button startIcon={<KeyboardBackspaceIcon />} onClick={handleClose} sx={{ width: 328, color: '#1B4B66', gap: 2, justifyContent: 'flex-start' }}>Back</Button>
 
           </div>
-          {cartItems.map((item, index) => (
+          {data?.map((item, index) => (
             <Box key={index} style={{ paddingBlock: '16px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: 2, justifyContent: 'space-between', borderBottom: '2px solid rgba(0, 0, 0, 0.12)' }}>
               <img
-                src={brownBag}
+                src={`http://158.176.7.102:3000/${item.Product.ProductImages[0]['image_url']}`}
                 alt={item.name}
                 style={{ width: '75px', height: '80px' }}
               />
               <div>
-                <Typography variant="subtitle1">{item.name}</Typography>
-                <Typography variant="body2">{item.category}</Typography>
-                <QuantityInput size='small'></QuantityInput>
+                <Typography variant="subtitle1">{item.Product.name}</Typography>
+                <Typography variant="body2">{item.Product['sub_title']}</Typography>
+                <QuantityInput quantity={item.quantity} size='small'></QuantityInput>
 
 
               </div>
