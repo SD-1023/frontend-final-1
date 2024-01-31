@@ -12,7 +12,6 @@ export const CustomCard = ({ product, state }) => {
         navigate(`../product/${product.id}`, {
             state
         })
-        console.log(product.id)
     }
     return (
         <Card sx={{ minWidth: '150px', boxShadow: '0', cursor: 'pointer' }} onClick={onCardPressed} >

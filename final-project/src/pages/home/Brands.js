@@ -1,6 +1,7 @@
 import { Box, Card,  CardMedia,  Grid,  Typography } from "@mui/material";
 import { makeStyles, createStyles } from '@mui/styles';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useNavigate } from "react-router-dom";
 
 import Link from '@mui/material/Link';
 import { useContext } from "react";
@@ -23,6 +24,10 @@ const useStyles = makeStyles((theme) =>
             overflow: 'hidden',
             borderRadius: '16px !important',
             backgroundColor: '#F4F4F4 !important',
+            cursor: "pointer",
+            "&:hover": {
+              cursor: "pointer",
+            },
             [theme.breakpoints?.down('sm')]: {
                 height: 100,
                 width: 100,
@@ -37,7 +42,21 @@ export const Brands = ({ brands }) => {
 
     const { brandsRef } = useContext(HomePageContext);
     const classes = useStyles();
-    brands = brands.slice(0, 6);
+    const sliceBrands = brands.slice(0, 6);
+    const navigate = useNavigate();
+
+    const handleBrandClick=(id)=>{
+        navigate(`../products/${id}`, {
+            state: { url: `http://158.176.7.102:3000/products?brandId=${id}` },
+          });
+    }
+
+    const handleAllBrandClick=()=>{
+        navigate(`../products/brand`, {
+            state: { url: `http://158.176.7.102:3000/brand` },
+          });
+    }
+
 
 
     return (
@@ -45,7 +64,7 @@ export const Brands = ({ brands }) => {
             <Box p={2} sx={{}} ref={brandsRef}>
                 <Box component='div'
                     sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}><Typography variant="h2" className={classes.styledTitle}>Shop by Brands</Typography>
-                    <Link variant="label" href="#" underline="none" color='#1B4B66' sx={{ fontSize: { xs: 12, sm: 12, md: 16 }, display: { xs: 'block', sm: 'block', md: 'none' } }}>
+                    <Link  onClick ={()=>handleAllBrandClick()}variant="label" href="#" underline="none" color='#1B4B66' sx={{ fontSize: { xs: 12, sm: 12, md: 16 }, display: { xs: 'block', sm: 'block', md: 'none' } }}>
                         <span style={{ display: "flex", alignItems: "center" }}>
                             View All
                             <ArrowForwardIosIcon />
@@ -54,10 +73,12 @@ export const Brands = ({ brands }) => {
                 </Box>
                 <Grid container alignItems={'center'} spacing={2} mt={0}   >
 
-                    {brands.map((brand) => (
+                    {sliceBrands.map((brand) => (
                         <Grid item xs={4} md={4} lg={2}>
                             <Card key={brand.id}
                                 className={classes.brandCard}
+                                onClick ={()=>handleBrandClick(brand.id)}
+                                
                             >
                                 <CardMedia
                                     component="img"

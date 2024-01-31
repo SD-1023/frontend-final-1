@@ -49,6 +49,51 @@ export const ProductPage = () => {
   const { id } = useParams();
   const { state } = useLocation();
   const navigate = useNavigate();
+  const [quantity,setQuantity]=useState(1);
+
+  console.log(quantity)
+
+  const handleAddtobag=()=>{
+    let token =localStorage.getItem('token');
+    token=JSON.parse(token);
+    let obj = JSON.stringify({
+      product_id: id,
+      quantity: quantity,
+    })
+
+    fetch("http://158.176.7.102:3000/shopping-cart/add", {
+      method: "POST",
+      headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          'Authorization':token['session_key']
+      },
+      body:obj
+  })
+      .then(res => {
+
+          return res.json();
+      })
+      .then(json => {
+
+          if (json.error) {
+              throw new Error(json.error);
+          }
+          // console.log('json', json);
+          // console.log("Server response:", json);
+          // setSnackbarMessage('Signup successfully!');
+          // setSnackbarOpen(true);
+
+          localStorage.setItem('token', JSON.stringify(json));
+          navigate('/');
+      })
+      .catch(error => {
+          // setSnackbarMessage(error + "");
+          // setSnackbarOpen(true);
+          // console.error("", error);
+      });
+  }
+
 
   useEffect(() => {
 
@@ -66,9 +111,18 @@ export const ProductPage = () => {
     event.preventDefault();
 
     console.log('state', state);
-    navigate(path, {
-      state
-    });
+    if (state.url) {
+      let id = state.url.split('categoryId=')[1];
+      path = '/products/' + state.url.split('categoryId=')[1];
+      navigate(`../products/${id}`, {
+        state: { url: `http://158.176.7.102:3000/products?categoryId=${id}` }
+      });
+    } else {
+
+      navigate(path, {
+        state
+      });
+    }
   }
 
   if (!details || !details.images || details.images.length === 0) {
@@ -94,7 +148,7 @@ export const ProductPage = () => {
           key="2"
           color="inherit"
           href="./category"
-          onClick={(event) => handleClick(event, "/search", state)}
+          onClick={(event) => handleClick(event, "/products", state)}
         >
           Category
 
@@ -166,13 +220,13 @@ export const ProductPage = () => {
           <Box sx={{ display: 'inline-flex', gap: 2, justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography variant='p' sx={{ fontSize: 20, fontWeight: 600, }}> Quantity</Typography>
 
-            <QuantityInput></QuantityInput>
+            <QuantityInput setQuantity= {setQuantity}></QuantityInput>
 
 
           </Box>
 
           <Box sx={{ display: 'flex', gap: 5, justifyContent: 'center', alignItems: 'center' }}>
-            <Button variant='contained' startIcon={<ShoppingBagOutlinedIcon />} sx={{ flexGrow: 2, width: 320, paddingInline: 5, background: '#1B4B66', fontSize: 14, fontWeight: 600 }} >Add to bag</Button>
+            <Button onClick={handleAddtobag} variant='contained' startIcon={<ShoppingBagOutlinedIcon />} sx={{ flexGrow: 2, width: 320, paddingInline: 5, background: '#1B4B66', fontSize: 14, fontWeight: 600 }} >Add to bag</Button>
             <Button variant="outlined" startIcon={<FavoriteBorderOutlinedIcon />} sx={{ flexGrow: 1, width: 250, color: '#1B4B66', paddingInline: 5, fontSize: 14, fontWeight: 600 }} >Add to wishlist</Button>
 
 

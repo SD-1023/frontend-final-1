@@ -1,5 +1,5 @@
 import { Box, Input, InputAdornment, Link } from '@mui/material';
-import { NavLink as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { Logo } from './Logo';
 import { useContext, useRef, useState, useEffect } from 'react';
 import { SearchContext } from '../contexts/SearchContext';
@@ -40,7 +40,8 @@ export const WebHeader = ({ categories, isTablet }) => {
             lg: '16px'
         },
         "&:hover": {
-            borderBottom: '1px solid var(--primary)'
+            borderBottom: '1px solid var(--primary)',
+            cursor: 'pointer'
         },
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
@@ -85,10 +86,17 @@ export const WebHeader = ({ categories, isTablet }) => {
     const onProfileClicked = () => {
         navigate('/profile');
     }
+
+    const onCategoryClicked = (id) => {
+        navigate(`../products/${id}`, {
+            state: { url: `http://158.176.7.102:3000/products?categoryId=${id}` }
+        });
+    }
     return <Box component={'header'} sx={{ ...HeaderStyle }} >
         <Box component={'nav'} sx={FlexStyle}>
             <Logo isTablet={isTablet} />
-            {categories.map((cat) => <Link key={cat.id} component={RouterLink} sx={LinkStyle} underline='none' to='/products'> {cat.name} </Link>)}
+            {categories.map((cat) => <Link key={cat.id} onClick={() => onCategoryClicked(cat.id)} sx={LinkStyle} underline='none'> {cat.name} </Link>)}
+
         </Box>
         <Box sx={{ ...FlexStyle, gap: '15px' }}>
 
