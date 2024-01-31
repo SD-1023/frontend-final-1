@@ -11,7 +11,7 @@ export const EmptyCart = () => {
     navigate("/");
   };
   return (
-    <Box p={2}>
+    <Box p={2} maxWidth={'300px'}>
       <Box display="flex" justifyContent="flex-start" alignItems="center">
         <IconButton onClick={handleclick}>
           <Close />

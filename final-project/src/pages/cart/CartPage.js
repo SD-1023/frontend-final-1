@@ -15,20 +15,30 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { CartTable } from "./CartTable";
 import { OrderSummary } from "./OrderSummary";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useFetchData } from "../../hooks/useFetchData";
 
 export const CartPage = () => {
+
+
+  const [url, setUrl] = useState('');
+  const [reqOpts, setReqOpts] = useState();
+  const { data, loading, error } = useFetchData(url, reqOpts);
+
+  console.log(data);
   const { state } = useLocation();
   const navigate = useNavigate();
-    useEffect (()=>{
+  useEffect(() => {
     let token = localStorage.getItem("token");
     if (!token) {
-      navigate("/signin");
-    }else{
-        //fetch cart 
+      return navigate("/signin");
+    } else {
 
+      token = JSON.parse(token);
+      setUrl('http://158.176.7.102:3000/shopping-cart');
+      setReqOpts({ headers: { Authorization: token['session_key'] } })
     }
-},[])
+  }, [])
 
   function handleClick(event, path, state) {
     event.preventDefault();
@@ -37,6 +47,13 @@ export const CartPage = () => {
     navigate(path, {
       state,
     });
+  }
+
+  const moveToCheckout = () => {
+
+    navigate('/checkout', {
+      state: data
+    })
   }
   return (
     <Box p={2} flexDirection="column" display="flex" gap={2}>
@@ -66,12 +83,13 @@ export const CartPage = () => {
 
       <Grid container spacing={6}>
         <Grid item xs={12} md={7}>
-          <CartTable />
+          <CartTable data={data}/>
         </Grid>
         <Grid item xs={12} md={5}>
-          <OrderSummary />
+          <OrderSummary data={data || {}}/>
           <Box display="flex" mt={4} justifyContent="space-between">
             <Button
+            onClick={moveToCheckout}
               variant="contained"
               size="meduim"
               sx={{
@@ -85,6 +103,7 @@ export const CartPage = () => {
             </Button>
 
             <Button
+            onClick={() => navigate('/')}
               variant="outlined"
               size="medium"
               sx={{

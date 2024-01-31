@@ -55,6 +55,9 @@ export const ProductPage = () => {
 
   const handleAddtobag = () => {
     let token = localStorage.getItem('token');
+    if(!token){
+     return navigate('/signin')
+    }
     token = JSON.parse(token);
     let obj = JSON.stringify({
       product_id: id,
@@ -158,7 +161,7 @@ export const ProductPage = () => {
 
           </Box>
 
-          <Grid container justifyContent='center' alignItems='center' paddingInline={4} spacing={2} mt={1} >
+          <Grid sx={{display: {xs: 'none', md: 'flex'}}} container justifyContent='center' alignItems='center' paddingInline={4} spacing={2} mt={1} >
 
             <Grid item xs={1} textAlign='center'>
               <Box component='img' src={leftArrow}>
@@ -216,7 +219,7 @@ export const ProductPage = () => {
 
           </Box>
 
-          <Box sx={{ display: 'flex', gap: 5, justifyContent: 'center', alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', gap: 5, justifyContent: 'center', alignItems: 'center' ,flexWrap: 'wrap' }}>
             <Button onClick={handleAddtobag} variant='contained' startIcon={<ShoppingBagOutlinedIcon />} sx={{ flexGrow: 2, width: 320, paddingInline: 5, background: '#1B4B66', fontSize: 14, fontWeight: 600 }} >Add to bag</Button>
             <Button variant="outlined" startIcon={<FavoriteBorderOutlinedIcon />} sx={{ flexGrow: 1, width: 250, color: '#1B4B66', paddingInline: 5, fontSize: 14, fontWeight: 600 }} >Add to wishlist</Button>
 

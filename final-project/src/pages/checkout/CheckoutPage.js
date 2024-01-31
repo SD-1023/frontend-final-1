@@ -15,21 +15,41 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Accordian } from "./Accordian";
 import { OrderSummary } from "../cart/OrderSummary";
 import { OrderItems } from "./OrderItems";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useFetchData } from "../../hooks/useFetchData";
 
 export const CheckoutPage = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-//   useEffect (()=>{
-//     let token = localStorage.getItem("token");
-//     if (!token) {
-//       navigate("/signin");
-//     }else{
-//         //fetch cart 
 
-//     }
-// },[])
-  
+  const [url, setUrl] = useState('');
+  const [reqOpts, setReqOpts] = useState();
+  const { data, loading, error } = useFetchData(url, reqOpts);
+  const [fullName, setFullName] = useState('');
+  const [city, setCity] = useState('');
+  const [street, setStreet] = useState('');
+  const [phone, setPhone] = useState('');
+  const [country, setCountry] = useState('');
+  const [postalCode, setPostalCode] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('credit');
+
+
+  console.log(data);
+
+
+  if (data && !data.error) {
+    navigate('/confirmed');
+  }
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    token = JSON.parse(token);
+    if (!token) {
+      navigate("/signin");
+    }
+  }, []);
+
+  // console.log(state)
   function handleClick(event, path, state) {
     event.preventDefault();
 
@@ -37,6 +57,36 @@ export const CheckoutPage = () => {
     navigate(path, {
       state,
     });
+  }
+
+  const makeOrder = () => {
+
+    let token = localStorage.getItem("token");
+    token = JSON.parse(token);
+    const obj = JSON.stringify({
+      order_address: {
+        full_name: fullName,
+        city,
+        phone,
+        country,
+        postal_code: postalCode,
+        street,
+      },
+      payment_method: paymentMethod,
+
+    })
+
+    setUrl('http://158.176.7.102:3000/orders');
+    setReqOpts({
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        'Authorization': token['session_key']
+      },
+      body: obj
+    });
+
   }
 
   return (
@@ -73,7 +123,8 @@ export const CheckoutPage = () => {
           display="flex"
           flexDirection="column"
         >
-          <Accordian />
+          <Accordian setFullName={setFullName} setCity={setCity} setPhone={setPhone}
+            setStreet={setStreet} setCountry={setCountry} setPostalCode={setPostalCode} setPaymentMethod={setPaymentMethod} />
           <Box
             mt={2}
             display="flex"
@@ -94,6 +145,7 @@ export const CheckoutPage = () => {
               </Typography>
             </Link>
             <Button
+              onClick={makeOrder}
               variant="contained"
               size="meduim"
               sx={{
@@ -108,9 +160,9 @@ export const CheckoutPage = () => {
           </Box>
         </Grid>
         <Grid item xs={12} md={5}>
-          <OrderItems />
+          <OrderItems data={state} />
 
-          <OrderSummary />
+          <OrderSummary data={state} />
         </Grid>
       </Grid>
     </Box>

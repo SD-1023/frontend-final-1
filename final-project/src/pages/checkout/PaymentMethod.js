@@ -11,10 +11,11 @@ import {
 import applepay from "../../images/applepay.png";
 import credit from "../../images/credit.png";
 
-export const PaymentMethod = () => {
-  const [selectedValue, setSelectedValue] = useState("option1"); // Initialize with your default value
+export const PaymentMethod = ({setPaymentMethod}) => {
+  const [selectedValue, setSelectedValue] = useState("credit"); // Initialize with your default value
 
   const handleChange = (event) => {
+    setPaymentMethod(event.target.value);
     setSelectedValue(event.target.value);
   };
 
@@ -26,7 +27,6 @@ export const PaymentMethod = () => {
         name="icon-radio"
         value={selectedValue}
         onChange={handleChange}
-        defaultValue="top"
       >
         <FormControlLabel
           value="credit"

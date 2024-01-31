@@ -11,27 +11,28 @@ import brownBag from '../../images/brownbag.png';
 import arrow from '../../images/arrow.svg';
 import { PaymentMethod } from './PaymentMethod';
 
-export const Accordian=()=>{
+export const Accordian = ({setFullName, setCity, setPhone, setStreet, setCountry, setPostalCode, setPaymentMethod}) => {
 
-    return (
-        <>
-        <Accordion sx={{boxShadow:'none'}}>
+  return (
+    <>
+      <Accordion sx={{ boxShadow: 'none' }}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon sx={{color:"#13101E"}}/>}
+          expandIcon={<ExpandMoreIcon sx={{ color: "#13101E" }} />}
           aria-controls="panel1-content"
           id="panel1-header"
-          
+
         >
           Add New Address
         </AccordionSummary>
         <AccordionDetails>
-       <AddressInfo/>
+          <AddressInfo setFullName={setFullName} setCity={setCity} setPhone={setPhone}
+           setStreet={setStreet} setCountry={setCountry} setPostalCode={setPostalCode}  />
         </AccordionDetails>
       </Accordion>
-    
-      <Accordion defaultExpanded sx={{boxShadow:'none'}}>
+
+      <Accordion defaultExpanded sx={{ boxShadow: 'none' }}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon sx={{color:"#13101E"}} />}
+          expandIcon={<ExpandMoreIcon sx={{ color: "#13101E" }} />}
           aria-controls="panel3-content"
           id="panel3-header"
         >
@@ -39,11 +40,11 @@ export const Accordian=()=>{
         </AccordionSummary>
         <AccordionDetails>
 
-<PaymentMethod/>
+          <PaymentMethod setPaymentMethod={setPaymentMethod} />
 
         </AccordionDetails>
-      
+
       </Accordion>
-      </>
-    )
+    </>
+  )
 }
