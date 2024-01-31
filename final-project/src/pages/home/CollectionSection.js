@@ -62,7 +62,7 @@ export const CollectionSection = ({ collections }) => {
 
     const handleCardClick = (collectionId) => {
 
-      navigate(`/search/${collectionId}`);
+      navigate(`/products/${collectionId}`);
     };
    
 
