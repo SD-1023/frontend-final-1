@@ -31,8 +31,5 @@ export const LogoutButton = ({ isMobile, setUrl }) => {
         <Typography color={'#1B4B66'}>
             Logout
         </Typography>
-
-
-
     </Box>
 }

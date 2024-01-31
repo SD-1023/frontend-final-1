@@ -1,16 +1,22 @@
 import { LoadingButton } from "@mui/lab";
 import { Avatar, Box, Button } from "@mui/material"
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFetchData } from "../../hooks/useFetchData";
 
-export const CustomAvatar = ({ info }) => {
+export const CustomAvatar = ({ info, setIsProfileImageChanged }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [url, setUrl] = useState('');
     const [requestOptions, setRequestOptions] = useState({});
-    const { data, loading, error } = useFetchData(url);
+    const { data, loading, error } = useFetchData(url, requestOptions);
     const fileInputRef = useRef(null);
 
-    console.log(data, error, loading)
+    useEffect(() => {
+
+        if(data){
+            setIsProfileImageChanged(s => !s);
+        }
+
+    }, [data]);
 
     const handleButtonClick = () => {
         if (fileInputRef.current) {
@@ -23,20 +29,23 @@ export const CustomAvatar = ({ info }) => {
     };
 
     const changeProfilePicture = () => {
+
         setUrl('');
         try {
             let token = localStorage.getItem('token');
             token = JSON.parse(token);
             const formData = new FormData();
-            formData.append('imageProfile', selectedFile);
-
+            formData.append('profileImage', fileInputRef.current.files[0]);
+            console.log('token', token);
             const tempOpts = {
-                method: 'PUT',
-                headers: { Authorization: token['session_key'] },
-                body: formData
-
+                method: 'POST',
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                body: formData,
+                headers: { Authorization: token['session_key'] }
             }
-            setUrl(`http://158.176.7.102:3000/users/${token['user_id']}`);
+
+            setUrl(`http://158.176.7.102:3000/users/profile-img`);
             setRequestOptions(tempOpts);
 
 

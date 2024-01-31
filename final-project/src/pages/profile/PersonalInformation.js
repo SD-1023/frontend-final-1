@@ -21,6 +21,7 @@ export const PersonalInformation = ({ setUrl, setRequestOptions, breadcrumbsItem
     const [isChangePasswordReq, setIsChangePasswordReq] = useState(false);
     const { data, error, loading } = useFetchData(localUrl, localReqOpts);
     const [changePasswordStatus, setChangePasswordStatus] = useState(true);
+    const [isProfileImageChanged, setIsProfileImageChanged] = useState(false);
     const navigate = useNavigate();
 
 
@@ -53,7 +54,7 @@ export const PersonalInformation = ({ setUrl, setRequestOptions, breadcrumbsItem
             console.log(e);
         }
 
-    }, []);
+    }, [isProfileImageChanged]);
 
     useEffect(() => {
 
@@ -137,7 +138,7 @@ export const PersonalInformation = ({ setUrl, setRequestOptions, breadcrumbsItem
 
         </Box>
         <Typography component={'hr'} sx={{ display: { xs: 'none', sm: 'block' }, border: '1px solid #0000001f' }} />
-        <CustomAvatar info={userData} />
+        <CustomAvatar info={userData} setIsProfileImageChanged={setIsProfileImageChanged} />
 
         <BasicInformation info={userData} editUserData={setUserData} />
         <Box sx={{ display: 'flex', width: 1, flexDirection: 'row-reverse', marginBlock: '15px', justifyContent: { xs: 'center', sm: 'flex-start' } }}>
