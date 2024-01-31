@@ -1,5 +1,5 @@
 import { Box, Typography, Link } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import DownIcon from '@mui/icons-material/KeyboardArrowDown';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useContext } from "react";
@@ -8,7 +8,13 @@ import { HomePageContext } from "../contexts/HomePageContext";
 export const Footer = ({ isMobile, isFooterShown, setIsFooterShown, categories }) => {
 
     const { trendyRef, brandsRef, featuredRef } = useContext(HomePageContext);
+    const navigate = useNavigate();
 
+    const onCategoryClicked = (id) => {
+        navigate(`../products/${id}`, {
+            state: { url: `http://158.176.7.102:3000/products?categoryId=${id}` }
+        });
+    }
     const FlexStyle = {
         display: 'flex',
         justifyContent: 'space-between',
@@ -50,7 +56,7 @@ export const Footer = ({ isMobile, isFooterShown, setIsFooterShown, categories }
                     </Typography>
 
                     {categories.map((cat) => (
-                        <Link key={cat.id} component={RouterLink} to={cat.name} underline="none" sx={{
+                        <Link key={cat.id} onClick={() => onCategoryClicked(cat.id)} underline="none" sx={{
                             "&:hover": {
                                 color: 'white',
                             }, paddingBottom: '3px',
