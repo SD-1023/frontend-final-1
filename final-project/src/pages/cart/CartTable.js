@@ -71,26 +71,7 @@ export function CartTable() {
               </TableCell>
           
             </TableRow>
-            <TableRow>
-                <TableCell colSpan={4} align="right" sx={{ border: "none", verticalAlign:'top' }}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "flex-end",
-                      justifyContent:'flex-end',
-                      gap: 3,
-                    }}
-                  >
-                    <Button size="small" color="error">
-                      Move to wishlist 
-                    </Button>
-                    <Button size="small" color="error">
-                      Remove
-                    </Button>
-                  </Box>
-                </TableCell>
-              </TableRow>
+           
         
             </TableBody>
           ))}

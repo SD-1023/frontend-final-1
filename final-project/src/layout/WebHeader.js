@@ -94,6 +94,7 @@ export const WebHeader = ({ categories, isTablet }) => {
         <Box component={'nav'} sx={FlexStyle}>
             <Logo isTablet={isTablet} />
             {categories.map((cat) => <Link key={cat.id} onClick={() => onCategoryClicked(cat.id)} sx={LinkStyle} underline='none'> {cat.name} </Link>)}
+
         </Box>
         <Box sx={{ ...FlexStyle, gap: '15px' }}>
 
