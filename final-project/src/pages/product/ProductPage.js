@@ -48,6 +48,7 @@ export const ProductPage = () => {
   const [details, setDetails] = useState([]);
   const { id } = useParams();
   const { state } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -60,10 +61,6 @@ export const ProductPage = () => {
       })
       .catch((error) => console.log(error));
   }, [id]);
-
-
-
-  const navigate = useNavigate();
 
   function handleClick(event, path, state) {
     event.preventDefault();

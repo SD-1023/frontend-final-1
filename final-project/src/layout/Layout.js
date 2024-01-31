@@ -6,6 +6,7 @@ import { useFetchData } from '../hooks/useFetchData';
 import { SearchPanel } from './SearchPanel';
 import { SearchContext } from '../contexts/SearchContext';
 import { MobileSearchInput } from './MobileSearchInput';
+import { useLocation } from 'react-router-dom';
 
 export const Layout = ({ children }) => {
 
@@ -13,7 +14,7 @@ export const Layout = ({ children }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
     const [isTablet, setIsTablet] = useState(window.innerWidth < 1240 && window.innerWidth >= 800);
     const [isFooterShown, setIsFooterShown] = useState(false);
-    const pathname = window.location.pathname;
+
     const { data: categories } = useFetchData('http://158.176.7.102:3000/category');
 
     useEffect(() => {
@@ -39,7 +40,7 @@ export const Layout = ({ children }) => {
 
 
     return <>
-        <Header isMobile={isMobile} categories={categories || []} pathname={pathname} isTablet={isTablet} />
+        <Header isMobile={isMobile} categories={categories || []} isTablet={isTablet} />
         {children}
         {isMobile && isSearchPanelShown && <MobileSearchInput />}
         {isSearchPanelShown && <SearchPanel isMobile={isMobile} />}

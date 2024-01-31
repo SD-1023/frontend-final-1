@@ -1,7 +1,8 @@
-import { Avatar, Box, Menu, MenuItem, Typography } from "@mui/material"
+import { Avatar, Box, Menu, MenuItem, Typography, Link } from "@mui/material"
 import { PersonAdd, SearchOutlined as SearchIcon } from '@mui/icons-material';
 import { useContext, useState } from "react";
 import { SearchContext } from "../contexts/SearchContext";
+import { Link as RouterLink } from "react-router-dom";
 
 export const UpperMobileHeader = ({ setIsOverlayShown }) => {
 
@@ -22,9 +23,9 @@ export const UpperMobileHeader = ({ setIsOverlayShown }) => {
                 <path d={"M3.75 " + path} stroke="#1B4B66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M3.75 18H20.25" stroke="#1B4B66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            <Typography sx={{ color: 'var(--primary)', fontWeight: 600 }}>
+            <Link component={RouterLink} underline='none' to={'/'} sx={{ color: 'var(--primary)', fontWeight: 600 }}>
                 Home
-            </Typography>
+            </Link>
 
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px' }}>

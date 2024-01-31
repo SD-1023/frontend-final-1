@@ -283,7 +283,6 @@ export const SignUp = () => {
                                     required
                                     fullWidth
                                     name="birth_date"
-
                                     type="date"
                                     id="birth_date"
                                     autoComplete='birth_date'

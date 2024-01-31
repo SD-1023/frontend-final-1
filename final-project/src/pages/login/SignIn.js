@@ -85,9 +85,13 @@ export const SignIn = () => {
 
         navigate("/");
       })
-      .catch((error) => console.error(error));
-    setSnackbarMessage("User not found or wrong password ");
-    setSnackbarOpen(true);
+      .catch((error) => {
+
+        console.error(error)
+        setSnackbarMessage("User not found or wrong password ");
+        setSnackbarOpen(true);
+      });
+
     return;
   };
 
