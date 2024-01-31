@@ -65,7 +65,7 @@ export const HomePage = () => {
       }
     };
 
-    fetchData("http://158.176.7.102:3000/brand", setShopBrands);
+    fetchData("http://158.176.7.102:3000/brand/top", setShopBrands);
     fetchData("http://158.176.7.102:3000/category/top", setTopCategories);
     fetchData("http://158.176.7.102:3000/products/new-arrivals", setNewArrival);
     fetchData("http://158.176.7.102:3000/category/handpicked", setHandpickedCollection);

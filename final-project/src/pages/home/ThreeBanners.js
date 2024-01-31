@@ -10,7 +10,7 @@ import { makeStyles, createStyles } from '@mui/styles';
 import { useContext } from "react";
 import { HomePageContext } from "../../contexts/HomePageContext";
 
-
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) =>
     createStyles({
@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) =>
             flexDirection: 'column',
             alignItems: 'flex-end',
             boxShadow: 'none !important',
+            cursor: "pointer",
+            "&:hover": {
+              cursor: "pointer",
+            },
 
             [theme.breakpoints?.down('sm')]: {
                 height: 100,
@@ -47,6 +51,11 @@ const useStyles = makeStyles((theme) =>
             borderRadius: '8px !important',
             position: 'relative',
             overflow: 'hidden',
+            cursor: "pointer",
+            "&:hover": {
+              cursor: "pointer",
+            },
+
             [theme.breakpoints?.down('sm')]: {
                 height: 132,
             },
@@ -111,6 +120,7 @@ const useStyles = makeStyles((theme) =>
             objectFit: 'unset !important',
             width: '100%',
             height: '100%',
+
         },
         styledSmallCardIcon: {
             width: 51, height: 51,
@@ -127,15 +137,40 @@ const useStyles = makeStyles((theme) =>
 
 export const ThreeBanners = () => {
 
+
     const { trendyRef } = useContext(HomePageContext);
 
     const classes = useStyles();
+    const navigate= useNavigate();
+    const handleFirstBanner = () => {
+    
+        navigate(`../products/discount`, {
+          state: { url: `http://158.176.7.102:3000/products/discount-15plus` },
+        });
+     
+      };
+
+      const handleSecondBanner = () => {
+    
+        navigate(`../products/limited-edition`, {
+          state: { url: `http://158.176.7.102:3000/products/limited-edition` },
+        });
+     
+      };
+
+      const handleThirdBanner = () => {
+    
+        navigate(`../products/popular`, {
+          state: { url: `http://158.176.7.102:3000/products/popular` },
+        });
+     
+      };
     return (
         <Box p={2} id={'trendy'} ref={trendyRef}>
             <Typography variant="h2" sx={{display:{xs:'block',sm:'block',md:'none'},fontSize:14 , fontWeight:600}}>Makeup & Skincare</Typography>
             <Grid container spacing={2} mt={1} mb={4} >
                 <Grid item xs={12}>
-                    <Card className={classes.styledBigCard}>
+                    <Card className={classes.styledBigCard} onClick={()=>handleFirstBanner()} >
                         <Box
                             className={classes.styledCoverImage}
                         />
@@ -162,7 +197,7 @@ export const ThreeBanners = () => {
                 <Grid item xs={6}>
                     <Card
                         className={classes.styledSmallCard}
-
+                        onClick={()=>handleSecondBanner()}
                     >
                         <CardContent
                             className={classes.styledCardContent}
@@ -192,6 +227,7 @@ export const ThreeBanners = () => {
                 <Grid item xs={6}>
                     <Card
                         className={classes.styledSmallCard}
+                        onClick={()=>handleThirdBanner()}
                     >
                         <CardContent
                             className={classes.styledCardContent}

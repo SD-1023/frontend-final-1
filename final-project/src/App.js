@@ -23,7 +23,7 @@ function App() {
           <Layout>
             <Routes>
               <Route exact path='/' element={<HomePage />} />
-              <Route path='/products' element={<CategoriesPage />} />
+          
 
               <Route path='/products/:id' element={<CategoriesPage />} />
               <Route path='/signin' element={<SignIn />} />

@@ -1,10 +1,11 @@
 import { Box, Input, InputAdornment, Link } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { Logo } from './Logo';
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState, useEffect } from 'react';
 import { SearchContext } from '../contexts/SearchContext';
 import { useNavigate } from "react-router-dom";
 import { CartMenu } from '../pages/cart/CartMenu';
+import { useParams } from "react-router-dom";
 
 const debounceInput = (func) => {
 
@@ -16,6 +17,7 @@ const debounceInput = (func) => {
 }
 
 export const WebHeader = ({ categories, isTablet }) => {
+  
 
     const navigate = useNavigate();
     const { searchValue, setSearchValue, openSearchPanel, closeSearchPanel } = useContext(SearchContext);

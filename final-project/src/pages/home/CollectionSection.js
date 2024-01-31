@@ -60,10 +60,11 @@ export const CollectionSection = ({ collections }) => {
 
     const navigate = useNavigate(); 
 
-    const handleCardClick = (collectionId) => {
-
-      navigate(`/search/${collectionId}`);
-    };
+    const handleCardClick = (id) => {
+        navigate(`../products/${id}`, {
+            state: { url: `http://158.176.7.102:3000/products/handpicked?categoryId=${id}` }
+        });
+    }
    
 
 
