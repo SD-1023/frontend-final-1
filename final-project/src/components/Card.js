@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 export const CustomCard = ({ product, state }) => {
 
     const navigate = useNavigate();
-    const priceAfterDiscount = (product.price - (product.price * (product.Discount.percentage / 100))).toFixed(2);;
+    const priceAfterDiscount = (product.price - (product.price * (product.Discount.percentage / 100))).toFixed(2);
 
     const onCardPressed = () => {
 

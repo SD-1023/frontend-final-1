@@ -7,7 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 const NumberInput = React.forwardRef(function CustomNumberInput(props, ref) {
   return (
     <BaseNumberInput
-    defaultValue={1}
+    defaultValue={props.quantity || 1}
     onChange={(e,val)=>{props.setQuantity(val)}}
       slots={{
         root: StyledInputRoot,
@@ -30,8 +30,8 @@ const NumberInput = React.forwardRef(function CustomNumberInput(props, ref) {
   );
 });
 
-export default function QuantityInput({setQuantity}) {
-  return <NumberInput setQuantity={setQuantity}  aria-label="Quantity Input" min={1} max={99}  />;
+export default function QuantityInput({quantity, setQuantity}) {
+  return <NumberInput setQuantity={setQuantity} quantity={quantity} aria-label="Quantity Input" min={1} max={99}  />;
 }
 
 const blue = {
