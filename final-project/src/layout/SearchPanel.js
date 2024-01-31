@@ -17,7 +17,7 @@ export const SearchPanel = ({ isMobile }) => {
 
     const onSuggestionPressed = (v) => {
 
-        navigate('/search', {
+        navigate('/products', {
             state: v
         });
         closeSearchPanel();

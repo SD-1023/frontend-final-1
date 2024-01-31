@@ -50,6 +50,7 @@ export const ProductPage = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
+  console.log(state)
   useEffect(() => {
 
     fetch(`http://158.176.7.102:3000/products/info/${id}`)
@@ -66,9 +67,18 @@ export const ProductPage = () => {
     event.preventDefault();
 
     console.log('state', state);
-    navigate(path, {
-      state
-    });
+    if (state.url) {
+      let id = state.url.split('categoryId=')[1];
+      path = '/products/' + state.url.split('categoryId=')[1];
+      navigate(`../products/${id}`, {
+        state: { url: `http://158.176.7.102:3000/products?categoryId=${id}` }
+      });
+    } else {
+
+      navigate(path, {
+        state
+      });
+    }
   }
 
   if (!details || !details.images || details.images.length === 0) {
@@ -94,7 +104,7 @@ export const ProductPage = () => {
           key="2"
           color="inherit"
           href="./category"
-          onClick={(event) => handleClick(event, "/search", state)}
+          onClick={(event) => handleClick(event, "/products", state)}
         >
           Category
 
