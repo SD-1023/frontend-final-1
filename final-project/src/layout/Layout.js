@@ -45,6 +45,6 @@ export const Layout = ({ children }) => {
         {isMobile && isSearchPanelShown && <MobileSearchInput />}
         {isSearchPanelShown && <SearchPanel isMobile={isMobile} />}
 
-        <Footer isMobile={isMobile} setIsFooterShown={setIsFooterShown} isFooterShown={isFooterShown} categories={categories ? categories.slice(0, 7) : []} />
+        <Footer isMobile={isMobile} setIsFooterShown={setIsFooterShown} isFooterShown={isFooterShown} categories={categories ? categories?.slice(0, 7) : []} />
     </>;
 }
