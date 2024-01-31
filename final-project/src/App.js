@@ -9,6 +9,9 @@ import { SignUp } from "./pages/login/SignUp";
 import { HomePageProvider } from "./contexts/HomePageContext";
 import { ProfilePage } from "./pages/profile/ProfilePage";
 import { CartPage } from "./pages/cart/CartPage";
+import { CheckoutPage } from "./pages/checkout/CheckoutPage";
+import { ConfirmedOrder } from "./pages/checkout/ConfirmedOrder";
+import { EmptyCart } from "./pages/cart/EmptyCart";
 
 
 function App() {
@@ -28,6 +31,10 @@ function App() {
 
                <Route path='/product/:id' element={<ProductPage />} />
                <Route path = '/cart' element={<CartPage/>}/>
+
+               <Route path ='/checkout' element={<CheckoutPage/>}/>
+               <Route path ='/confirmed' element={<ConfirmedOrder/>}/>
+               <Route path ='/empty' element={<EmptyCart/>}/>
 
             </Routes>
           </Layout>

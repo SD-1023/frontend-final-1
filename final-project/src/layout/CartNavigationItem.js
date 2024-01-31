@@ -40,6 +40,10 @@ export const CartNavigationItem = ({ currentLink, setCurrentLink }) => {
 
         {currentLink === '/cart' && <span style={{ fontSize: '12px', fontWeight: 500 }}>Cart</span>}
 
-    </Box>
 
-}
+      {condition && (
+        <span style={{ fontSize: "12px", fontWeight: 500 }}>Cart</span>
+      )}
+    </Box>
+  );
+};
