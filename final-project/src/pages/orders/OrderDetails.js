@@ -17,17 +17,49 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
         setCurrentDetails(details);
     }, [details]);
     console.log(details);
+
+    const editBreadcrumbs = (newVal) => {
+
+        const temp = [...breadcrumbsItems.slice(0, 3)];
+
+        if (newVal) {
+            temp.push(newVal);  
+        }
+        setBreadcrumbsItems(temp);
+    }
+
     useEffect(() => {
 
 
-        const temp = [...breadcrumbsItems.slice(0, 3), {
+        editBreadcrumbs({
             title: 'Order#' + orderNumber,
             navTitle: 'Order',
-
-        }];
-        setBreadcrumbsItems(temp);
+        });
 
     }, []);
+
+    const fetchData = async (url, method,) => {
+
+        try {
+            let token = localStorage.getItem('token');
+            token = JSON.parse(token);
+
+            const res = await fetch(url, {
+                method,
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: token['session_key']
+                },
+            });
+            const d = await res.json();
+            setCurrentItem('My Orders');
+            editBreadcrumbs();
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
 
     useEffect(() => {
 
@@ -44,31 +76,14 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
     }, []);
 
     const reorderHandler = () => {
-        //  http://158.176.7.102:3000/orders/reorder/${orderNumber}
 
-        const fetchTopics = async () => {
-            try {
-                let token = localStorage.getItem('token');
-                token = JSON.parse(token);
+        fetchData(`http://158.176.7.102:3000/orders/reorder/${orderNumber}`, 'POST');
 
-                const res = await fetch(`http://158.176.7.102:3000/orders/reorder/${orderNumber}`, {
-                    method: 'POST',
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                        Authorization: token['session_key']
-                    },
-                });
-                console.log(res);
-                const d = await res.json();
-                console.log(d);
-            } catch (e) {
-                console.log(e)
-            }
-        }
+    }
 
-        fetchTopics();
+    const cancelOrder = () => {
 
+        fetchData(`http://158.176.7.102:3000/orders/${orderNumber}/cancel`, 'PUT');
     }
 
     if (loading) {
@@ -199,17 +214,18 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
                 display: 'flex', width: 1, flexDirection: 'row-reverse', gap: '15px',
                 marginBlock: '15px', justifyContent: { xs: 'center', sm: 'flex-start' }
             }}>
-                {/* 
-                <Button variant="outlined" sx={{ display: {xs: 'none', sm: 'block'},
-                    textTransform: 'none', height: '38px', color: '#1B4B66', '&:hover': { color: '#1B4B66' }, border: '2px solid #1B4B66',
-                    paddingBlock: '5px', paddingInline: '20px', fontSize: '16px', fontWeight: 500, borderRadius: '8px', fontWeight: 600, fontSize: '16px'
+
+                <Button onClick={cancelOrder} variant="outlined" sx={{
+                    display: { xs: 'none', sm: 'block' },
+                    textTransform: 'none', height: '38px', color: 'red', border: '2px solid red', '&:hover': { color: '#1B4B66', borderColor: 'red' },
+                    paddingBlock: '5px', paddingInline: '20px', fontSize: '16px', fontWeight: 500, borderRadius: '8px',
                 }}>
-                    Add Rating
-                </Button> */}
+                    Cancel order
+                </Button>
                 <Button onClick={reorderHandler} variant="outlined" sx={{
                     width: { xs: '80%', sm: '130px' },
                     textTransform: 'none', backgroundColor: '#1B4B66', height: '38px', color: 'white', '&:hover': { color: '#1B4B66', border: '2px solid #1B4B66' },
-                    paddingBlock: '5px', paddingInline: '20px', fontSize: '16px', fontWeight: 500, borderRadius: '8px', fontSize: '14px'
+                    paddingBlock: '5px', paddingInline: '20px', fontWeight: 500, borderRadius: '8px', fontSize: '14px'
                 }}>
                     Reorder
                 </Button>

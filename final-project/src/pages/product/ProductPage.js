@@ -49,13 +49,13 @@ export const ProductPage = () => {
   const { id } = useParams();
   const { state } = useLocation();
   const navigate = useNavigate();
-  const [quantity,setQuantity]=useState(1);
+  const [quantity, setQuantity] = useState(1);
 
   console.log(quantity)
 
-  const handleAddtobag=()=>{
-    let token =localStorage.getItem('token');
-    token=JSON.parse(token);
+  const handleAddtobag = () => {
+    let token = localStorage.getItem('token');
+    token = JSON.parse(token);
     let obj = JSON.stringify({
       product_id: id,
       quantity: quantity,
@@ -64,33 +64,33 @@ export const ProductPage = () => {
     fetch("http://158.176.7.102:3000/shopping-cart/add", {
       method: "POST",
       headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          'Authorization':token['session_key']
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        'Authorization': token['session_key']
       },
-      body:obj
-  })
+      body: obj
+    })
       .then(res => {
 
-          return res.json();
+        return res.json();
       })
       .then(json => {
 
-          if (json.error) {
-              throw new Error(json.error);
-          }
-          // console.log('json', json);
-          // console.log("Server response:", json);
-          // setSnackbarMessage('Signup successfully!');
-          // setSnackbarOpen(true);
+        if (json.error) {
+          throw new Error(json.error);
+        }
+        // console.log('json', json);
+        // console.log("Server response:", json);
+        // setSnackbarMessage('Signup successfully!');
+        // setSnackbarOpen(true);
 
-          localStorage.setItem('token', JSON.stringify(json));
-          navigate('/');
+        // localStorage.setItem('token', JSON.stringify(json));
+        navigate('/');
       })
       .catch(error => {
-          // setSnackbarMessage(error + "");
-          // setSnackbarOpen(true);
-          // console.error("", error);
+        // setSnackbarMessage(error + "");
+        // setSnackbarOpen(true);
+        // console.error("", error);
       });
   }
 
@@ -220,7 +220,7 @@ export const ProductPage = () => {
           <Box sx={{ display: 'inline-flex', gap: 2, justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography variant='p' sx={{ fontSize: 20, fontWeight: 600, }}> Quantity</Typography>
 
-            <QuantityInput setQuantity= {setQuantity}></QuantityInput>
+            <QuantityInput setQuantity={setQuantity}></QuantityInput>
 
 
           </Box>
