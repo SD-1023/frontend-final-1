@@ -24,8 +24,6 @@ export const PersonalInformation = ({ setUrl, setRequestOptions, breadcrumbsItem
     const [isProfileImageChanged, setIsProfileImageChanged] = useState(false);
     const navigate = useNavigate();
 
-
-    // console.log(data);
     useEffect(() => {
 
         if (info) {
