@@ -1,0 +1,42 @@
+<svg  viewBox="0 0 239 239" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="art">
+<rect id="Rectangle 493" width="239" height="239" rx="16" fill="#F4F4F4"/>
+<g id="bg">
+<mask id="mask0_923_4296" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="239" height="239">
+<rect id="mask" width="239" height="239" rx="16" fill="#F4F4F4"/>
+</mask>
+<g mask="url(#mask0_923_4296)">
+<rect id="base" width="239" height="239" rx="16" fill="#F4F4F4"/>
+<path id="Vector 22" d="M173.5 117L239.5 -30L-15.5 -38L-29 174.5L173.5 117Z" fill="#FFE3BD"/>
+</g>
+</g>
+<g id="Union" filter="url(#filter0_d_923_4296)">
+<path d="M58.7867 30.6568C58.2002 29.9095 57 30.3242 57 31.2742V207.486C57 208.436 58.2002 208.851 58.7867 208.104L71.7133 191.633C72.1137 191.122 72.8863 191.122 73.2867 191.633L87.2133 209.378C87.6137 209.888 88.3863 209.888 88.7867 209.378L102.713 191.633C103.114 191.122 103.886 191.122 104.287 191.633L118.213 209.378C118.614 209.888 119.386 209.888 119.787 209.378L133.713 191.633C134.114 191.122 134.886 191.122 135.287 191.633L149.213 209.378C149.614 209.888 150.386 209.888 150.787 209.378L164.713 191.633C165.114 191.122 165.886 191.122 166.287 191.633L179.213 208.104C179.8 208.851 181 208.436 181 207.486V31.2742C181 30.3242 179.8 29.9095 179.213 30.6568L166.287 47.1279C165.886 47.6381 165.114 47.6381 164.713 47.1279L150.787 29.3826C150.386 28.8725 149.614 28.8725 149.213 29.3826L135.287 47.1279C134.886 47.6381 134.114 47.6381 133.713 47.1279L119.787 29.3826C119.386 28.8725 118.614 28.8725 118.213 29.3826L104.287 47.1279C103.886 47.6381 103.114 47.6381 102.713 47.1279L88.7867 29.3826C88.3863 28.8725 87.6137 28.8725 87.2133 29.3826L73.2867 47.1279C72.8863 47.6381 72.1137 47.6381 71.7133 47.1279L58.7867 30.6568Z" fill="#1B4B66"/>
+</g>
+<rect id="Rectangle 494" x="73" y="66" width="91" height="6" rx="2" fill="#639599"/>
+<rect id="Rectangle 495" x="73" y="84" width="75" height="6" rx="2" fill="#639599"/>
+<rect id="Rectangle 496" x="73" y="102" width="82" height="6" rx="2" fill="#639599"/>
+<rect id="Rectangle 497" x="73" y="120" width="75" height="6" rx="2" fill="#639599"/>
+<rect id="Rectangle 498" x="73" y="138" width="62" height="6" rx="2" fill="#639599"/>
+<rect id="Rectangle 499" x="73" y="156" width="46" height="6" rx="2" fill="#639599"/>
+<g id="Group 694">
+<g id="fab">
+<circle id="shadow" cx="166.5" cy="150.5" r="30.5" fill="#0E3C40"/>
+<path id="Subtract" fill-rule="evenodd" clip-rule="evenodd" d="M181 177.339V123.661C190.528 128.819 197 138.904 197 150.5C197 162.096 190.528 172.181 181 177.339Z" fill="#E8D0AF"/>
+<circle id="Ellipse 40" cx="163.5" cy="147.5" r="30.5" fill="#246E74"/>
+<path id="Vector 19" d="M150 149.778L158.889 159.111L178 140" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_923_4296" x="57" y="29" width="130" height="186.761" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="6" dy="6"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.909804 0 0 0 0 0.815686 0 0 0 0 0.686275 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_923_4296"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_923_4296" result="shape"/>
+</filter>
+</defs>
+</svg>
