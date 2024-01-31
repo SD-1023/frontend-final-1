@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 
-export const OrderSummary = () => {
+export const OrderSummary = ({ data }) => {
   return (
     <Box>
       <Typography
@@ -17,23 +17,23 @@ export const OrderSummary = () => {
       <Box mt={2} display="flex" flexDirection="column" gap={2}>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variatn="p">Sub Total:</Typography>
-          <Typography>12321</Typography>
+          <Typography>${data?.totalPriceBeforeDiscount?.toFixed(2)}</Typography>
         </Box>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variatn="p">Discount:</Typography>
-          <Typography>12321</Typography>
+          <Typography>-${data?.totalDiscount?.toFixed(2)}</Typography>
         </Box>
 
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variatn="p">Delivery Fee:</Typography>
-          <Typography>12321</Typography>
+          <Typography>+$12.00</Typography>
         </Box>
 
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variatn="p" sx={{ fontWeight: 600 }}>
             Grand Total:
           </Typography>
-          <Typography>12321</Typography>
+          <Typography>${+data?.totalDiscountedPrice?.toFixed(2) + 12}</Typography>
         </Box>
       </Box>
     </Box>

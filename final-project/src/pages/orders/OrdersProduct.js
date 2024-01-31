@@ -51,7 +51,7 @@ export const OrdersProduct = ({ product }) => {
             {product.quantity}
         </Typography>
         <Typography sx={{ display: { xs: 'none', sm: 'block' } }}>
-            ${product['sub_total']}
+            ${product['sub_total']?.toFixed(2)}
         </Typography>
     </Box>
 

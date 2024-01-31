@@ -23,7 +23,7 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
         const temp = [...breadcrumbsItems.slice(0, 3)];
 
         if (newVal) {
-            temp.push(newVal);  
+            temp.push(newVal);
         }
         setBreadcrumbsItems(temp);
     }
@@ -151,7 +151,7 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
                     <Box sx={{ color: '#171520', width: '100%', display: 'flex', justifyContent: 'space-between' }}>
                         Sub Total
                         <Typography>
-                            ${currentDetails['total_amount']}
+                            ${currentDetails['total_amount']?.toFixed(2)}
                         </Typography>
                     </Box>
                     <Box sx={{ color: '#171520', width: '100%', display: 'flex', justifyContent: 'space-between' }}>
@@ -196,14 +196,15 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
                         {currentDetails.addresses?.address} - {currentDetails.addresses?.city}
                     </Box>
                     <Box sx={{ color: { xs: '#626262', sm: '#171520' }, fontSize: { xs: '14px', sm: '16px' }, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
-                        {currentDetails.addresses ? currentDetails.addresses['address_line1'] : ''}
-                    </Box>
-                    <Box sx={{ color: { xs: '#626262', sm: '#171520' }, fontSize: { xs: '14px', sm: '16px' }, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
-                        {currentDetails.addresses ? currentDetails.addresses['address_line2'] : ''}
-                    </Box>
-                    <Box sx={{ color: { xs: '#626262', sm: '#171520' }, fontSize: { xs: '14px', sm: '16px' }, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
                         {currentDetails.addresses?.street}
                     </Box>
+                    <Box sx={{ color: { xs: '#626262', sm: '#171520' }, fontSize: { xs: '14px', sm: '16px' }, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+                        {currentDetails.addresses ? currentDetails.addresses['mobile'] : ''}
+                    </Box>
+                    <Box sx={{ color: { xs: '#626262', sm: '#171520' }, fontSize: { xs: '14px', sm: '16px' }, width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+                        {currentDetails.addresses ? currentDetails.addresses['postal_code'] : ''}
+                    </Box>
+
 
 
                 </Box>

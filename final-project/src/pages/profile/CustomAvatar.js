@@ -9,11 +9,16 @@ export const CustomAvatar = ({ info, setIsProfileImageChanged }) => {
     const [requestOptions, setRequestOptions] = useState({});
     const { data, loading, error } = useFetchData(url, requestOptions);
     const fileInputRef = useRef(null);
+    const [image, setImage] = useState(null)
 
+    console.log(data)
     useEffect(() => {
 
         if(data){
+
+            setImage(data);
             setIsProfileImageChanged(s => !s);
+            setSelectedFile(null);
         }
 
     }, [data]);
@@ -57,7 +62,7 @@ export const CustomAvatar = ({ info, setIsProfileImageChanged }) => {
     }
 
     return <Box sx={{ display: 'flex', alignItems: 'flex-end', gap: '12px', marginBlock: '25px' }}>
-        <Avatar sx={{ width: '80px', height: '80px' }} alt={info['first_name']} src={`http://158.176.7.102:3000/${info['profile_image']}`} />
+        <Avatar sx={{ width: '80px', height: '80px' }} alt={info['first_name']} src={`http://158.176.7.102:3000/${image ? image :info['profile_image'] }`} />
         <LoadingButton loading={loading} onClick={handleButtonClick} variant="contained" sx={{
             textTransform: 'none',
             backgroundColor: '#1B4B66', width: { xs: '100', sm: '136px' }, height: { xs: '30', sm: '38px' }, color: 'white',

@@ -1,6 +1,6 @@
 import { Box, Typography, Input, TextField, Grid } from "@mui/material";
 
-export const AddressInfo = () => {
+export const AddressInfo = ({ setFullName, setCity, setPhone, setStreet, setCountry, setPostalCode, setPaymentMethod }) => {
   return (
     <Grid container spacing={4}>
       <Grid item xs={12} md={6}>
@@ -9,6 +9,7 @@ export const AddressInfo = () => {
           placeholder={"Full Name"}
           disableUnderline
           name="fname"
+          onChange={(e)=> setFullName(e.target.value)}
           autoComplete="fullname"
           sx={{
             backgroundColor: "#F1F1F1",
@@ -22,8 +23,9 @@ export const AddressInfo = () => {
       <Grid item xs={12} md={6}>
         <Typography sx={{ fontSize: "16px" }}>Mobile Number</Typography>
         <Box sx={{ minWidth: "100%", display: "flex", gap: "10px" }}>
-          <Input
+          {/* <Input
             placeholder={"+970"}
+            defaultValue={"+970"}
             disableUnderline
             sx={{
               backgroundColor: "#F1F1F1",
@@ -32,19 +34,20 @@ export const AddressInfo = () => {
               paddingInline: { sm: "6px", md: "10px", lg: "12px" },
               borderRadius: "4px",
             }}
-          ></Input>
+          ></Input> */}
           <Input
             type="number"
             name="phone"
+          onChange={(e)=> setPhone(e.target.value)}
             autoComplete="phone"
             placeholder={"59999999"}
             disableUnderline
             sx={{
               "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
-                {
-                  "-webkit-appearance": "none",
-                  margin: 0,
-                },
+              {
+                "-webkit-appearance": "none",
+                margin: 0,
+              },
               backgroundColor: "#F1F1F1",
 
               paddingBlock: { sm: "8px", md: "12px", lg: "16px" },
@@ -61,6 +64,7 @@ export const AddressInfo = () => {
           placeholder={"Street"}
           disableUnderline
           name="street"
+          onChange={(e)=> setStreet(e.target.value)}
           autoComplete="street"
           sx={{
             backgroundColor: "#F1F1F1",
@@ -77,6 +81,7 @@ export const AddressInfo = () => {
           placeholder={"City"}
           disableUnderline
           name="city"
+          onChange={(e)=> setCity(e.target.value)}
           autoComplete="city"
           sx={{
             backgroundColor: "#F1F1F1",
@@ -95,6 +100,7 @@ export const AddressInfo = () => {
           disableUnderline
           name="country"
           autoComplete="country"
+          onChange={(e)=> setCountry(e.target.value)}
           sx={{
             backgroundColor: "#F1F1F1",
             width: "100%",
@@ -110,6 +116,7 @@ export const AddressInfo = () => {
           placeholder={"Postal Code"}
           disableUnderline
           name="pin_code"
+          onChange={(e)=> setPostalCode(e.target.value)}
           autoComplete="pin_code"
           sx={{
             backgroundColor: "#F1F1F1",

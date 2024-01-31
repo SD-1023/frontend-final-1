@@ -11,7 +11,9 @@ const rows = [
 
 ];
 
-export const OrderItems = () => {
+export const OrderItems = ({data}) => {
+
+
   return (
     <Box display="flex" flexDirection="column" gap={2} mb={3}>
       <Typography
@@ -25,7 +27,7 @@ export const OrderItems = () => {
       >
         Order Summary
       </Typography>
-      {rows.map((row) => (
+      {data?.products?.map((row) => (
         <Card sx={{ display: "flex", boxShadow: "none" }}>
           <CardMedia image={brownBag} sx={{ height: 80, minWidth: 75 }} />
           <Box sx={{ display: "flex", flexDirection: "column", marginLeft: 2 }}>
@@ -35,12 +37,12 @@ export const OrderItems = () => {
             <Typography
               sx={{ fontSize: 16, fontWeight: 500, color: "#626262" }}
             >
-              {row.name}
+              {row['sub_title']}
             </Typography>
             <Typography
               sx={{ fontSize: 16, fontWeight: 500, color: "#626262" }}
             >
-              {row.name}
+              Qty - {row.quantity}
             </Typography>
           </Box>
         </Card>
