@@ -1,25 +1,20 @@
+
+
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-
 export const CartNavigationItem = ({ currentLink, setCurrentLink }) => {
-
     // const { pathname } = useLocation();
     const navigate = useNavigate();
     const condition = currentLink === '/cart';
     const [color, setColor] = useState(condition? 'var(--primary)' : 'var(--light-text)');
-
     useEffect(() => {
         setColor(condition ? 'var(--primary)' : 'var(--light-text)');
     }, [currentLink]);
-    
-
     const onCartClicked = () => {
         navigate('/cart');
         setColor('var(--primary)')
         setCurrentLink('/cart')
-
     }
     return <Box onClick={onCartClicked} sx={{
         display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', cursor: 'pointer',
@@ -37,13 +32,6 @@ export const CartNavigationItem = ({ currentLink, setCurrentLink }) => {
                 </clipPath>
             </defs>
         </svg>
-
         {currentLink === '/cart' && <span style={{ fontSize: '12px', fontWeight: 500 }}>Cart</span>}
-
-
-      {condition && (
-        <span style={{ fontSize: "12px", fontWeight: 500 }}>Cart</span>
-      )}
     </Box>
-  );
-};
+}

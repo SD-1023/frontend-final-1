@@ -15,10 +15,20 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { CartTable } from "./CartTable";
 import { OrderSummary } from "./OrderSummary";
+import { useEffect } from "react";
 
 export const CartPage = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
+    useEffect (()=>{
+    let token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/signin");
+    }else{
+        //fetch cart 
+
+    }
+},[])
 
   function handleClick(event, path, state) {
     event.preventDefault();

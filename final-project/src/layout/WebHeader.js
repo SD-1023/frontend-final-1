@@ -73,7 +73,7 @@ export const WebHeader = ({ categories, isTablet }) => {
             closeSearchPanel();
             setSearchValue('');
             searchRef.current.value = '';
-            return navigate('/search', {
+            return navigate('/products', {
                 state: searchValue
             });
 
@@ -86,7 +86,7 @@ export const WebHeader = ({ categories, isTablet }) => {
     return <Box component={'header'} sx={{ ...HeaderStyle }} >
         <Box component={'nav'} sx={FlexStyle}>
             <Logo isTablet={isTablet} />
-            {categories.map((cat) => <Link key={cat.id} component={RouterLink} sx={LinkStyle} underline='none' to='/search'> {cat.name} </Link>)}
+            {categories.map((cat) => <Link key={cat.id} component={RouterLink} sx={LinkStyle} underline='none' to='/products'> {cat.name} </Link>)}
         </Box>
         <Box sx={{ ...FlexStyle, gap: '15px' }}>
 

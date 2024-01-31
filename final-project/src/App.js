@@ -23,13 +23,13 @@ function App() {
           <Layout>
             <Routes>
               <Route exact path='/' element={<HomePage />} />
-              <Route path='/search' element={<CategoriesPage />} />
+              <Route path='/products' element={<CategoriesPage />} />
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
 
               <Route path='/profile' element={<ProfilePage />} />
 
-               <Route path='/product/:id' element={<ProductPage />} />
+               <Route path='/products/:id' element={<ProductPage />} />
                <Route path = '/cart' element={<CartPage/>}/>
 
                <Route path ='/checkout' element={<CheckoutPage/>}/>

@@ -36,7 +36,7 @@ export const MobileSearchInput = () => {
 
             setSearchValue('');
             searchRef.current.value = '';
-            return navigate('/search', {
+            return navigate('/products', {
                 state: searchValue
             });
         }
