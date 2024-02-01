@@ -146,8 +146,6 @@ export const SignUp = () => {
                 if (json.error) {
                     throw new Error(json.error);
                 }
-                // console.log('json', json);
-                // console.log("Server response:", json);
                 setSnackbarMessage('Signup successfully!');
                 setSnackbarOpen(true);
 

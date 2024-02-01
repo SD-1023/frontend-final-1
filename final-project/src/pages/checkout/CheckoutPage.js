@@ -33,10 +33,6 @@ export const CheckoutPage = () => {
   const [postalCode, setPostalCode] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('credit');
 
-
-  console.log(data);
-
-
   if (data && !data.error) {
     navigate('/confirmed');
   }
@@ -49,11 +45,9 @@ export const CheckoutPage = () => {
     }
   }, []);
 
-  // console.log(state)
   function handleClick(event, path, state) {
     event.preventDefault();
 
-    console.log("state", state);
     navigate(path, {
       state,
     });

@@ -51,8 +51,6 @@ export const ProductPage = () => {
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
 
-  console.log(quantity)
-
   const handleAddtobag = () => {
     let token = localStorage.getItem('token');
     if(!token){
@@ -95,8 +93,6 @@ export const ProductPage = () => {
       .then((response) => response.json())
       .then((data) => {
         setDetails(data);
-        console.log(data);
-
       })
       .catch((error) => console.log(error));
   }, [id]);
@@ -104,7 +100,6 @@ export const ProductPage = () => {
   function handleClick(event, path, state) {
     event.preventDefault();
 
-    console.log('state', state);
     if (state.url) {
       let id = state.url.split('categoryId=')[1];
       path = '/products/' + state.url.split('categoryId=')[1];

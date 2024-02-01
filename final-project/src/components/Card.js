@@ -44,10 +44,10 @@ export const CustomCard = ({ product, state }) => {
                 </Box>
                 <Typography sx={{ fontSize: { xs: '14px', md: '16px' }, fontWeight: 600, display: 'flex', alignItems: 'center' }}>
                     ${priceAfterDiscount}
-                    <Typography component={'del'} sx={{ fontSize: { xs: '10px', md: '14px' }, fontWeight: 500, marginLeft: '5px', color: '#626262' }}>{/** price before discount */}
+                    <Typography component={'del'} sx={{ fontSize: { xs: '10px', md: '14px' }, fontWeight: 500, marginLeft: '5px', color: '#626262' }}>
                         ${product.price}
                     </Typography>
-                    <Typography component={'span'} sx={{ fontSize: { xs: '10px', md: '14px' }, fontWeight: 500, marginLeft: '5px', color: '#E21D1D' }}>{/**  discount amount  */}
+                    <Typography component={'span'} sx={{ fontSize: { xs: '10px', md: '14px' }, fontWeight: 500, marginLeft: '5px', color: '#E21D1D' }}>
                         {product.Discount.percentage}% OFF
                     </Typography>
 
