@@ -27,7 +27,7 @@ export const RelatedProducts = ({ relatedProducts }) => {
         <Card key={product.id} sx={{ boxShadow: 0 ,width:150}}>
           <CardMedia
             component="img"
-            image={`http://158.176.7.102:3000/${product.ProductImages[0].image_url}`}
+            image={`https://group1.iscovat.bid/${product.ProductImages[0].image_url}`}
             alt={product.name}
             sx={{ borderRadius: 2 }}
           />

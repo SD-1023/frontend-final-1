@@ -41,8 +41,8 @@ export const CheckoutPage = () => {
   const [postalCode, setPostalCode] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('credit');
 
-  const [snackbarOpen, setSnackbarOpen] = useState(true);
-  const [snackbarMessage, setSnackbarMessage] = useState('hello ');
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState(' ');
 
   const handleSnackbarClose = () => {
       setSnackbarOpen(false);
@@ -50,7 +50,7 @@ export const CheckoutPage = () => {
 
 const handleLinkClick = (event, path, state) => {
   event.preventDefault();
-  console.log("state", state);
+ 
   navigate(path, { state });
 };
 
@@ -73,7 +73,7 @@ const handleLinkClick = (event, path, state) => {
   function handleClick(event, path, state) {
     event.preventDefault();
 
-    console.log("state", state);
+   
     navigate(path, {
       state,
     });
@@ -96,7 +96,7 @@ const handleLinkClick = (event, path, state) => {
 
     })
 
-    setUrl('http://158.176.7.102:3000/orders');
+    setUrl('https://group1.iscovat.bid/orders');
     setReqOpts({
       method: "POST",
       headers: {
@@ -108,12 +108,15 @@ const handleLinkClick = (event, path, state) => {
     });
 
   }
-  if (error){
-    console.log(error)
-    setSnackbarMessage(error.error + "");
+  useEffect(()=>{
+    if (data?.error){
    
-
-  }
+        setSnackbarMessage(data.error + "");
+        setUrl(null);
+        setSnackbarOpen(true);
+      }
+  },[data])
+  
 
   return (
     <Box p={2} flexDirection="column" display="flex" gap={2}>

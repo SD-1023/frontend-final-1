@@ -16,7 +16,7 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
 
         setCurrentDetails(details);
     }, [details]);
-    console.log(details);
+
 
     const editBreadcrumbs = (newVal) => {
 
@@ -67,7 +67,7 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
             let token = localStorage.getItem('token');
 
             token = JSON.parse(token);
-            setUrl(`http://158.176.7.102:3000/orders/info/${orderNumber}`);
+            setUrl(`https://group1.iscovat.bid/orders/info/${orderNumber}`);
             setRequestOptions({ headers: { Authorization: token['session_key'] } });
 
         } catch (e) {
@@ -77,13 +77,13 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
 
     const reorderHandler = () => {
 
-        fetchData(`http://158.176.7.102:3000/orders/reorder/${orderNumber}`, 'POST');
+        fetchData(`https://group1.iscovat.bid/orders/reorder/${orderNumber}`, 'POST');
 
     }
 
     const cancelOrder = () => {
 
-        fetchData(`http://158.176.7.102:3000/orders/${orderNumber}/cancel`, 'PUT');
+        fetchData(`https://group1.iscovat.bid/orders/${orderNumber}/cancel`, 'PUT');
     }
 
     if (loading) {

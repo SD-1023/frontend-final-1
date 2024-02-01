@@ -60,7 +60,7 @@ export const ProductPage = () => {
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
 
-  console.log(quantity);
+
 
   const handleAddtobag = () => {
     let token = localStorage.getItem("token");
@@ -73,7 +73,7 @@ export const ProductPage = () => {
       quantity: quantity,
     });
 
-    fetch("http://158.176.7.102:3000/shopping-cart/add", {
+    fetch("https://group1.iscovat.bid/shopping-cart/add", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -95,11 +95,11 @@ export const ProductPage = () => {
   };
 
   useEffect(() => {
-    fetch(`http://158.176.7.102:3000/products/info/${id}`)
+    fetch(`https://group1.iscovat.bid/products/info/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setDetails(data);
-        console.log(data);
+   
       })
       .catch((error) => console.log(error));
   }, [id]);
@@ -111,7 +111,7 @@ export const ProductPage = () => {
       let id = details.details.Category.id;
       path = `/products`;
       navigate(`../products/${id}`, {
-        state: { url: `http://158.176.7.102:3000/products?categoryId=${id}` },
+        state: { url: `https://group1.iscovat.bid/products?categoryId=${id}` },
       });
     } else {
       navigate(path, {
@@ -157,7 +157,7 @@ export const ProductPage = () => {
           <Box
             component="img"
             autoHeight
-            src={`http://158.176.7.102:3000/${details.images[0].image_url}`}
+            src={`https://group1.iscovat.bid/${details.images[0].image_url}`}
             sx={{ width: "100%", borderRadius: 2, objectFit: "cover" }}
           ></Box>
 
@@ -177,7 +177,7 @@ export const ProductPage = () => {
               <Grid alignItems="center" item xs={2.5} textAlign="center">
                 <Box
                   component="img"
-                  src={`http://158.176.7.102:3000/${details.images[0].image_url}`}
+                  src={`https://group1.iscovat.bid/${details.images[0].image_url}`}
                   sx={{ height: 75, width: 75, borderRadius: 2 }}
                 ></Box>
               </Grid>

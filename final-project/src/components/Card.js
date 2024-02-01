@@ -16,7 +16,7 @@ export const CustomCard = ({ product, state }) => {
     return (
         <Card sx={{ minWidth: '150px', boxShadow: '0', cursor: 'pointer' }} onClick={onCardPressed} >
             <CardMedia component="img" alt="green iguana" height="140"
-                image={'http://158.176.7.102:3000/' + product.ProductImages[0]['image_url']} />
+                image={'https://group1.iscovat.bid/' + product.ProductImages[0]['image_url']} />
             <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Typography gutterBottom variant="h5" sx={{ fontSize: { xs: '12px', md: '16px' }, fontWeight: 500 }}>

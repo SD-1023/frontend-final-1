@@ -6,7 +6,7 @@ export const LogoutButton = ({ isMobile, setUrl }) => {
 
 
     const logout = () => {
-        setUrl('http://158.176.7.102:3000/users/signout');
+        setUrl('https://group1.iscovat.bid/users/signout');
     }
 
 

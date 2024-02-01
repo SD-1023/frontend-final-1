@@ -6,7 +6,6 @@ export const useFetchData = (url, requestOptions) => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    // console.log(requestOptions);
     useEffect(() => {
 
         if (!url) {

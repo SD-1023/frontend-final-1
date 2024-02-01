@@ -25,7 +25,7 @@ export const CartPage = () => {
   const [reqOpts, setReqOpts] = useState();
   const { data, loading, error } = useFetchData(url, reqOpts);
 
-  console.log(data);
+
   const { state } = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
@@ -35,7 +35,7 @@ export const CartPage = () => {
     } else {
 
       token = JSON.parse(token);
-      setUrl('http://158.176.7.102:3000/shopping-cart');
+      setUrl('https://group1.iscovat.bid/shopping-cart');
       setReqOpts({ headers: { Authorization: token['session_key'] } })
     }
   }, [])
@@ -43,7 +43,7 @@ export const CartPage = () => {
   function handleClick(event, path, state) {
     event.preventDefault();
 
-    console.log("state", state);
+   
     navigate(path, {
       state,
     });

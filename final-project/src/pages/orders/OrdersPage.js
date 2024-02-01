@@ -11,7 +11,7 @@ export const OrdersPage = ({ orders, currentItem, setCurrentItem, setBreadcrumbs
     const [currentNav, setCurrentNav] = useState('Completed');
     const [renderedOrders, setRenderedOrders] = useState([]);
     const [isPageLoaded, setIsPageLoaded] = useState(false);
-    console.log(orders)
+   
 
 
     useEffect(() => {
@@ -31,7 +31,7 @@ export const OrdersPage = ({ orders, currentItem, setCurrentItem, setBreadcrumbs
             let token = localStorage.getItem('token');
 
             token = JSON.parse(token);
-            setUrl(`http://158.176.7.102:3000/orders`);
+            setUrl(`https://group1.iscovat.bid/orders`);
             setRequestOptions({ headers: { Authorization: token['session_key'] } });
             setIsPageLoaded(true);
 
@@ -49,7 +49,6 @@ export const OrdersPage = ({ orders, currentItem, setCurrentItem, setBreadcrumbs
         }
     }, [orders, currentNav]);
 
-    console.log(renderedOrders)
     return <Box sx={{
         display: { xs: currentItem === 'My Orders' ? 'block' : 'none', sm: 'block' },
         width: '100%', zIndex: { xs: '22', sm: '1' }, backgroundColor: 'white',

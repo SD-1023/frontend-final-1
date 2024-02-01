@@ -9,7 +9,7 @@ export const OrdersProduct = ({ product }) => {
         borderRadius: '8px', gap: { sm: '40px', md: '90px' }, margin: { xs: '0', sm: '0px' }, marginInline: { sm: '0px', md: '' }, padding: '20px', cursor: 'pointer'
     }}>
         <Typography sx={{ display: 'flex', gap: '10px', width: { xs: '100%', sm: '40%' } }}>
-            <Avatar alt={product.name} src={`http://158.176.7.102:3000/${product['image_url']}` }
+            <Avatar alt={product.name} src={`https://group1.iscovat.bid/${product['image_url']}` }
                 sx={{ width: { xs: '120px', sm: '75px' }, height: { xs: '120px', sm: '80px' }, borderRadius: '8px' }} variant="square" />
 
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
