@@ -79,7 +79,10 @@ export const HomePage = () => {
     return <Typography>Error: {error}</Typography>;
   }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
 
   return (
     <ThemeProvider theme={theme}>

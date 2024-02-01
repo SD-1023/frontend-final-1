@@ -25,7 +25,10 @@ export const CartPage = () => {
   const [reqOpts, setReqOpts] = useState();
   const { data, loading, error } = useFetchData(url, reqOpts);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
   const { state } = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
@@ -43,7 +46,10 @@ export const CartPage = () => {
   function handleClick(event, path, state) {
     event.preventDefault();
 
+<<<<<<< HEAD
    
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
     navigate(path, {
       state,
     });

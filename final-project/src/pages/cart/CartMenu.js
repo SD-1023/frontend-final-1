@@ -22,8 +22,12 @@ export const CartMenu = () => {
   const [reqOpts, setReqOpts] = useState();
   const { data, loading, error } = useFetchData(url, reqOpts);
 
+<<<<<<< HEAD
 
 
+=======
+  console.log(data)
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
   const handleOpen = (event) => {
     try {
       let token = localStorage.getItem('token');
@@ -45,6 +49,8 @@ export const CartMenu = () => {
     setAnchorEl(null);
     setUrl(null);
     setOpen(false);
+    setUrl(null);
+    setReqOpts(null)
   };
 
   const moveToCart = () => {
@@ -80,10 +86,12 @@ export const CartMenu = () => {
           horizontal: 'center',
         }}
       >
+
    {(!data || !data?.products || data?.products.length === 0) && <EmptyCart />}
   {data?.products && data.products.length > 0 &&  <Paper sx={{ p: 2, width: 300 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Button startIcon={<KeyboardBackspaceIcon />} onClick={handleClose} sx={{ width: 328, color: '#1B4B66', gap: 2, justifyContent: 'flex-start' }}>Back</Button>
+
 
           </div>
 
@@ -113,7 +121,7 @@ export const CartMenu = () => {
 
             </Box>
           ))}
-          {data && data.length !== 0 && <Box mt={2} gap={1} display='flex' flexDirection='column'>
+          {data && data.products.length !== 0 && <Box mt={2} gap={1} display='flex' flexDirection='column'>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }} >
               <Typography variatn='p' sx={{ fontSize: 14 }}>Sub Total:</Typography>
               <Typography>${data.totalPriceBeforeDiscount.toFixed(2)}</Typography>
@@ -134,7 +142,6 @@ export const CartMenu = () => {
 
           </Box>}
           <Box mt={2}>
-            {/* Add a Link to continue shopping */}
             <Link to="/shop" style={{ textDecoration: 'none' }} onClick={handleClose}>
               <Typography variant="body2" color="#1B4B66" sx={{ cursor: 'pointer', textAlign: 'center', textDecoration: 'underline' }}>Continue Shopping</Typography>
             </Link>

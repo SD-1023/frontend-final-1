@@ -5,6 +5,7 @@ import art from "../../images/art.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import emptycart from "../../images/emptycart.svg";
 
+
 export const EmptyCart = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -18,6 +19,7 @@ export const EmptyCart = () => {
         navigate("/");
       }
     };
+
   return (
     <Box p={2} maxWidth={'300px'}>
       <Box display="flex" justifyContent="flex-start" alignItems="center">
