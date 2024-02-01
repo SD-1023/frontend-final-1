@@ -25,6 +25,7 @@ function App() {
               <Route exact path='/' element={<HomePage />} />
           
 
+              <Route path='/products' element={<CategoriesPage />} />
               <Route path='/products/:id' element={<CategoriesPage />} />
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
@@ -34,7 +35,7 @@ function App() {
 
                <Route path ='/checkout' element={<CheckoutPage/>}/>
                <Route path ='/confirmed' element={<ConfirmedOrder/>}/>
-               <Route path ='/empty' element={<EmptyCart/>}/>
+           
 
             </Routes>
           </Layout>

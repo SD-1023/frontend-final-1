@@ -6,8 +6,16 @@ import {
   Icon,
   Button,
   Tabs,
-  TableContainer,
+  TableContainer,IconButton
 } from "@mui/material";
+import * as React from 'react';
+import CloseIcon from '@mui/icons-material/Close';
+import Avatar from '@mui/material/Avatar';
+
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
+import SnackbarContent from '@mui/material/SnackbarContent';
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
@@ -33,8 +41,21 @@ export const CheckoutPage = () => {
   const [postalCode, setPostalCode] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('credit');
 
+  const [snackbarOpen, setSnackbarOpen] = useState(true);
+  const [snackbarMessage, setSnackbarMessage] = useState('hello ');
 
-  console.log(data);
+  const handleSnackbarClose = () => {
+      setSnackbarOpen(false);
+  };
+
+const handleLinkClick = (event, path, state) => {
+  event.preventDefault();
+  console.log("state", state);
+  navigate(path, { state });
+};
+
+
+
 
 
   if (data && !data.error) {
@@ -49,7 +70,6 @@ export const CheckoutPage = () => {
     }
   }, []);
 
-  // console.log(state)
   function handleClick(event, path, state) {
     event.preventDefault();
 
@@ -86,6 +106,12 @@ export const CheckoutPage = () => {
       },
       body: obj
     });
+
+  }
+  if (error){
+    console.log(error)
+    setSnackbarMessage(error.error + "");
+   
 
   }
 
@@ -131,7 +157,9 @@ export const CheckoutPage = () => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Link to="/shop" style={{ textDecoration: "none" }}>
+            <Link to="/" 
+              onClick={(event) => handleLinkClick(event, "/")}
+              style={{ textDecoration: "none" }}>
               <Typography
                 variant="body2"
                 color="#1B4B66"
@@ -165,6 +193,20 @@ export const CheckoutPage = () => {
           <OrderSummary data={state} />
         </Grid>
       </Grid>
+      <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={10000} // Adjust the duration as needed
+                onClose={handleSnackbarClose}
+            >
+                <SnackbarContent
+                    message={snackbarMessage}
+                    action={(
+                        <IconButton size="small" color="inherit" onClick={handleSnackbarClose}>
+                            <CloseIcon fontSize="small" />
+                        </IconButton>
+                    )}
+                />
+            </Snackbar>
     </Box>
   );
 };

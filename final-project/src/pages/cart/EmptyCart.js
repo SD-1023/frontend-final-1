@@ -2,14 +2,22 @@ import { ArrowBack, Close } from "@mui/icons-material";
 import { IconButton, Box, Typography, Button } from "@mui/material";
 
 import art from "../../images/art.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import emptycart from "../../images/emptycart.svg";
 
 export const EmptyCart = () => {
-  const navigate = useNavigate();
-  const handleclick = () => {
-    navigate("/");
-  };
+    const navigate = useNavigate();
+    const location = useLocation();
+  
+    const handleclick = () => {
+      if (location.pathname === "/") {
+        // If already on the home page, close the cart
+        navigate(-1);
+      } else {
+        // Navigate to the home page
+        navigate("/");
+      }
+    };
   return (
     <Box p={2} maxWidth={'300px'}>
       <Box display="flex" justifyContent="flex-start" alignItems="center">

@@ -64,13 +64,16 @@ export const NewArrivals = ({ newArrival }) => {
         p={2}
         container
         spacing={4}
-        sx={{ flexWrap: "nowrap", width: "100%", overflowX: "auto" }}
+        sx={{ flexWrap: "nowrap",  overflowX: "auto" }}
       >
         {arrivalsSliced.map((product) => (
-          <Grid item xs={4} sm={4} md={3} lg={3} key={product.id}>
+          <Grid item xs={4} sm={4} md={3} lg={3} key={product.id} >
             <Card onClick={()=>{handleSliceNewArrivalClick(product.id)}}
               key={product.id}
               sx={{
+              
+                // Set your desired minimum height
+               display:'flex',
                 boxShadow: 0,
                 cursor: "pointer",
                 "&:hover": {
@@ -78,15 +81,26 @@ export const NewArrivals = ({ newArrival }) => {
                 },
               }}
             >
+                   <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+          }}
+        >
               <CardMedia
                 component="img"
                 image={`http://158.176.7.102:3000/${product.ProductImages[0].image_url}`}
                 alt={product.name}
-                sx={{ borderRadius: 2 }}
+                sx={{ borderRadius: 2 , height: "100%" }}
               />
               <CardContent
                 justifyContent="space-between"
                 sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flexGrow: 1, 
+                   
                   padding: 0,
                   paddingTop: 1,
                 }}
@@ -96,13 +110,14 @@ export const NewArrivals = ({ newArrival }) => {
                     display: "flex",
                     justifyContent: "space-between",
                     flexDirection: "row",
+                 
                   }}
                 >
                   <Typography
                     variant="h5"
                     sx={{
                       fontSize: { xs: 12, sm: 12, md: 16 },
-                      maxWidth: { xs: "12ch", sm: "15ch", md: "none" },
+                      maxWidth: { xs: "12ch", sm: "15ch", md: "15ch" },
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                       whiteSpace: "nowrap",
@@ -128,9 +143,10 @@ export const NewArrivals = ({ newArrival }) => {
                 <Typography
                   sx={{ fontSize: { xs: 12, sm: 12, md: 16 }, fontWeight: 600 }}
                 >
-                  {product.price}$
+                  {product.price} $
                 </Typography>
               </CardContent>
+              </div>
             </Card>
           </Grid>
         ))}

@@ -79,15 +79,15 @@ export const CartMenu = () => {
           horizontal: 'center',
         }}
       >
-        {(!data || !data.products?.length) && <EmptyCart />}
-        {data && data.length !== 0 && <Paper sx={{ p: 2, width: 300 }}>
+   {(!data || !data?.products || data?.products.length === 0) && <EmptyCart />}
+  {data?.products && data.products.length > 0 &&  <Paper sx={{ p: 2, width: 300 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Button startIcon={<KeyboardBackspaceIcon />} onClick={handleClose} sx={{ width: 328, color: '#1B4B66', gap: 2, justifyContent: 'flex-start' }}>Back</Button>
 
           </div>
 
 
-          {data.products?.map((item, index) => (
+          {data?.products?.map((item, index) => (
             <Box key={index} style={{ paddingBlock: '16px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: 2, justifyContent: 'space-between', borderBottom: '2px solid rgba(0, 0, 0, 0.12)' }}>
               <img
                 src={`http://158.176.7.102:3000/${item['image_url']}`}
@@ -97,7 +97,8 @@ export const CartMenu = () => {
               <div>
                 <Typography variant="subtitle1">{item.name}</Typography>
                 <Typography variant="body2">${item['price']}</Typography>
-                <QuantityInput quantity={item.quantity} size='small'></QuantityInput>
+                <Typography variant="body2">Qty - {item['quantity']}</Typography>
+           
 
 
               </div>
