@@ -22,6 +22,7 @@ export const CartMenu = () => {
   const [reqOpts, setReqOpts] = useState();
   const { data, loading, error } = useFetchData(url, reqOpts);
 
+  console.log(data)
   const handleOpen = (event) => {
     try {
       let token = localStorage.getItem('token');
@@ -77,10 +78,10 @@ export const CartMenu = () => {
           horizontal: 'center',
         }}
       >
-        {(!data || !data.products?.length) && <EmptyCart />}
-        {data && data.length !== 0 && <Paper sx={{ p: 2, width: 300 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Button startIcon={<KeyboardBackspaceIcon />} onClick={handleClose} sx={{ width: 328, color: '#1B4B66', gap: 2, justifyContent: 'flex-start' }}>Back</Button>
+        {(!data || !data.products?.length) && <EmptyCart handleClose={handleClose}/>}
+        {data && data.products.length !== 0 && <Paper sx={{ p: 2, width: 300 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onClick={handleClose}>
+            <Button startIcon={<KeyboardBackspaceIcon />}  sx={{ width: 328, color: '#1B4B66', gap: 2, justifyContent: 'flex-start' }}>Back</Button>
 
           </div>
 
@@ -109,7 +110,7 @@ export const CartMenu = () => {
 
             </Box>
           ))}
-          {data && data.length !== 0 && <Box mt={2} gap={1} display='flex' flexDirection='column'>
+          {data && data.products.length !== 0 && <Box mt={2} gap={1} display='flex' flexDirection='column'>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }} >
               <Typography variatn='p' sx={{ fontSize: 14 }}>Sub Total:</Typography>
               <Typography>${data.totalPriceBeforeDiscount.toFixed(2)}</Typography>

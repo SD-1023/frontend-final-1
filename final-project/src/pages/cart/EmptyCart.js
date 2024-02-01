@@ -5,9 +5,10 @@ import art from "../../images/art.svg";
 import { useNavigate } from "react-router-dom";
 import emptycart from "../../images/emptycart.svg";
 
-export const EmptyCart = () => {
+export const EmptyCart = ({handleClose}) => {
   const navigate = useNavigate();
   const handleclick = () => {
+    handleClose();
     navigate("/");
   };
   return (
