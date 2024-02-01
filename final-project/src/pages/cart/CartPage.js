@@ -25,7 +25,6 @@ export const CartPage = () => {
   const [reqOpts, setReqOpts] = useState();
   const { data, loading, error } = useFetchData(url, reqOpts);
 
-  console.log(data);
   const { state } = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
@@ -43,7 +42,6 @@ export const CartPage = () => {
   function handleClick(event, path, state) {
     event.preventDefault();
 
-    console.log("state", state);
     navigate(path, {
       state,
     });

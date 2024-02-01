@@ -11,7 +11,6 @@ export const CustomAvatar = ({ info, setIsProfileImageChanged }) => {
     const fileInputRef = useRef(null);
     const [image, setImage] = useState(null)
 
-    console.log(data)
     useEffect(() => {
 
         if(data){
@@ -41,7 +40,6 @@ export const CustomAvatar = ({ info, setIsProfileImageChanged }) => {
             token = JSON.parse(token);
             const formData = new FormData();
             formData.append('profileImage', fileInputRef.current.files[0]);
-            console.log('token', token);
             const tempOpts = {
                 method: 'POST',
                 Accept: "application/json",

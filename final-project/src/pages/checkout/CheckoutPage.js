@@ -41,6 +41,7 @@ export const CheckoutPage = () => {
   const [postalCode, setPostalCode] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('credit');
 
+
   const [snackbarOpen, setSnackbarOpen] = useState(true);
   const [snackbarMessage, setSnackbarMessage] = useState('hello ');
 
@@ -53,8 +54,6 @@ const handleLinkClick = (event, path, state) => {
   console.log("state", state);
   navigate(path, { state });
 };
-
-
 
 
 
@@ -73,7 +72,6 @@ const handleLinkClick = (event, path, state) => {
   function handleClick(event, path, state) {
     event.preventDefault();
 
-    console.log("state", state);
     navigate(path, {
       state,
     });

@@ -13,7 +13,6 @@ export const NewArrivals = ({ newArrival }) => {
   const arrivalsSliced = newArrival ? newArrival.slice(0, 6) : [];
   const navigate = useNavigate();
   const handleSliceNewArrivalClick = (id) => {
-    console.log(id);
     navigate(`../product/${id}`, {
       state: { url: `/products/handpicked?categoryId=${id}` },
     });
