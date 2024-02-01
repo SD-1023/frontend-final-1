@@ -130,7 +130,6 @@ export const CartMenu = () => {
 
           </Box>}
           <Box mt={2}>
-            {/* Add a Link to continue shopping */}
             <Link to="/shop" style={{ textDecoration: 'none' }} onClick={handleClose}>
               <Typography variant="body2" color="#1B4B66" sx={{ cursor: 'pointer', textAlign: 'center', textDecoration: 'underline' }}>Continue Shopping</Typography>
             </Link>

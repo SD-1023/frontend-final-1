@@ -49,7 +49,7 @@ export const AddressInfo = ({ setFullName, setCity, setPhone, setStreet, setCoun
                 margin: 0,
               },
               backgroundColor: "#F1F1F1",
-
+              width: "100%",
               paddingBlock: { sm: "8px", md: "12px", lg: "16px" },
               paddingInline: { sm: "6px", md: "10px", lg: "12px" },
               borderRadius: "4px",
