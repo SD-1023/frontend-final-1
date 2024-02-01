@@ -109,7 +109,7 @@ export const SignUp = () => {
             last_name: last_name.value,
             birth_date: birth_date.value,
             first_name: first_name.value,
-            // profile_image: "https://example.com/john_doe_profile.jpg"
+        
         })
         if (
             first_name.error ||
@@ -120,14 +120,14 @@ export const SignUp = () => {
             birth_date.error ||
             mobile.error
         ) {
-            // Display a message or take appropriate action
+
             setSnackbarMessage('Please fill in all required fields correctly.');
             setSnackbarOpen(true);
             return;
         }
 
 
-        // const data = new FormData(event.currentTarget);
+   
 
         fetch("http://158.176.7.102:3000/users/signup", {
             method: "POST",

@@ -35,7 +35,7 @@ function App() {
 
                <Route path ='/checkout' element={<CheckoutPage/>}/>
                <Route path ='/confirmed' element={<ConfirmedOrder/>}/>
-               <Route path ='/empty' element={<EmptyCart/>}/>
+           
 
             </Routes>
           </Layout>

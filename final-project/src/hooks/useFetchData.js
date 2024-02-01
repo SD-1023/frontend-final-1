@@ -16,6 +16,9 @@ export const useFetchData = (url, requestOptions) => {
 
                 setLoading(true);
                 const res = await fetch(url, requestOptions);
+                if (res.error) {
+                    throw new Error(res.error);
+                }
                 const d = await res.json();
                 setData(d);
                 setError(null);

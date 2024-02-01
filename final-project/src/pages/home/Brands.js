@@ -64,12 +64,7 @@ export const Brands = ({ brands }) => {
             <Box p={2} sx={{}} ref={brandsRef}>
                 <Box component='div'
                     sx={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row' }}><Typography variant="h2" className={classes.styledTitle}>Shop by Brands</Typography>
-                    <Link  onClick ={()=>handleAllBrandClick()}variant="label" href="#" underline="none" color='#1B4B66' sx={{ fontSize: { xs: 12, sm: 12, md: 16 }, display: { xs: 'block', sm: 'block', md: 'none' } }}>
-                        <span style={{ display: "flex", alignItems: "center" }}>
-                            View All
-                            <ArrowForwardIosIcon />
-                        </span>
-                    </Link>
+                 
                 </Box>
                 <Grid container alignItems={'center'} spacing={2} mt={0}   >
 
