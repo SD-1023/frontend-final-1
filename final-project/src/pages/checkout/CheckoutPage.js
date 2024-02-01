@@ -41,9 +41,14 @@ export const CheckoutPage = () => {
   const [postalCode, setPostalCode] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('credit');
 
+<<<<<<< HEAD
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState(' ');
+=======
 
   const [snackbarOpen, setSnackbarOpen] = useState(true);
   const [snackbarMessage, setSnackbarMessage] = useState('hello ');
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
 
   const handleSnackbarClose = () => {
       setSnackbarOpen(false);
@@ -51,7 +56,7 @@ export const CheckoutPage = () => {
 
 const handleLinkClick = (event, path, state) => {
   event.preventDefault();
-  console.log("state", state);
+ 
   navigate(path, { state });
 };
 
@@ -72,6 +77,10 @@ const handleLinkClick = (event, path, state) => {
   function handleClick(event, path, state) {
     event.preventDefault();
 
+<<<<<<< HEAD
+   
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
     navigate(path, {
       state,
     });
@@ -94,7 +103,7 @@ const handleLinkClick = (event, path, state) => {
 
     })
 
-    setUrl('http://158.176.7.102:3000/orders');
+    setUrl('https://group1.iscovat.bid/orders');
     setReqOpts({
       method: "POST",
       headers: {
@@ -106,12 +115,15 @@ const handleLinkClick = (event, path, state) => {
     });
 
   }
-  if (error){
-    console.log(error)
-    setSnackbarMessage(error.error + "");
+  useEffect(()=>{
+    if (data?.error){
    
-
-  }
+        setSnackbarMessage(data.error + "");
+        setUrl(null);
+        setSnackbarOpen(true);
+      }
+  },[data])
+  
 
   return (
     <Box p={2} flexDirection="column" display="flex" gap={2}>

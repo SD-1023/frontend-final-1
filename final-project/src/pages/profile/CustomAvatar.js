@@ -11,6 +11,10 @@ export const CustomAvatar = ({ info, setIsProfileImageChanged }) => {
     const fileInputRef = useRef(null);
     const [image, setImage] = useState(null)
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
     useEffect(() => {
 
         if(data){
@@ -40,6 +44,10 @@ export const CustomAvatar = ({ info, setIsProfileImageChanged }) => {
             token = JSON.parse(token);
             const formData = new FormData();
             formData.append('profileImage', fileInputRef.current.files[0]);
+<<<<<<< HEAD
+  
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
             const tempOpts = {
                 method: 'POST',
                 Accept: "application/json",
@@ -48,7 +56,7 @@ export const CustomAvatar = ({ info, setIsProfileImageChanged }) => {
                 headers: { Authorization: token['session_key'] }
             }
 
-            setUrl(`http://158.176.7.102:3000/users/profile-img`);
+            setUrl(`https://group1.iscovat.bid/users/profile-img`);
             setRequestOptions(tempOpts);
 
 
@@ -60,7 +68,7 @@ export const CustomAvatar = ({ info, setIsProfileImageChanged }) => {
     }
 
     return <Box sx={{ display: 'flex', alignItems: 'flex-end', gap: '12px', marginBlock: '25px' }}>
-        <Avatar sx={{ width: '80px', height: '80px' }} alt={info['first_name']} src={`http://158.176.7.102:3000/${image ? image :info['profile_image'] }`} />
+        <Avatar sx={{ width: '80px', height: '80px' }} alt={info['first_name']} src={`https://group1.iscovat.bid/${image ? image :info['profile_image'] }`} />
         <LoadingButton loading={loading} onClick={handleButtonClick} variant="contained" sx={{
             textTransform: 'none',
             backgroundColor: '#1B4B66', width: { xs: '100', sm: '136px' }, height: { xs: '30', sm: '38px' }, color: 'white',

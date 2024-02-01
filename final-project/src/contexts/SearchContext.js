@@ -27,7 +27,7 @@ export const SearchProvider = ({ children }) => {
             closeSearchPanel();
             return;
         }
-        setURL('http://158.176.7.102:3000/search/suggestions?keyword=' + searchValue);
+        setURL('https://group1.iscovat.bid/search/suggestions?keyword=' + searchValue);
     }, [searchValue]);
 
 

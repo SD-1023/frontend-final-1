@@ -145,7 +145,7 @@ export const ThreeBanners = () => {
     const handleFirstBanner = () => {
     
         navigate(`../products/discount`, {
-          state: { url: `http://158.176.7.102:3000/products/discount-15plus` },
+          state: { url: `https://group1.iscovat.bid/products/discount-15plus` },
         });
      
       };
@@ -153,7 +153,7 @@ export const ThreeBanners = () => {
       const handleSecondBanner = () => {
     
         navigate(`../products/limited-edition`, {
-          state: { url: `http://158.176.7.102:3000/products/limited-edition` },
+          state: { url: `https://group1.iscovat.bid/products/limited-edition` },
         });
      
       };
@@ -161,7 +161,7 @@ export const ThreeBanners = () => {
       const handleThirdBanner = () => {
     
         navigate(`../products/popular`, {
-          state: { url: `http://158.176.7.102:3000/products/popular` },
+          state: { url: `https://group1.iscovat.bid/products/popular` },
         });
      
       };

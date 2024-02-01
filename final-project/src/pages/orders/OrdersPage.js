@@ -11,6 +11,11 @@ export const OrdersPage = ({ orders, currentItem, setCurrentItem, setBreadcrumbs
     const [currentNav, setCurrentNav] = useState('Completed');
     const [renderedOrders, setRenderedOrders] = useState([]);
     const [isPageLoaded, setIsPageLoaded] = useState(false);
+<<<<<<< HEAD
+   
+
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
 
     useEffect(() => {
 
@@ -29,7 +34,7 @@ export const OrdersPage = ({ orders, currentItem, setCurrentItem, setBreadcrumbs
             let token = localStorage.getItem('token');
 
             token = JSON.parse(token);
-            setUrl(`http://158.176.7.102:3000/orders`);
+            setUrl(`https://group1.iscovat.bid/orders`);
             setRequestOptions({ headers: { Authorization: token['session_key'] } });
             setIsPageLoaded(true);
 

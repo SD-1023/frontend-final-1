@@ -14,8 +14,12 @@ import { useNavigate } from "react-router-dom";
 export const TopCategories = ({ topCategories }) => {
   const navigate = useNavigate();
   const handleCardClick = (id) => {
+<<<<<<< HEAD
+
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
     navigate(`../products/${id}`, {
-      state: { url: `http://158.176.7.102:3000/products?categoryId=${id}` },
+      state: { url: `https://group1.iscovat.bid/products?categoryId=${id}` },
     });
   };
   return (
@@ -79,7 +83,7 @@ export const TopCategories = ({ topCategories }) => {
               >
                 <CardMedia
                   component="img"
-                  src={`http://158.176.7.102:3000/${topCategory.icon}`}
+                  src={`https://group1.iscovat.bid/${topCategory.icon}`}
                   alt={topCategory.name}
                   sx={{
                     borderRadius: 2,

@@ -44,7 +44,7 @@ export const PersonalInformation = ({ setUrl, setRequestOptions, breadcrumbsItem
             let token = localStorage.getItem('token');
 
             token = JSON.parse(token);
-            setUrl(`http://158.176.7.102:3000/users/${token['user_id']}`);
+            setUrl(`https://group1.iscovat.bid/users/${token['user_id']}`);
             setRequestOptions({ headers: { Authorization: token['session_key'] } });
 
 
@@ -105,7 +105,7 @@ export const PersonalInformation = ({ setUrl, setRequestOptions, breadcrumbsItem
                 body: JSON.stringify(body)
             }
 
-            setLocalUrl(`http://158.176.7.102:3000/users/${isBasicInfo ? token['user_id'] : 'change-password'}`);
+            setLocalUrl(`https://group1.iscovat.bid/users/${isBasicInfo ? token['user_id'] : 'change-password'}`);
             setLocalReqOpts(tempOpts);
         } catch (e) {
             console.log(e);

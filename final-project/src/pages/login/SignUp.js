@@ -129,7 +129,7 @@ export const SignUp = () => {
 
    
 
-        fetch("http://158.176.7.102:3000/users/signup", {
+        fetch("https://group1.iscovat.bid/users/signup", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -146,6 +146,10 @@ export const SignUp = () => {
                 if (json.error) {
                     throw new Error(json.error);
                 }
+<<<<<<< HEAD
+            
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
                 setSnackbarMessage('Signup successfully!');
                 setSnackbarOpen(true);
 
@@ -155,7 +159,7 @@ export const SignUp = () => {
             .catch(error => {
                 setSnackbarMessage(error + "");
                 setSnackbarOpen(true);
-                // console.error("", error);
+           
             });
 
 

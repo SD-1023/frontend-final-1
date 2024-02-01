@@ -22,7 +22,12 @@ export const CartMenu = () => {
   const [reqOpts, setReqOpts] = useState();
   const { data, loading, error } = useFetchData(url, reqOpts);
 
+<<<<<<< HEAD
+
+
+=======
   console.log(data)
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
   const handleOpen = (event) => {
     try {
       let token = localStorage.getItem('token');
@@ -30,7 +35,7 @@ export const CartMenu = () => {
         return navigate('/signin');
       }
       token = JSON.parse(token);
-      setUrl('http://158.176.7.102:3000/shopping-cart');
+      setUrl('https://group1.iscovat.bid/shopping-cart');
       setReqOpts({ headers: { Authorization: token['session_key'] } })
 
     } catch (e) {
@@ -42,6 +47,7 @@ export const CartMenu = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+    setUrl(null);
     setOpen(false);
     setUrl(null);
     setReqOpts(null)
@@ -93,7 +99,7 @@ export const CartMenu = () => {
           {data?.products?.map((item, index) => (
             <Box key={index} style={{ paddingBlock: '16px', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: 2, justifyContent: 'space-between', borderBottom: '2px solid rgba(0, 0, 0, 0.12)' }}>
               <img
-                src={`http://158.176.7.102:3000/${item['image_url']}`}
+                src={`https://group1.iscovat.bid/${item['image_url']}`}
                 alt={item.name}
                 style={{ width: '75px', height: '80px' }}
               />

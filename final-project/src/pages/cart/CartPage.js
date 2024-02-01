@@ -25,6 +25,10 @@ export const CartPage = () => {
   const [reqOpts, setReqOpts] = useState();
   const { data, loading, error } = useFetchData(url, reqOpts);
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
   const { state } = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
@@ -34,7 +38,7 @@ export const CartPage = () => {
     } else {
 
       token = JSON.parse(token);
-      setUrl('http://158.176.7.102:3000/shopping-cart');
+      setUrl('https://group1.iscovat.bid/shopping-cart');
       setReqOpts({ headers: { Authorization: token['session_key'] } })
     }
   }, [])
@@ -42,6 +46,10 @@ export const CartPage = () => {
   function handleClick(event, path, state) {
     event.preventDefault();
 
+<<<<<<< HEAD
+   
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
     navigate(path, {
       state,
     });

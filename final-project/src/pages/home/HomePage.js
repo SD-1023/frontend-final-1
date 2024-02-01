@@ -65,10 +65,10 @@ export const HomePage = () => {
       }
     };
 
-    fetchData("http://158.176.7.102:3000/brand/top", setShopBrands);
-    fetchData("http://158.176.7.102:3000/category/top", setTopCategories);
-    fetchData("http://158.176.7.102:3000/products/new-arrivals", setNewArrival);
-    fetchData("http://158.176.7.102:3000/category/handpicked", setHandpickedCollection);
+    fetchData("https://group1.iscovat.bid/brand/top", setShopBrands);
+    fetchData("https://group1.iscovat.bid/category/top", setTopCategories);
+    fetchData("https://group1.iscovat.bid/products/new-arrivals", setNewArrival);
+    fetchData("https://group1.iscovat.bid/category/handpicked", setHandpickedCollection);
   }, []);
 
   if (loading) {
@@ -79,6 +79,10 @@ export const HomePage = () => {
     return <Typography>Error: {error}</Typography>;
   }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
 
   return (
     <ThemeProvider theme={theme}>

@@ -62,7 +62,7 @@ export const CollectionSection = ({ collections }) => {
 
     const handleCardClick = (id) => {
         navigate(`../products/${id}`, {
-            state: { url: `http://158.176.7.102:3000/products/handpicked?categoryId=${id}` }
+            state: { url: `https://group1.iscovat.bid/products/handpicked?categoryId=${id}` }
         });
     }
    
@@ -84,7 +84,7 @@ export const CollectionSection = ({ collections }) => {
                                     left: 0,
                                     right: 0,
                                     bottom: 0,
-                                    backgroundImage: `url(http://158.176.7.102:3000/${collection.image})`,
+                                    backgroundImage: `url(https://group1.iscovat.bid/${collection.image})`,
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',
 

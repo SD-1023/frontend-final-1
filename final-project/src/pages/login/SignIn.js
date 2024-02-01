@@ -60,7 +60,7 @@ export const SignIn = () => {
     }
     const data = new FormData(event.currentTarget);
 
-    fetch("http://158.176.7.102:3000/users/signin", {
+    fetch("https://group1.iscovat.bid/users/signin", {
       method: "POST",
       headers: {
         Accept: "application/json",

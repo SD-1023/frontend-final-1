@@ -8,7 +8,7 @@ export const SideNavigationBar = ({ setIsOverlayShown, categories }) => {
 
     const onCategoryClicked = (id) => {
         navigate(`../products/${id}`, {
-            state: { url: `http://158.176.7.102:3000/products?categoryId=${id}` }
+            state: { url: `https://group1.iscovat.bid/products?categoryId=${id}` }
         });
     }
 

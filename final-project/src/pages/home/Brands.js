@@ -47,13 +47,13 @@ export const Brands = ({ brands }) => {
 
     const handleBrandClick=(id)=>{
         navigate(`../products/${id}`, {
-            state: { url: `http://158.176.7.102:3000/products?brandId=${id}` },
+            state: { url: `https://group1.iscovat.bid/products?brandId=${id}` },
           });
     }
 
     const handleAllBrandClick=()=>{
         navigate(`../products/brand`, {
-            state: { url: `http://158.176.7.102:3000/brand` },
+            state: { url: `https://group1.iscovat.bid/brand` },
           });
     }
 
@@ -79,7 +79,7 @@ export const Brands = ({ brands }) => {
                                     component="img"
                                     alt={brand.name}
                                     height="100%"
-                                    image={`http://158.176.7.102:3000/${brand.logo}`}
+                                    image={`https://group1.iscovat.bid/${brand.logo}`}
                                     title={brand.name}
                                     sx={{ objectFit: 'scale-down', }}
                                 />

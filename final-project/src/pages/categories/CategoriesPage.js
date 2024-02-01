@@ -11,15 +11,23 @@ export const CategoriesPage = ({ }) => {
     const { state } = useLocation();
     const { id } = useParams();
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
 
     const [currentPage, setCurrentPage] = useState(1);
-    let url = `http://158.176.7.102:3000/search?page=${currentPage}&keyword=${state}`;
+    let url = `https://group1.iscovat.bid/search?page=${currentPage}&keyword=${state}`;
 
     if(id){
         url = state.url;
     }
 
     const { data, loading, error } = useFetchData(url);
+<<<<<<< HEAD
+   
+=======
+>>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
 
     useEffect(() => {
 
