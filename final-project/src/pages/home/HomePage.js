@@ -79,7 +79,6 @@ export const HomePage = () => {
     return <Typography>Error: {error}</Typography>;
   }
 
-console.log(newArrivals.data)
 
   return (
     <ThemeProvider theme={theme}>

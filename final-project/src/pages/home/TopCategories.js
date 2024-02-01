@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 export const TopCategories = ({ topCategories }) => {
   const navigate = useNavigate();
   const handleCardClick = (id) => {
-    console.log(id);
     navigate(`../products/${id}`, {
       state: { url: `http://158.176.7.102:3000/products?categoryId=${id}` },
     });
