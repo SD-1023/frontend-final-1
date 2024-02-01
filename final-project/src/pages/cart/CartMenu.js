@@ -43,6 +43,8 @@ export const CartMenu = () => {
   const handleClose = () => {
     setAnchorEl(null);
     setOpen(false);
+    setUrl(null);
+    setReqOpts(null)
   };
 
   const moveToCart = () => {
@@ -78,10 +80,10 @@ export const CartMenu = () => {
           horizontal: 'center',
         }}
       >
-        {(!data || !data.products?.length) && <EmptyCart handleClose={handleClose}/>}
+        {(!data || !data.products?.length) && <EmptyCart handleClose={handleClose} />}
         {data && data.products.length !== 0 && <Paper sx={{ p: 2, width: 300 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onClick={handleClose}>
-            <Button startIcon={<KeyboardBackspaceIcon />}  sx={{ width: 328, color: '#1B4B66', gap: 2, justifyContent: 'flex-start' }}>Back</Button>
+            <Button startIcon={<KeyboardBackspaceIcon />} sx={{ width: 328, color: '#1B4B66', gap: 2, justifyContent: 'flex-start' }}>Back</Button>
 
           </div>
 
