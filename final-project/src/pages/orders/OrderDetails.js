@@ -168,7 +168,7 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
                     <Box sx={{ color: '#171520', width: '100%', display: 'flex', justifyContent: 'space-between' }}>
                         Grand Total
                         <Typography>
-                            ${+currentDetails['grand_total'].toFixed(2) + 12.00}
+                            ${+currentDetails['grand_total']?.toFixed(2) + 12.00}
                         </Typography>
                     </Box>
 
