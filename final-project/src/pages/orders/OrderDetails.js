@@ -159,16 +159,16 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
                             ${currentDetails['total_discount']}
                         </Typography>
                     </Box>
-                    {/* <Box sx={{ color: 'black', width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+                    <Box sx={{ color: 'black', width: '100%', display: 'flex', justifyContent: 'space-between' }}>
                         Delivery Fee
                         <Typography>
-                            $119
+                            $12.00
                         </Typography>
-                    </Box> */}
+                    </Box>
                     <Box sx={{ color: '#171520', width: '100%', display: 'flex', justifyContent: 'space-between' }}>
                         Grand Total
                         <Typography>
-                            ${currentDetails['grand_total']}
+                            ${+currentDetails['grand_total'].toFixed(2) + 12.00}
                         </Typography>
                     </Box>
 
