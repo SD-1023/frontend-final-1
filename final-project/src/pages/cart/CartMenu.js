@@ -22,12 +22,7 @@ export const CartMenu = () => {
   const [reqOpts, setReqOpts] = useState();
   const { data, loading, error } = useFetchData(url, reqOpts);
 
-<<<<<<< HEAD
 
-
-=======
-  console.log(data)
->>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
   const handleOpen = (event) => {
     try {
       let token = localStorage.getItem('token');

@@ -16,10 +16,6 @@ export const OrderDetails = ({ details, loading, orderNumber, setOrderNumber, cu
 
         setCurrentDetails(details);
     }, [details]);
-<<<<<<< HEAD
-
-=======
->>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
 
     const editBreadcrumbs = (newVal) => {
 
