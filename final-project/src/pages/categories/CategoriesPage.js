@@ -11,6 +11,7 @@ export const CategoriesPage = ({ }) => {
     const { state } = useLocation();
     const { id } = useParams();
 
+
     const [currentPage, setCurrentPage] = useState(1);
     let url = `https://group1.iscovat.bid/search?page=${currentPage}&keyword=${state}`;
 
@@ -19,6 +20,7 @@ export const CategoriesPage = ({ }) => {
     }
 
     const { data, loading, error } = useFetchData(url);
+
     useEffect(() => {
 
         setCurrentPage(1);

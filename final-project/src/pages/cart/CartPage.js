@@ -42,6 +42,7 @@ export const CartPage = () => {
   function handleClick(event, path, state) {
     event.preventDefault();
 
+
     navigate(path, {
       state,
     });

@@ -60,6 +60,7 @@ export const ProductPage = () => {
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
 
+
   const handleAddtobag = () => {
     let token = localStorage.getItem("token");
     if (!token) {
