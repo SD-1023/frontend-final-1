@@ -11,7 +11,7 @@ export const OrdersPage = ({ orders, currentItem, setCurrentItem, setBreadcrumbs
     const [currentNav, setCurrentNav] = useState('Completed');
     const [renderedOrders, setRenderedOrders] = useState([]);
     const [isPageLoaded, setIsPageLoaded] = useState(false);
-   
+
 
 
     useEffect(() => {

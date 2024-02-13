@@ -20,7 +20,6 @@ export const CategoriesPage = ({ }) => {
     }
 
     const { data, loading, error } = useFetchData(url);
-   
 
     useEffect(() => {
 

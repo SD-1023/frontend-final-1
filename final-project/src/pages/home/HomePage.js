@@ -79,7 +79,6 @@ export const HomePage = () => {
     return <Typography>Error: {error}</Typography>;
   }
 
-
   return (
     <ThemeProvider theme={theme}>
       <HeroImage></HeroImage>

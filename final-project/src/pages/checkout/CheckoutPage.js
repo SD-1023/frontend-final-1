@@ -6,7 +6,7 @@ import {
   Icon,
   Button,
   Tabs,
-  TableContainer,IconButton
+  TableContainer, IconButton
 } from "@mui/material";
 import * as React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
@@ -45,14 +45,14 @@ export const CheckoutPage = () => {
   const [snackbarMessage, setSnackbarMessage] = useState(' ');
 
   const handleSnackbarClose = () => {
-      setSnackbarOpen(false);
+    setSnackbarOpen(false);
   };
 
-const handleLinkClick = (event, path, state) => {
-  event.preventDefault();
- 
-  navigate(path, { state });
-};
+  const handleLinkClick = (event, path, state) => {
+    event.preventDefault();
+
+    navigate(path, { state });
+  };
 
 
 
@@ -71,7 +71,7 @@ const handleLinkClick = (event, path, state) => {
   function handleClick(event, path, state) {
     event.preventDefault();
 
-   
+
     navigate(path, {
       state,
     });
@@ -106,15 +106,15 @@ const handleLinkClick = (event, path, state) => {
     });
 
   }
-  useEffect(()=>{
-    if (data?.error){
-   
-        setSnackbarMessage(data.error + "");
-        setUrl(null);
-        setSnackbarOpen(true);
-      }
-  },[data])
-  
+  useEffect(() => {
+    if (data?.error) {
+
+      setSnackbarMessage(data.error + "");
+      setUrl(null);
+      setSnackbarOpen(true);
+    }
+  }, [data])
+
 
   return (
     <Box p={2} flexDirection="column" display="flex" gap={2}>
@@ -158,7 +158,7 @@ const handleLinkClick = (event, path, state) => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Link to="/" 
+            <Link to="/"
               onClick={(event) => handleLinkClick(event, "/")}
               style={{ textDecoration: "none" }}>
               <Typography
@@ -195,19 +195,19 @@ const handleLinkClick = (event, path, state) => {
         </Grid>
       </Grid>
       <Snackbar
-                open={snackbarOpen}
-                autoHideDuration={10000} // Adjust the duration as needed
-                onClose={handleSnackbarClose}
-            >
-                <SnackbarContent
-                    message={snackbarMessage}
-                    action={(
-                        <IconButton size="small" color="inherit" onClick={handleSnackbarClose}>
-                            <CloseIcon fontSize="small" />
-                        </IconButton>
-                    )}
-                />
-            </Snackbar>
+        open={snackbarOpen}
+        autoHideDuration={10000} // Adjust the duration as needed
+        onClose={handleSnackbarClose}
+      >
+        <SnackbarContent
+          message={snackbarMessage}
+          action={(
+            <IconButton size="small" color="inherit" onClick={handleSnackbarClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          )}
+        />
+      </Snackbar>
     </Box>
   );
 };
