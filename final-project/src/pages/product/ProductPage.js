@@ -60,10 +60,6 @@ export const ProductPage = () => {
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
 
   const handleAddtobag = () => {
     let token = localStorage.getItem("token");
@@ -102,11 +98,7 @@ export const ProductPage = () => {
       .then((response) => response.json())
       .then((data) => {
         setDetails(data);
-<<<<<<< HEAD
    
-=======
-
->>>>>>> ea0c7a1ca96da6deed22d8a1ad633745f592f919
       })
       .catch((error) => console.log(error));
   }, [id]);
